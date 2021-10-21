@@ -11,7 +11,7 @@ class MapView extends StatefulWidget {
 }
 
 class _MapViewState extends State<MapView> with AfterLayoutMixin<MapView> {
-   MapModel mapModel = MapModel(3);
+   MapModel mapModel = MapModel();
 
    List<TableRow> listTableRow = [];
   @override
@@ -21,10 +21,10 @@ class _MapViewState extends State<MapView> with AfterLayoutMixin<MapView> {
     MapModel mapModel = await ManageXlsData.getData();
 
 
-    listTableRow = List.generate(mapModel.size, (i) => TableRow(children:
+    listTableRow = List.generate(MapModel.size, (i) => TableRow(children:
 
 
-    List.generate( mapModel.size, (j) => AspectRatio(aspectRatio: 1, child: Image.asset(mapModel.matrice[i][j].pathImg)
+    List.generate( MapModel.size, (j) => AspectRatio(aspectRatio: 1, child: Image.asset(mapModel.matrice[i][j].pathImg)
     
     ))));
 

@@ -36,11 +36,11 @@ class ManageXlsData {
     var excel = Excel.decodeBytes(bytes);
     //print(excel["carte"]!.row(1).toList()[1].value);
 
-    MapModel mapModel = MapModel(3);
+    MapModel mapModel = MapModel();
 
 
-    for (var i = 0; i < mapModel.size; i++) {
-      for (var j = 0; j < mapModel.size; j++) {
+    for (var i = 0; i < MapModel.size; i++) {
+      for (var j = 0; j < MapModel.size; j++) {
         String path = excel["carte"]!.row(i).toList()[j].value.toString();
         mapModel.matrice[i][j].pathImg = path;
       }

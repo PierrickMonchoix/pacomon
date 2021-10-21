@@ -11,9 +11,9 @@ void main() {
 
     MapModel mapModel = await ManageXlsData.getData();
 
-    for (var i = 0; i < mapModel.size; i++) {
+    for (var i = 0; i < MapModel.size; i++) {
       print("\n");
-      for (var j = 0; j < mapModel.size; j++) {
+      for (var j = 0; j < MapModel.size; j++) {
           print(mapModel.matrice[i][j].pathImg);
     }
     }

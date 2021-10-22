@@ -45,9 +45,8 @@ class ManageXlsData {
         mapModel.matrice[i][j].pathImg = path;
       }
     }
+    
     return mapModel;
-
-
     //excel["carte"]!.row(1).toList()[1].toString();
   }
 }

@@ -19,5 +19,5 @@ void main() {
     }
 
     expect(result , 13);
-  }, tags: "test_it");
+  });
 }

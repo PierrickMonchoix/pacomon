@@ -2,7 +2,7 @@ import 'package:first_flutter_app/dao/xls_elements/liste_element_terrain_sheet/e
 
 enum Caracteristique { idElement, cheminImage, traversable }
 
-class ListElementTerrainXls {
+class ListElementTerrainXlsSheet {
   static const String nomSheet = "element_terrain";
 
   static const Map<Caracteristique, int> caracteristiquesMap = {
@@ -19,7 +19,7 @@ class ListElementTerrainXls {
 
   final List<ElementTerrainXls> _list;
 
-  ListElementTerrainXls(List<ElementTerrainXls> list) : _list = list;
+  ListElementTerrainXlsSheet(List<ElementTerrainXls> list) : _list = list;
 
   List<ElementTerrainXls> get list => _list;
 

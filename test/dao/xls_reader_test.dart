@@ -11,7 +11,7 @@ void main() {
     IdElementTerrainXls herbe = IdElementTerrainXls(id: "HERBE");
     IdElementTerrainXls rocher = IdElementTerrainXls(id: "ROCHER");
 
-    CarteXls carteXls = await XlsReader.getCarteXls(
+    CarteXlsSheet carteXls = await XlsReader.getCarteXls(
         xlsPath: "assets/for_tests/database_test.xlsx");
 
     expect(carteXls.matrice[0][0].equals(herbe), true);
@@ -21,7 +21,7 @@ void main() {
 
   testWidgets('getListElementTerrainXls', (tester) async {
 
-    ListElementTerrainXls listElementTerrain = await XlsReader.getListElementTerrainXls(xlsPath: "assets/for_tests/database_test.xlsx");
+    ListElementTerrainXlsSheet listElementTerrain = await XlsReader.getListElementTerrainXls(xlsPath: "assets/for_tests/database_test.xlsx");
 
     ElementTerrainXls herbe = ElementTerrainXls(id: "HERBE" , pathImage: "path_herbe" , traversable: "OUI");
     ElementTerrainXls sol = ElementTerrainXls(id: "SOL" , pathImage: "path_sol" , traversable: "OUI");

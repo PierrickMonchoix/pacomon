@@ -31,5 +31,5 @@ void main() {
     expect(listElementTerrain.list[1].equals(sol), true);
     expect(listElementTerrain.list[2].equals(rocher), true);
 
-  } , tags: "test_it");
+  });
 }

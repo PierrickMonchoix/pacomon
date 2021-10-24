@@ -8,7 +8,24 @@ class ElementTerrain {
   String? _nom;
   bool? _traversable;
 
-  ElementTerrain();
+  ElementTerrain.vide();
+
+  ElementTerrain(
+      {required String nom,
+      required bool traversable,
+      required String pathImage})
+      : _nom = nom,
+        _traversable = traversable,
+        _pathImage = pathImage;
+
+  void setAll(
+      {required String nom,
+      required bool traversable,
+      required String pathImage}) {
+    _nom = nom;
+    _traversable = traversable;
+    _pathImage = pathImage;
+  }
 
   bool? get traversable => _traversable;
   set traversable(bool? value) => _traversable = value;
@@ -22,13 +39,17 @@ class ElementTerrain {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is ElementTerrain &&
-      other._pathImage == _pathImage &&
-      other._nom == _nom &&
-      other._traversable == _traversable;
+        other._pathImage == _pathImage &&
+        other._nom == _nom &&
+        other._traversable == _traversable;
   }
 
   @override
-  int get hashCode => _pathImage.hashCode ^ _nom.hashCode ^ _traversable.hashCode;
+  int get hashCode =>
+      _pathImage.hashCode ^ _nom.hashCode ^ _traversable.hashCode;
+
+  @override
+  String toString() => 'ElementTerrain(_pathImage: $_pathImage, _nom: $_nom, _traversable: $_traversable)';
 }

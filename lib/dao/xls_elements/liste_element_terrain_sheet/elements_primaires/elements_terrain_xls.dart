@@ -23,6 +23,4 @@ class ElementTerrainXls {
       other._traversable == _traversable;
   }
 
-  @override
-  int get hashCode => _id.hashCode ^ _pathImage.hashCode ^ _traversable.hashCode;
 }

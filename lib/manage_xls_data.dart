@@ -1,9 +1,9 @@
-import 'dart:io';
+
 import 'package:first_flutter_app/map_model.dart';
-import 'package:path/path.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:excel/excel.dart';
 import 'package:flutter/services.dart' show ByteData, rootBundle;
-import 'element_decort.dart';
+
 
 class ManageXlsData {
   static Future<int> getPrimaryData() async {

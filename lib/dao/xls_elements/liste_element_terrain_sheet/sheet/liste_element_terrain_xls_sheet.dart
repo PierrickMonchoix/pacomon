@@ -1,4 +1,3 @@
-import 'package:first_flutter_app/dao/xls_elements/carte_sheet/sheet/carte_xls_sheet.dart';
 import 'package:first_flutter_app/dao/xls_elements/liste_element_terrain_sheet/elements_primaires/elements_terrain_xls.dart';
 
 enum Caracteristique { idElement, cheminImage, traversable }

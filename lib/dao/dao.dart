@@ -8,29 +8,32 @@ import 'package:first_flutter_app/modele/element_terrain.dart';
 
 class Dao {
 
-  static Future<ElementTerrainXls> getElementTerrainFromId({required IdElementTerrainXls idElementTerrainXls}) async {
+  static Future<ElementTerrainXls> getElementTerrainXlsFromElementTerrainIdXls({required IdElementTerrainXls idElementTerrainXls}) async {
     ListElementTerrainXlsSheet listElementXls = await XlsReader.getListElementTerrainXls(xlsPath: "assets/for_tests/database_test.xlsx");
     return listElementXls.list.firstWhere((element) => element.id == idElementTerrainXls.id);
   }
 
 
-  static void setElementTerrainFromXls({required ElementTerrain elementTerrain , required ElementTerrainXls elementTerrainXls}){
+  static void setElementTerrainFromElementTerrainXls({required ElementTerrain elementTerrain , required ElementTerrainXls elementTerrainXls}){
     elementTerrain.setAll(nom: elementTerrainXls.id, traversable: elementTerrainXls.traversable == "OUI" ? true : false, pathImage: elementTerrainXls.pathImage);
   }
 
-/*     static Future<Carte> getCarte() async {
+ static Future<Carte> getCarte() async {
 
     CarteXlsSheet carteXls = await XlsReader.getCarteXls(xlsPath: "assets/for_tests/database_test.xlsx");
-    List<List<ElementTerrain>> matriceElementTerrain = List.generate(Carte.taille, (i) => List.generate(Carte.taille, (j) => ElementTerrain.vide());
-    Carte carte;
+    List<List<ElementTerrain>> matriceElementTerrain = List.generate(Carte.taille, (i) => List.generate(Carte.taille, (j) => ElementTerrain.vide()));
     
     for (int i = 0; i < Carte.taille; i++) {
       for (int j = 0; j < Carte.taille; j++){
-        setElementTerrainFromXls(elementTerrain: matriceElementTerrain[i][j] , elementTerrainXls: carteXls.matrice[i][j]);
+        setElementTerrainFromElementTerrainXls(elementTerrain: matriceElementTerrain[i][j] , elementTerrainXls: await getElementTerrainXlsFromElementTerrainIdXls(idElementTerrainXls: carteXls.matrice[i][j]));
       }
     }
 
+    Carte carte = Carte(matriceElementTerrain: matriceElementTerrain);
 
-  }  */ 
+    return carte;
+
+
+  }  
 
 }

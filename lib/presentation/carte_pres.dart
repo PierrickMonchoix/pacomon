@@ -4,9 +4,6 @@ class CartePres {
 
   Carte _carteModele;
 
-
-
-
   CartePres({required Carte carteModele}) : _carteModele = carteModele;
 
   String getPathElementTerrainFromCoord({required int y, required  int x}){

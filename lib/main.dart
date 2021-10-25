@@ -36,15 +36,17 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-
   int _counter = 0;
   Carte _carte;
   late CartePres _cartePres;
   late CarteVue _carteVue;
 
-  MyHomePage({Key? key, required this.title}) :  _carte = Carte() , super(key: key){
+  MyHomePage({Key? key, required this.title})
+      : _carte = Carte.vide(),
+        super(key: key) {
     _cartePres = CartePres(carteModele: _carte);
     _carteVue = CarteVue(cartePres: _cartePres);
+    
   }
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -62,15 +64,18 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with AfterLayoutMixin<MyHomePage>  {
+class _MyHomePageState extends State<MyHomePage>
+    with AfterLayoutMixin<MyHomePage> {
 
 
-
-    @override
+      
+  @override
   void afterFirstLayout(BuildContext context) async {
     print("### AFTERFIRSTLAYOUT  _MyHomePageState ");
     //await setPhoneDatabaseVersion("3");  pour les tests
-    await Dao.setCarte(carte: widget._carte, xlsPath: "assets/for_alex/database_run.xlsx");
+    Carte carte = await Dao.getCarteFromXlsPath(
+        xlsPath: "assets/for_alex/database_run.xlsx");
+    widget._carte.copy(carte);
     widget._carteVue = CarteVue(cartePres: widget._cartePres);
     print(widget._carteVue.getPathImageFirst());
     setState(() {});
@@ -84,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> with AfterLayoutMixin<MyHomePag
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       widget._counter++;
-       print(widget._carteVue.getPathImageFirst());
+      print(widget._carteVue.getPathImageFirst());
       //print(_carteVue.);
     });
   }
@@ -123,7 +128,6 @@ class _MyHomePageState extends State<MyHomePage> with AfterLayoutMixin<MyHomePag
               const Text(
                 'You have pushed the button this many times:',
               ),
-              
               Container(
                 color: Colors.green[300],
                 width: 100,

@@ -6,9 +6,11 @@ class Carte {
   List<List<ElementTerrain>> _matriceElementTerrain = List.generate(
       taille, (i) => List.generate(taille, (j) => ElementTerrain.vide()));
 
-  Carte();
+  Carte.vide();
 
-  void setMatrice({required List<List<ElementTerrain>> matriceElementTerrain}) {
+  Carte({required List<List<ElementTerrain>> matriceElementTerrain}) : _matriceElementTerrain = matriceElementTerrain;
+    
+  void copyMatrice({required List<List<ElementTerrain>> matriceElementTerrain}) {
     for (int y = 0; y < taille; y++) {
       for (int x = 0; x < taille; x++) {
         _matriceElementTerrain[y][x].copy(matriceElementTerrain[y][x]);
@@ -16,10 +18,18 @@ class Carte {
     }
   }
 
+  void copy(Carte carte){
+    copyMatrice(matriceElementTerrain: carte._matriceElementTerrain);
+  }
+
+
+
   ElementTerrain getElementTerrainFromCoord({required int y, required int x}) {
     return _matriceElementTerrain[y][x];
   }
 
   @override
   String toString() => 'Carte(_matriceElementTerrain: $_matriceElementTerrain)';
+
+  
 }

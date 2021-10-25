@@ -1,16 +1,20 @@
-# first_flutter_app
+# Comment configurer
 
-A new Flutter project.
+## Dans /assets/for_alex/database_run.xlsx:
 
-## Getting Started
+1) Remplir la feuille "carte" avec les nom des element_terrains
+2) Remplir la feuille "element_terrain" comme dans l'exemple
 
-This project is a starting point for a Flutter application.
+# Remarque:
 
-A few resources to get you started if this is your first Flutter project:
+Pour modifier la taille de la carte, modfier la variable "taille"
+dans lib/modele/carte.dart  (ouvrir ce fichier avec le bloc note).
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+exemple:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+"static const taille = 15;"
+
+devient:
+
+"static const taille = 12;"
+

@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> with AfterLayoutMixin<MyHomePag
   void afterFirstLayout(BuildContext context) async {
     print("### AFTERFIRSTLAYOUT  _MyHomePageState ");
     //await setPhoneDatabaseVersion("3");  pour les tests
-    await Dao.setCarte(carte: widget._carte, xlsPath: "assets/for_alex/database_test.xlsx");
+    await Dao.setCarte(carte: widget._carte, xlsPath: "assets/for_alex/database_run.xlsx");
     widget._carteVue = CarteVue(cartePres: widget._cartePres);
     print(widget._carteVue.getPathImageFirst());
     setState(() {});

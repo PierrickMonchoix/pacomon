@@ -1,7 +1,7 @@
 import 'package:first_flutter_app/modele/element_terrain.dart';
 
 class Carte {
-  static const taille = 3;
+  static const taille = 15;
 
   List<List<ElementTerrain>> _matriceElementTerrain = List.generate(
       taille, (i) => List.generate(taille, (j) => ElementTerrain.vide()));

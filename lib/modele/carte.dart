@@ -14,7 +14,6 @@ class Carte {
         _matriceElementTerrain[y][x].copy(matriceElementTerrain[y][x]);
       }
     }
-
   }
 
   ElementTerrain getElementTerrainFromCoord({required int y, required int x}) {

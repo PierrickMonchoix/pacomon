@@ -39,9 +39,11 @@ class XlsReader {
 
     List<ElementTerrainXls> listElement = [];
 
-    int maxElement = excel[CarteXlsSheet.nomSheet]!.row(0).toList().length;
+    int maxElement = excel[ListElementTerrainXlsSheet.nomSheet]!.row(0).toList().length;
 
-    for (var iElem = 1; iElem <= maxElement; iElem++) { //premier element: titre et exemple
+    print("max elem : $maxElement");
+
+    for (var iElem = 1; iElem < maxElement; iElem++) { //premier element: titre et exemple
         String elementNom = excel[ListElementTerrainXlsSheet.nomSheet]!.row(ListElementTerrainXlsSheet.getSheetColonne(Caracteristique.idElement)).toList()[iElem].value.toString();
         String elementCheminImage = excel[ListElementTerrainXlsSheet.nomSheet]!.row(ListElementTerrainXlsSheet.getSheetColonne(Caracteristique.cheminImage)).toList()[iElem].value.toString();
         String elementTraversable = excel[ListElementTerrainXlsSheet.nomSheet]!.row(ListElementTerrainXlsSheet.getSheetColonne(Caracteristique.traversable)).toList()[iElem].value.toString();

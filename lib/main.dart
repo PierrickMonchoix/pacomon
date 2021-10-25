@@ -1,5 +1,6 @@
 import 'package:first_flutter_app/dao/dao.dart';
 import 'package:first_flutter_app/modele/carte.dart';
+import 'package:first_flutter_app/modele/modele.dart';
 import 'package:first_flutter_app/presentation/carte_pres.dart';
 import 'package:flutter/material.dart';
 import 'vue/carte_vue.dart';
@@ -72,10 +73,10 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   void afterFirstLayout(BuildContext context) async {
     print("### AFTERFIRSTLAYOUT  _MyHomePageState ");
+    await Modele.initialize();
     
-    Carte carte = await Dao.getCarteFromXlsPath(
-        xlsPath: "assets/for_alex/database_run.xlsx");
-    widget._carte.copy(carte);
+
+    widget._carte.copy(Modele.carte);
     widget._carteVue = CarteVue(cartePres: widget._cartePres);
     print(widget._carteVue.getPathImageFirst());
     setState(() {});

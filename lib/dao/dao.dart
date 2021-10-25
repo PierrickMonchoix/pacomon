@@ -6,10 +6,10 @@ import 'package:first_flutter_app/dao/xls_reader.dart';
 import 'package:first_flutter_app/modele/carte.dart';
 import 'package:first_flutter_app/modele/element_terrain.dart';
 
-class Dao {
+class Dao { //"assets/for_tests/database_test.xlsx"
 
-  static Future<ElementTerrainXls> getElementTerrainXlsFromElementTerrainIdXls({required IdElementTerrainXls idElementTerrainXls}) async {
-    ListElementTerrainXlsSheet listElementXls = await XlsReader.getListElementTerrainXls(xlsPath: "assets/for_tests/database_test.xlsx");
+  static Future<ElementTerrainXls> getElementTerrainXlsFromElementTerrainIdXls({required IdElementTerrainXls idElementTerrainXls ,  required String xlsPath}) async {
+    ListElementTerrainXlsSheet listElementXls = await XlsReader.getListElementTerrainXls(xlsPath: xlsPath);
     return listElementXls.list.firstWhere((element) => element.id == idElementTerrainXls.id);
   }
 
@@ -18,21 +18,21 @@ class Dao {
     elementTerrain.setAll(nom: elementTerrainXls.id, traversable: elementTerrainXls.traversable == "OUI" ? true : false, pathImage: elementTerrainXls.pathImage);
   }
 
- static Future<Carte> getCarte() async {
 
-    CarteXlsSheet carteXls = await XlsReader.getCarteXls(xlsPath: "assets/for_tests/database_test.xlsx");
+    //PUBLIC :
+
+ static Future<void> setCarte({ required Carte carte ,  required String xlsPath}) async {
+
+    CarteXlsSheet carteXls = await XlsReader.getCarteXls(xlsPath: xlsPath);
     List<List<ElementTerrain>> matriceElementTerrain = List.generate(Carte.taille, (i) => List.generate(Carte.taille, (j) => ElementTerrain.vide()));
     
     for (int i = 0; i < Carte.taille; i++) {
       for (int j = 0; j < Carte.taille; j++){
-        setElementTerrainFromElementTerrainXls(elementTerrain: matriceElementTerrain[i][j] , elementTerrainXls: await getElementTerrainXlsFromElementTerrainIdXls(idElementTerrainXls: carteXls.matrice[i][j]));
+        setElementTerrainFromElementTerrainXls(elementTerrain: matriceElementTerrain[i][j] , elementTerrainXls: await getElementTerrainXlsFromElementTerrainIdXls(idElementTerrainXls: carteXls.matrice[i][j] , xlsPath: xlsPath));
       }
     }
 
-    Carte carte = Carte(matriceElementTerrain: matriceElementTerrain);
-
-    return carte;
-
+    carte.setMatrice(matriceElementTerrain: matriceElementTerrain);
 
   }  
 

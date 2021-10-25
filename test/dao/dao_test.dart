@@ -23,7 +23,7 @@ void main() {
      IdElementTerrainXls idElementTerrainXls = IdElementTerrainXls(id: "HERBE");
      ElementTerrainXls elementTerrainXlsFromId =
         await Dao.getElementTerrainXlsFromElementTerrainIdXls(
-            idElementTerrainXls: idElementTerrainXls);  
+            idElementTerrainXls: idElementTerrainXls ,xlsPath: "assets/for_tests/database_test.xlsx");  
 
      ElementTerrainXls elementTerrainXlsMatcher = ElementTerrainXls(id: "HERBE" , traversable: "OUI" , pathImage: "path_herbe");
     expect(elementTerrainXlsFromId,elementTerrainXlsMatcher);
@@ -31,7 +31,8 @@ void main() {
 
 
   testWidgets('getCarte', (tester) async {
-    Carte carte = await Dao.getCarte();
+    Carte carte = Carte();
+    await Dao.setCarte(carte : carte , xlsPath: "assets/for_tests/database_test.xlsx");
     ElementTerrain herbe = ElementTerrain(nom: "HERBE" , pathImage: "path_herbe" , traversable: true);
     ElementTerrain sol = ElementTerrain(nom: "SOL" , pathImage: "path_sol" , traversable: true);
     ElementTerrain rocher = ElementTerrain(nom: "ROCHER" , pathImage: "path_rocher" , traversable: false);

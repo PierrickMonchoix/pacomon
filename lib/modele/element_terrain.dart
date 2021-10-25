@@ -1,12 +1,12 @@
 class ElementTerrain {
   // > FOR VIEW
 
-  String? _pathImage;
+  String _pathImage = "assets/for_run/image_not_set.png";
 
   // < FOR VIEW
 
-  String? _nom;
-  bool? _traversable;
+  String _nom = "NOT_SET";
+  bool _traversable = false;
 
   ElementTerrain.vide();
 
@@ -27,14 +27,14 @@ class ElementTerrain {
     _pathImage = pathImage;
   }
 
-  bool? get traversable => _traversable;
-  set traversable(bool? value) => _traversable = value;
+  bool get traversable => _traversable;
+  set traversable(bool value) => _traversable = value;
 
-  String? get pathImage => _pathImage;
-  set pathImage(String? value) => _pathImage = value;
+  String get pathImage => _pathImage;
+  set pathImage(String value) => _pathImage = value;
 
-  String? get nom => _nom;
-  set nom(String? value) => _nom = value;
+  String get nom => _nom;
+  set nom(String value) => _nom = value;
 
   @override
   bool operator ==(Object other) {
@@ -52,4 +52,12 @@ class ElementTerrain {
 
   @override
   String toString() => 'ElementTerrain(_pathImage: $_pathImage, _nom: $_nom, _traversable: $_traversable)';
+
+  void copy(ElementTerrain base){
+    _pathImage = base.pathImage;
+    _nom = base.nom;
+    _traversable = base.traversable;
+  }
+
+
 }

@@ -61,6 +61,8 @@ flutter:
   assets:
     - assets/
     - assets/for_tests/
+    - assets/for_alex/
+    - assets/for_run/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   void afterFirstLayout(BuildContext context) async {
     print("### AFTERFIRSTLAYOUT  _MyHomePageState ");
-    //await setPhoneDatabaseVersion("3");  pour les tests
+    
     Carte carte = await Dao.getCarteFromXlsPath(
         xlsPath: "assets/for_alex/database_run.xlsx");
     widget._carte.copy(carte);

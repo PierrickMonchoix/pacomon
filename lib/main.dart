@@ -76,7 +76,9 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   void afterFirstLayout(BuildContext context) async {
     print("### AFTERFIRSTLAYOUT  _MyHomePageState ");
-    await GlobalManager.initialize();
+    await GlobalManager.initialize(  context : context);
+    print("largeur ecran : " + GlobalManager.widthScreen.toString());
+
     
 
     widget._carte.copy(ModeleManager.carte);

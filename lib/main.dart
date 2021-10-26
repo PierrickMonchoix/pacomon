@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage>
 
     widget._carte.copy(ModeleManager.carte);
     widget._carteVue = CarteVue(cartePres: widget._cartePres);
-    print(widget._carteVue.getPathImageFirst());
+    //print(widget._carteVue.getPathImageFirst());
     setState(() {});
   }
 
@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage>
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       widget._counter++;
-      print(widget._carteVue.getPathImageFirst());
+      //print(widget._carteVue.getPathImageFirst());
       //print(_carteVue.);
     });
   } 

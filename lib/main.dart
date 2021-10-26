@@ -1,7 +1,10 @@
 import 'package:first_flutter_app/dao/dao.dart';
+import 'package:first_flutter_app/global_manager.dart';
 import 'package:first_flutter_app/modele/carte.dart';
-import 'package:first_flutter_app/modele/modele.dart';
+import 'package:first_flutter_app/modele/modele_manager.dart';
 import 'package:first_flutter_app/presentation/carte_pres.dart';
+import 'package:first_flutter_app/presentation/presentation_manager.dart';
+import 'package:first_flutter_app/vue/vue_manager.dart';
 import 'package:flutter/material.dart';
 import 'vue/carte_vue.dart';
 import 'package:after_layout/after_layout.dart';
@@ -73,10 +76,10 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   void afterFirstLayout(BuildContext context) async {
     print("### AFTERFIRSTLAYOUT  _MyHomePageState ");
-    await Modele.initialize();
+    await GlobalManager.initialize();
     
 
-    widget._carte.copy(Modele.carte);
+    widget._carte.copy(ModeleManager.carte);
     widget._carteVue = CarteVue(cartePres: widget._cartePres);
     print(widget._carteVue.getPathImageFirst());
     setState(() {});
@@ -93,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage>
       print(widget._carteVue.getPathImageFirst());
       //print(_carteVue.);
     });
-  }
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -125,8 +128,8 @@ class _MyHomePageState extends State<MyHomePage>
             // horizontal).
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              widget._carteVue,
-              const Text(
+              VueManager.allVue,
+              /* const Text(
                 'You have pushed the button this many times:',
               ),
               Container(
@@ -137,16 +140,16 @@ class _MyHomePageState extends State<MyHomePage>
               Text(
                 widget._counter.toString(),
                 style: Theme.of(context).textTheme.headline4,
-              ),
+              ), */
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+     /*  floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ), */ // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

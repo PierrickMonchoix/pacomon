@@ -1,7 +1,7 @@
 import 'package:first_flutter_app/modele/element_terrain.dart';
 
 class Carte {
-  static const taille = 15;
+  static const int taille = 15;
 
   List<List<ElementTerrain>> _matriceElementTerrain = List.generate(
       taille, (i) => List.generate(taille, (j) => ElementTerrain.vide()));
@@ -25,6 +25,9 @@ class Carte {
 
 
   ElementTerrain getElementTerrainFromCoord({required int y, required int x}) {
+    if(x > Carte.taille || x < 0 || y > Carte.taille || y < 0){
+      return ElementTerrain(nom: "vide" , traversable: false , pathImage: "assets/for_alex/noir.png");
+    }
     return _matriceElementTerrain[y][x];
   }
 

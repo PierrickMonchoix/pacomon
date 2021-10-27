@@ -1,5 +1,6 @@
 import 'package:first_flutter_app/dao/dao.dart';
 import 'package:first_flutter_app/global_manager.dart';
+import 'package:first_flutter_app/io/i_o_listener.dart';
 import 'package:first_flutter_app/modele/carte.dart';
 import 'package:first_flutter_app/modele/modele_manager.dart';
 import 'package:first_flutter_app/presentation/carte_pres.dart';
@@ -41,15 +42,13 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   int _counter = 0;
-  Carte _carte;
   late CartePres _cartePres;
   late CarteVue _carteVue;
 
   MyHomePage({Key? key, required this.title})
-      : _carte = Carte.vide(),
+      :
         super(key: key) {
-    _cartePres = CartePres(carteModele: _carte);
-    _carteVue = CarteVue(cartePres: _cartePres);
+    
     
   }
 
@@ -81,8 +80,7 @@ class _MyHomePageState extends State<MyHomePage>
 
     
 
-    widget._carte.copy(ModeleManager.carte);
-    widget._carteVue = CarteVue(cartePres: widget._cartePres);
+
     //print(widget._carteVue.getPathImageFirst());
     setState(() {});
   }

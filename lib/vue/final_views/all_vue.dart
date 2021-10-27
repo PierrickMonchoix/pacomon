@@ -1,5 +1,6 @@
 import 'package:first_flutter_app/dao/dao.dart';
 import 'package:first_flutter_app/global_manager.dart';
+import 'package:first_flutter_app/io/i_o_listener.dart';
 import 'package:first_flutter_app/modele/carte.dart';
 import 'package:first_flutter_app/modele/modele_manager.dart';
 import 'package:first_flutter_app/presentation/carte_pres.dart';
@@ -9,22 +10,34 @@ import 'package:first_flutter_app/vue/vue_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:after_layout/after_layout.dart';
 
-abstract class Refreshable {
-  void refresh();
-}
+
 
 class AllVue extends StatefulWidget {
-  AllVue({Key? key}) : super(key: key);
 
-  Widget _vueScreen = AspectRatio(
-    aspectRatio: 1,
-    child: Container(
+  late Widget _vueScreen;
+
+  late Widget _widgetCarreEcran;
+
+  AllVue({Key? key}) : super(key: key){
+    _vueScreen = Container(
       color: Colors.blueAccent,
-    ),
+    );
+    _widgetCarreEcran = AspectRatio(
+    aspectRatio: 1,
+    child: _vueScreen,
   );
+  }
+
+  void refresh() {
+    _state!.setState(() {});
+  }
 
   void setVueScreenAndRefresh(Widget vue) {
     _vueScreen = vue;
+    _widgetCarreEcran = AspectRatio(
+    aspectRatio: 1,
+    child: _vueScreen,
+  );
     _state!.setState(() {});
   }
 
@@ -42,7 +55,7 @@ class _AllVueState extends State<AllVue> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          widget._vueScreen,
+          widget._widgetCarreEcran,
           Expanded(
             // pesner a utiliser les Flexible
             child: Container(
@@ -76,7 +89,7 @@ class _AllVueState extends State<AllVue> {
                                           aspectRatio: 1,
                                           child: BoutonLettre(
                                             text: '↑',
-                                            function: {print("btn a")},
+                                            typeBouton: BoutonsEnum.HAUT,
                                           ),
                                         ),
                                       ),
@@ -88,7 +101,7 @@ class _AllVueState extends State<AllVue> {
                                               aspectRatio: 1,
                                               child: BoutonLettre(
                                                 text: 'x',
-                                                function: {print("btn a")},
+                                                typeBouton: BoutonsEnum.X,
                                               ))),
                                       Expanded(child: Container())
                                     ],
@@ -100,7 +113,7 @@ class _AllVueState extends State<AllVue> {
                                         aspectRatio: 1,
                                         child: BoutonLettre(
                                           text: '←',
-                                          function: {print("btn a")},
+                                          typeBouton: BoutonsEnum.GAUCHE,
                                         ),
                                       )),
                                       Expanded(child: Container()),
@@ -109,7 +122,7 @@ class _AllVueState extends State<AllVue> {
                                               aspectRatio: 1,
                                               child: BoutonLettre(
                                                 text: '→',
-                                                function: {print("btn a")},
+                                                typeBouton: BoutonsEnum.DROITE,
                                               ))),
                                       Expanded(child: Container()),
                                       Expanded(
@@ -117,15 +130,15 @@ class _AllVueState extends State<AllVue> {
                                               aspectRatio: 1,
                                               child: BoutonLettre(
                                                 text: 'y',
-                                                function: {print("btn a")},
+                                                typeBouton: BoutonsEnum.Y,
                                               ))),
                                       Expanded(child: Container()),
                                       Expanded(
                                           child: AspectRatio(
                                               aspectRatio: 1,
                                               child: BoutonLettre(
-                                                text: 'b',
-                                                function: {print("btn a")},
+                                                text: 'a',
+                                                typeBouton: BoutonsEnum.A,
                                               ))),
                                     ],
                                   ),
@@ -136,8 +149,8 @@ class _AllVueState extends State<AllVue> {
                                         child: AspectRatio(
                                           aspectRatio: 1,
                                           child: BoutonLettre(
-                                            text: '↑',
-                                            function: {print("btn a")},
+                                            text: '↓',
+                                            typeBouton: BoutonsEnum.BAS,
                                           ),
                                         ),
                                       ),
@@ -148,8 +161,8 @@ class _AllVueState extends State<AllVue> {
                                           child: AspectRatio(
                                               aspectRatio: 1,
                                               child: BoutonLettre(
-                                                text: 'x',
-                                                function: {print("btn a")},
+                                                text: 'b',
+                                                typeBouton: BoutonsEnum.B,
                                               ))),
                                       Expanded(child: Container())
                                     ],

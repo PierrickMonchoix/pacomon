@@ -10,6 +10,8 @@ class ElementTerrain {
 
   ElementTerrain.vide();
 
+  ElementTerrain.noir() : _pathImage = "assets/for_alex/noir.png";
+
   ElementTerrain(
       {required String nom,
       required bool traversable,

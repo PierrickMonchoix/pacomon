@@ -18,7 +18,7 @@ class CarteVue extends StatefulWidget {
                 Carte.taille,
                 (x) => AspectRatio(
                     aspectRatio: 1,
-                    child: Container(constraints: BoxConstraints.expand(),  child: Image.asset(ModeleManager.carte.getElementTerrainFromCoord(y: y - (Carte.taille ~/ 2), x: x - (Carte.taille ~/ 2)).pathImage , fit: BoxFit.fill,) )))));
+                    child: Container(constraints: BoxConstraints.expand(),  child: Image.asset(ModeleManager.carte.getElementTerrainFromCoord(y: y - (Carte.taille ~/ 2) + ModeleManager.perso.y, x: x - (Carte.taille ~/ 2) + ModeleManager.perso.x).pathImage , fit: BoxFit.fill,) )))));
   }
 
   //ModeleManager.carte.getElementTerrainFromCoord(y: y, x: x).pathImage

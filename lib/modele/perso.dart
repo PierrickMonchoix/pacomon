@@ -1,5 +1,6 @@
 import 'package:first_flutter_app/modele/carte.dart';
 import 'package:first_flutter_app/modele/element_terrain.dart';
+import 'package:first_flutter_app/modele/liste_pokemon.dart';
 import 'package:first_flutter_app/modele/modele_manager.dart';
 import 'dart:math';
 
@@ -17,6 +18,8 @@ class Perso {
       Random random = Random();
       double randomDouble = random.nextDouble();
       if (randomDouble < nextBloc.probaPokemon) {
+        ModeleManager.inCombat = true;
+        ModeleManager.pokemonCombat = ModeleManager.listePokemon.getRandomPokemon()!;
         print("### UN POKEMON APPARAIT");
       }
     }

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class EcranVue extends StatefulWidget {
 
-  List<Widget> _listWidget = [];
+  List<Widget> listWidget = [];
 
 
-  EcranVue({ Key? key , required List<Widget> listWidget }) : _listWidget = listWidget , super(key: key);
+  EcranVue({ Key? key , required List<Widget> listWidget }) : listWidget = listWidget , super(key: key);
 
   
 
@@ -19,7 +19,7 @@ class _EcranVueState extends State<EcranVue> {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints.expand(),
-      child : Stack(children: widget._listWidget)
+      child : Stack(children: widget.listWidget)
       
     );
   }

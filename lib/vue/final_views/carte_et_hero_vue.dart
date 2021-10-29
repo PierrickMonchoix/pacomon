@@ -4,8 +4,6 @@ import 'package:first_flutter_app/dao/dao.dart';
 import 'package:first_flutter_app/global_manager.dart';
 import 'package:first_flutter_app/modele/carte.dart';
 import 'package:first_flutter_app/modele/modele_manager.dart';
-import 'package:first_flutter_app/presentation/carte_pres.dart';
-import 'package:first_flutter_app/presentation/presentation_manager.dart';
 import 'package:first_flutter_app/vue/bouton_lettre.dart';
 import 'package:first_flutter_app/vue/carte_vue.dart';
 import 'package:first_flutter_app/vue/hero_vue.dart';

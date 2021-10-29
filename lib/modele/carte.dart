@@ -26,7 +26,7 @@ class Carte {
 
   ElementTerrain getElementTerrainFromCoord({required int y, required int x}) {
     if(x >= Carte.taille || x < 0 || y >= Carte.taille || y < 0){
-      return ElementTerrain(nom: "vide" , traversable: false , pathImage: "assets/for_alex/noir.png");
+      return ElementTerrain(nom: "vide" , traversable: false , pathImage: "assets/for_alex/noir.png" , probaPokemon: 0.0);
     }
     return _matriceElementTerrain[y][x];
   }

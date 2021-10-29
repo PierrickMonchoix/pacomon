@@ -1,19 +1,20 @@
 import 'package:first_flutter_app/dao/xls_elements/liste_element_terrain_sheet/elements_primaires/elements_terrain_xls.dart';
 
-enum Caracteristique { idElement, cheminImage, traversable }
+enum CaracteristiqueElementTerrainXls { idElement, cheminImage, traversable, probaPokemon }
 
 class ListElementTerrainXlsSheet {
   static const String nomSheet = "element_terrain";
 
-  static const Map<Caracteristique, int> caracteristiquesMap = {
-    Caracteristique.idElement : 0,
-    Caracteristique.cheminImage : 1,
-    Caracteristique.traversable : 2
+  static const Map<CaracteristiqueElementTerrainXls, int> caracteristiquesMap = {
+    CaracteristiqueElementTerrainXls.idElement : 0,
+    CaracteristiqueElementTerrainXls.cheminImage : 1,
+    CaracteristiqueElementTerrainXls.traversable : 2,
+    CaracteristiqueElementTerrainXls.probaPokemon : 3,
   };
 
-  static int getNombreCaracteristiques() => Caracteristique.values.length;
+  static int getNombreCaracteristiques() => CaracteristiqueElementTerrainXls.values.length;
 
-  static int getSheetColonne(Caracteristique caracteristique){
+  static int getSheetColonne(CaracteristiqueElementTerrainXls caracteristique){
     return caracteristiquesMap[caracteristique]!;
   }
 

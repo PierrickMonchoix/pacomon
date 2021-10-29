@@ -1,5 +1,4 @@
 import 'package:first_flutter_app/io/i_o_listener.dart';
-import 'package:first_flutter_app/presentation/presentation_manager.dart';
 import 'package:first_flutter_app/vue/final_views/all_vue.dart';
 import 'package:first_flutter_app/vue/carte_vue.dart';
 import 'package:first_flutter_app/vue/final_views/carte_et_hero_vue.dart';

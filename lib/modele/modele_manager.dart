@@ -6,6 +6,10 @@ import 'package:flutter/cupertino.dart';
 
 class ModeleManager implements IOListener{
 
+  bool inCombat = false; //TODO: faire un pattern etat
+
+  static const double epsilonProbas = 0.000001;
+
 
   static Future<void> initialize() async {
     
@@ -23,17 +27,30 @@ class ModeleManager implements IOListener{
   @override
   void whenNotify(BoutonsEnum boutonsEnum) {
     switch (boutonsEnum) {
-      case BoutonsEnum.HAUT : _perso.marcheHaut();
-      print("_perso.marcheHaut()");
+      case BoutonsEnum.HAUT : 
+      if(!inCombat){
+        _perso.marcheHaut();
+      }
         break;
-        case BoutonsEnum.BAS : _perso.marcheBas();
-        print("_perso.marcheBas()");
+        case BoutonsEnum.BAS : 
+        if(!inCombat){
+        _perso.marcheBas();
+        }
         break;
-        case BoutonsEnum.GAUCHE : _perso.marcheGauche();
-        print("_perso.marcheGauche()");
+        case BoutonsEnum.GAUCHE : 
+        if(!inCombat){
+        _perso.marcheGauche();
+        }
         break;
-        case BoutonsEnum.DROITE : _perso.marcheDroite();
-        print("_perso.marcheDroite()");
+        case BoutonsEnum.DROITE : 
+        if(!inCombat){
+        _perso.marcheDroite();
+        }
+        break;
+        case BoutonsEnum.B : 
+        if(inCombat){
+          inCombat = false;
+        }
         break;
       default:
     }

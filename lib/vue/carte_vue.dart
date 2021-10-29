@@ -1,6 +1,5 @@
 import 'package:first_flutter_app/modele/carte.dart';
 import 'package:first_flutter_app/modele/modele_manager.dart';
-import 'package:first_flutter_app/presentation/carte_pres.dart';
 import 'package:flutter/material.dart';
 
 class CarteVue extends StatefulWidget {

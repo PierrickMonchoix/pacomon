@@ -1,4 +1,4 @@
-package com.example.first_flutter_app;
+package com.example.pacomon;
 
 import io.flutter.embedding.android.FlutterActivity;
 

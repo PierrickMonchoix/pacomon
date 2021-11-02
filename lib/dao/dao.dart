@@ -13,11 +13,21 @@ import 'package:first_flutter_app/modele/pokemon.dart';
 class Dao {
   //"assets/for_tests/database_test.xlsx"
 
+  static Map<String, ListElementTerrainXlsSheet> _listElementTerrainXlsSheetMap = {};
+
+  static Future<ListElementTerrainXlsSheet> _getListElementTerrainXlsSheetInstance({required String xlsPath}) async {
+    if(_listElementTerrainXlsSheetMap.containsKey(xlsPath)){
+      return _listElementTerrainXlsSheetMap[xlsPath]!;
+    }
+    _listElementTerrainXlsSheetMap[xlsPath] = await XlsReader.getListElementTerrainXlsSheet(xlsPath: xlsPath);
+    return _listElementTerrainXlsSheetMap[xlsPath]!;
+  }
+
   static Future<ElementTerrainXls> _getElementTerrainXlsFromElementTerrainIdXls(
       {required IdElementTerrainXls idElementTerrainXls,
       required String xlsPath}) async {
     ListElementTerrainXlsSheet listElementXls =
-        await XlsReader.getListElementTerrainXlsSheet(xlsPath: xlsPath);
+        await _getListElementTerrainXlsSheetInstance(xlsPath: xlsPath);
     return listElementXls.list
         .firstWhere((element) => element.id == idElementTerrainXls.id);
   }

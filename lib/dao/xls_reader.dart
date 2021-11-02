@@ -11,12 +11,20 @@ import 'package:first_flutter_app/modele/carte.dart';
 import 'package:flutter/services.dart' show ByteData, rootBundle;
 
 class XlsReader {
-  static Future<String> getTailleCarteModeleXls(
+  static Future<String> getTailleXCarteModeleXls(
       {required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
     return excel["carte"].maxCols.toString();
+  }
+
+    static Future<String> getTailleYCarteModeleXls(
+      {required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["carte"].maxRows.toString();
   }
 
   static Future<String> getTailleCarteVueXls(
@@ -57,13 +65,15 @@ class XlsReader {
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
 
-    int tailleCarte = int.parse( await getTailleCarteModeleXls(xlsPath: xlsPath) );
+    int tailleXCarte = int.parse( await getTailleXCarteModeleXls(xlsPath: xlsPath) );
+    int tailleYCarte = int.parse( await getTailleYCarteModeleXls(xlsPath: xlsPath) );
+
 
     List<List<IdElementTerrainXls>> matrice =
-        List.generate(tailleCarte, (i) => List.empty(growable: true));
+        List.generate(tailleYCarte, (i) => List.empty(growable: true));
 
-    for (var i = 0; i < tailleCarte; i++) {
-      for (var j = 0; j < tailleCarte; j++) {
+    for (var i = 0; i < tailleYCarte; i++) {
+      for (var j = 0; j < tailleXCarte; j++) {
         String id =
             excel[CarteXlsSheet.nomSheet]!.row(i).toList()[j].value.toString();
         matrice[i].add(IdElementTerrainXls(id: id));

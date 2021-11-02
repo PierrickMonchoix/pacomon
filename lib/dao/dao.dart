@@ -13,13 +13,16 @@ import 'package:first_flutter_app/modele/pokemon.dart';
 class Dao {
   //"assets/for_tests/database_test.xlsx"
 
-  static Map<String, ListElementTerrainXlsSheet> _listElementTerrainXlsSheetMap = {};
+  static Map<String, ListElementTerrainXlsSheet>
+      _listElementTerrainXlsSheetMap = {};
 
-  static Future<ListElementTerrainXlsSheet> _getListElementTerrainXlsSheetInstance({required String xlsPath}) async {
-    if(_listElementTerrainXlsSheetMap.containsKey(xlsPath)){
+  static Future<ListElementTerrainXlsSheet>
+      _getListElementTerrainXlsSheetInstance({required String xlsPath}) async {
+    if (_listElementTerrainXlsSheetMap.containsKey(xlsPath)) {
       return _listElementTerrainXlsSheetMap[xlsPath]!;
     }
-    _listElementTerrainXlsSheetMap[xlsPath] = await XlsReader.getListElementTerrainXlsSheet(xlsPath: xlsPath);
+    _listElementTerrainXlsSheetMap[xlsPath] =
+        await XlsReader.getListElementTerrainXlsSheet(xlsPath: xlsPath);
     return _listElementTerrainXlsSheetMap[xlsPath]!;
   }
 
@@ -38,8 +41,7 @@ class Dao {
         nom: elementTerrainXls.id,
         traversable: elementTerrainXls.traversable == "OUI" ? true : false,
         pathImage: elementTerrainXls.pathImage,
-        probaPokemon: double.parse(elementTerrainXls.probaPokemon)/100
-        );
+        probaPokemon: double.parse(elementTerrainXls.probaPokemon) / 100);
     return elementTerrain;
   }
 
@@ -47,8 +49,7 @@ class Dao {
     Pokemon pokemon = Pokemon(
         nom: pokemonXls.nom,
         pathImage: pokemonXls.pathImage,
-        rarete: double.parse(pokemonXls.rarete)/100
-        );
+        rarete: double.parse(pokemonXls.rarete) / 100);
     return pokemon;
   }
 
@@ -56,35 +57,39 @@ class Dao {
 
   //PUBLIC :
 
-  static Future<int> getTailleCarteModele({required String xlsPath}) async {
-    return int.parse(await XlsReader.getTailleCarteModeleXls(xlsPath: xlsPath));
+  static Future<int> getTailleXCarteModele({required String xlsPath}) async {
+    return int.parse(
+        await XlsReader.getTailleXCarteModeleXls(xlsPath: xlsPath));
   }
 
-    static Future<int> getTailleCarteVue({required String xlsPath}) async {
+  static Future<int> getTailleYCarteModele({required String xlsPath}) async {
+    return int.parse(
+        await XlsReader.getTailleYCarteModeleXls(xlsPath: xlsPath));
+  }
+
+  static Future<int> getTailleCarteVue({required String xlsPath}) async {
     return int.parse(await XlsReader.getTailleCarteVueXls(xlsPath: xlsPath));
   }
 
-    static Future<int> getXSpawnHero({required String xlsPath}) async {
+  static Future<int> getXSpawnHero({required String xlsPath}) async {
     return int.parse(await XlsReader.getXSpawnHeroXls(xlsPath: xlsPath));
   }
 
-    static Future<int> getYSpawnHero({required String xlsPath}) async {
+  static Future<int> getYSpawnHero({required String xlsPath}) async {
     return int.parse(await XlsReader.getYSpawnHeroXls(xlsPath: xlsPath));
   }
 
-
   static Future<Carte> getCarteFromXlsPath({required String xlsPath}) async {
     CarteXlsSheet carteXls = await XlsReader.getCarteXls(xlsPath: xlsPath);
-    Carte.taille = await getTailleCarteModele(xlsPath: xlsPath);
-
-    print("taille carte data model: " + await getTailleCarteModele(xlsPath: xlsPath) .toString());
+    Carte.tailleX = await getTailleXCarteModele(xlsPath: xlsPath);
+    Carte.tailleY = await getTailleYCarteModele(xlsPath: xlsPath);
 
     List<List<ElementTerrain>> matriceElementTerrain = List.generate(
-        Carte.taille,
-        (i) => List.generate(Carte.taille, (j) => ElementTerrain.vide()));
+        Carte.tailleY,
+        (i) => List.generate(Carte.tailleX, (j) => ElementTerrain.vide()));
 
-    for (int i = 0; i < Carte.taille; i++) {
-      for (int j = 0; j < Carte.taille; j++) {
+    for (int i = 0; i < Carte.tailleY; i++) {
+      for (int j = 0; j < Carte.tailleX; j++) {
         ElementTerrain elementTerrain = _getElementTerrainFromElementTerrainXls(
             elementTerrainXls:
                 await _getElementTerrainXlsFromElementTerrainIdXls(
@@ -97,10 +102,11 @@ class Dao {
     return carte;
   }
 
-  static Future<ListePokemon> getListePokemonFromXlsPath({required String xlsPath}) async {
+  static Future<ListePokemon> getListePokemonFromXlsPath(
+      {required String xlsPath}) async {
     ListePokemonXlsSheet listePokemonXlsSheet =
         await XlsReader.getListePokemonXlsSheet(xlsPath: xlsPath);
-    List<Pokemon> listPokemon= [];
+    List<Pokemon> listPokemon = [];
 
     for (PokemonXls pokemonXls in listePokemonXlsSheet.list) {
       Pokemon newPokemon = _getPokemonFromPokemonXls(pokemonXls: pokemonXls);
@@ -108,7 +114,4 @@ class Dao {
     }
     return ListePokemon(listPokemon: listPokemon);
   }
-
-  
-  
 }

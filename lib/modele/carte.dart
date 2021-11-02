@@ -1,18 +1,19 @@
 import 'package:first_flutter_app/modele/element_terrain.dart';
 
 class Carte {
-  static late int taille;
+  static late int tailleX;
+  static late int tailleY;
 
   List<List<ElementTerrain>> _matriceElementTerrain = List.generate(
-      taille, (i) => List.generate(taille, (j) => ElementTerrain.vide()));
+      tailleY, (i) => List.generate(tailleX, (j) => ElementTerrain.vide()));
 
   Carte.vide();
 
   Carte({required List<List<ElementTerrain>> matriceElementTerrain}) : _matriceElementTerrain = matriceElementTerrain;
     
   void copyMatrice({required List<List<ElementTerrain>> matriceElementTerrain}) {
-    for (int y = 0; y < taille; y++) {
-      for (int x = 0; x < taille; x++) {
+    for (int y = 0; y < tailleY; y++) {
+      for (int x = 0; x < tailleX; x++) {
         _matriceElementTerrain[y][x].copy(matriceElementTerrain[y][x]);
       }
     }
@@ -25,7 +26,7 @@ class Carte {
 
 
   ElementTerrain getElementTerrainFromCoord({required int y, required int x}) {
-    if(x >= Carte.taille || x < 0 || y >= Carte.taille || y < 0){
+    if(x >= Carte.tailleX || x < 0 || y >= Carte.tailleY || y < 0){
       return ElementTerrain(nom: "vide" , traversable: false , pathImage: "assets/for_alex/noir.png" , probaPokemon: 0.0);
     }
     return _matriceElementTerrain[y][x];

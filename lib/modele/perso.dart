@@ -5,8 +5,8 @@ import 'package:first_flutter_app/modele/modele_manager.dart';
 import 'dart:math';
 
 class Perso {
-  int _x = Carte.taille ~/ 2;
-  int _y = Carte.taille ~/ 2;
+  int _x = Carte.tailleX ~/ 2;
+  int _y = Carte.tailleY ~/ 2;
 
   int get x => _x;
 

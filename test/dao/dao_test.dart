@@ -15,7 +15,8 @@ void main() {
     ElementTerrain sol = ElementTerrain(nom: "SOL" , pathImage: "path_sol" , traversable: true , probaPokemon: 0.0);
     ElementTerrain rocher = ElementTerrain(nom: "ROCHER" , pathImage: "path_rocher" , traversable: false , probaPokemon: 0.0);
 
-    expect(Carte.taille, 25);
+    expect(Carte.tailleX, 11);
+    expect(Carte.tailleY, 14);
 
     expect(carte.getElementTerrainFromCoord(y: 0 , x: 0) , herbe);
     expect(carte.getElementTerrainFromCoord(y: 1 , x: 0) , sol);

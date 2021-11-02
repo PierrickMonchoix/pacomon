@@ -11,16 +11,59 @@ import 'package:first_flutter_app/modele/carte.dart';
 import 'package:flutter/services.dart' show ByteData, rootBundle;
 
 class XlsReader {
+  static Future<String> getTailleCarteModeleXls(
+      {required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["carte"].maxCols.toString();
+  }
+
+  static Future<String> getTailleCarteVueXls(
+      {required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B1"))
+        .value
+        .toString();
+  }
+
+  static Future<String> getXSpawnHeroXls(
+      {required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B2"))
+        .value
+        .toString();
+  }
+
+  static Future<String> getYSpawnHeroXls(
+      {required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B3"))
+        .value
+        .toString();
+  }
+
   static Future<CarteXlsSheet> getCarteXls({required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
 
-    List<List<IdElementTerrainXls>> matrice =
-        List.generate(Carte.taille, (i) => List.empty(growable: true));
+    int tailleCarte = int.parse( await getTailleCarteModeleXls(xlsPath: xlsPath) );
 
-    for (var i = 0; i < Carte.taille; i++) {
-      for (var j = 0; j < Carte.taille; j++) {
+    List<List<IdElementTerrainXls>> matrice =
+        List.generate(tailleCarte, (i) => List.empty(growable: true));
+
+    for (var i = 0; i < tailleCarte; i++) {
+      for (var j = 0; j < tailleCarte; j++) {
         String id =
             excel[CarteXlsSheet.nomSheet]!.row(i).toList()[j].value.toString();
         matrice[i].add(IdElementTerrainXls(id: id));
@@ -72,8 +115,7 @@ class XlsReader {
           id: elementNom,
           pathImage: elementCheminImage,
           traversable: elementTraversable,
-          probaPokemon: elementProbaPokemon
-          ));
+          probaPokemon: elementProbaPokemon));
     }
     return ListElementTerrainXlsSheet(listElement);
   }
@@ -108,10 +150,8 @@ class XlsReader {
               CaracteristiquePokemonXls.rarete)]
           .value
           .toString();
-      listPokemon.add(PokemonXls(
-          nom: nom,
-          pathImage: cheminImage,
-          rarete: rarete));
+      listPokemon
+          .add(PokemonXls(nom: nom, pathImage: cheminImage, rarete: rarete));
     }
     return ListePokemonXlsSheet(listPokemon);
   }

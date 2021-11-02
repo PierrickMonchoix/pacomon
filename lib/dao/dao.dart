@@ -56,8 +56,29 @@ class Dao {
 
   //PUBLIC :
 
+  static Future<int> getTailleCarteModele({required String xlsPath}) async {
+    return int.parse(await XlsReader.getTailleCarteModeleXls(xlsPath: xlsPath));
+  }
+
+    static Future<int> getTailleCarteVue({required String xlsPath}) async {
+    return int.parse(await XlsReader.getTailleCarteVueXls(xlsPath: xlsPath));
+  }
+
+    static Future<int> getXSpawnHero({required String xlsPath}) async {
+    return int.parse(await XlsReader.getXSpawnHeroXls(xlsPath: xlsPath));
+  }
+
+    static Future<int> getYSpawnHero({required String xlsPath}) async {
+    return int.parse(await XlsReader.getYSpawnHeroXls(xlsPath: xlsPath));
+  }
+
+
   static Future<Carte> getCarteFromXlsPath({required String xlsPath}) async {
     CarteXlsSheet carteXls = await XlsReader.getCarteXls(xlsPath: xlsPath);
+    Carte.taille = await getTailleCarteModele(xlsPath: xlsPath);
+
+    print("taille carte data model: " + await getTailleCarteModele(xlsPath: xlsPath) .toString());
+
     List<List<ElementTerrain>> matriceElementTerrain = List.generate(
         Carte.taille,
         (i) => List.generate(Carte.taille, (j) => ElementTerrain.vide()));

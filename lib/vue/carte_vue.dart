@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class CarteVue extends StatefulWidget {
 
 
-  static late final int taille = 15;
+  static late int taille;
   
 
   List<TableRow> _listTableRow = [];

@@ -11,7 +11,7 @@ class GlobalManager {
   static Future<void> initialize({required BuildContext context}) async {
     _widthScreen = MediaQuery.of(context).size.width;
     await ModeleManager.initialize();
-    VueManager.initialize();
+    await VueManager.initialize();
     _widthScreen = MediaQuery.of(context).size.width;
   }
 

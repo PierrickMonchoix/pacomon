@@ -1,3 +1,4 @@
+import 'package:first_flutter_app/dao/dao.dart';
 import 'package:first_flutter_app/io/i_o_listener.dart';
 import 'package:first_flutter_app/modele/modele_manager.dart';
 import 'package:first_flutter_app/vue/final_views/all_vue.dart';
@@ -18,7 +19,8 @@ class VueManager implements IOListener {
   static AllVue _allVue = AllVue();
   //static EcranVue _ecranVue = EcranVue([];)
 
-  static void initialize() {
+  static Future<void> initialize() async{
+    CarteVue.taille = await Dao.getTailleCarteVue(xlsPath: "assets/for_alex/database_run.xlsx");
     refresh();
   }
 

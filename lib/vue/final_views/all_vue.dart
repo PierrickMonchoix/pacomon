@@ -8,22 +8,28 @@ import 'package:first_flutter_app/vue/vue_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:after_layout/after_layout.dart';
 
-
-
 class AllVue extends StatefulWidget {
-
   late Widget _vueScreen;
 
   late Widget _widgetCarreEcran;
 
-  AllVue({Key? key}) : super(key: key){
+  AllVue({Key? key}) : super(key: key) {
     _vueScreen = Container(
-      color: Colors.blueAccent,
-    );
+        color: Colors.blueAccent,
+        child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white)),
+                SizedBox(height: 10,),
+            Text("Les pacomons sont en train de se réveiller ...", style: TextStyle(color: Colors.white))
+          ],
+        )));
     _widgetCarreEcran = AspectRatio(
-    aspectRatio: 1,
-    child: _vueScreen,
-  );
+      aspectRatio: 1,
+      child: _vueScreen,
+    );
   }
 
   void refresh() {
@@ -33,9 +39,9 @@ class AllVue extends StatefulWidget {
   void setVueScreenAndRefresh(Widget vue) {
     _vueScreen = vue;
     _widgetCarreEcran = AspectRatio(
-    aspectRatio: 1,
-    child: _vueScreen,
-  );
+      aspectRatio: 1,
+      child: _vueScreen,
+    );
     _state!.setState(() {});
   }
 

@@ -1,4 +1,4 @@
-# Notes de patch 21.11.2
+# Notes de patch 21.11.2 
 
 ## Creation d'une apk
 

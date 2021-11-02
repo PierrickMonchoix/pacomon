@@ -40,33 +40,32 @@ class XlsReader {
 
     List<ElementTerrainXls> listElement = [];
 
-    int maxElement =
-        excel[ListElementTerrainXlsSheet.nomSheet]!.row(0).toList().length;
+    int maxElement = excel[ListElementTerrainXlsSheet.nomSheet]!.maxCols - 1;
 
-    for (var iElem = 1; iElem < maxElement; iElem++) {
+    for (var iElem = 1; iElem <= maxElement; iElem++) {
       //premier element: titre et exemple
       String elementNom = excel[ListElementTerrainXlsSheet.nomSheet]!
-          .row(ListElementTerrainXlsSheet.getSheetColonne(
-              CaracteristiqueElementTerrainXls.idElement))
-          .toList()[iElem]
+          .row(iElem)
+          .toList()[ListElementTerrainXlsSheet.getSheetColonne(
+              CaracteristiqueElementTerrainXls.idElement)]
           .value
           .toString();
       String elementCheminImage = excel[ListElementTerrainXlsSheet.nomSheet]!
-          .row(ListElementTerrainXlsSheet.getSheetColonne(
-              CaracteristiqueElementTerrainXls.cheminImage))
-          .toList()[iElem]
+          .row(iElem)
+          .toList()[ListElementTerrainXlsSheet.getSheetColonne(
+              CaracteristiqueElementTerrainXls.cheminImage)]
           .value
           .toString();
       String elementTraversable = excel[ListElementTerrainXlsSheet.nomSheet]!
-          .row(ListElementTerrainXlsSheet.getSheetColonne(
-              CaracteristiqueElementTerrainXls.traversable))
-          .toList()[iElem]
+          .row(iElem)
+          .toList()[ListElementTerrainXlsSheet.getSheetColonne(
+              CaracteristiqueElementTerrainXls.traversable)]
           .value
           .toString();
       String elementProbaPokemon = excel[ListElementTerrainXlsSheet.nomSheet]!
-          .row(ListElementTerrainXlsSheet.getSheetColonne(
-              CaracteristiqueElementTerrainXls.probaPokemon))
-          .toList()[iElem]
+          .row(iElem)
+          .toList()[ListElementTerrainXlsSheet.getSheetColonne(
+              CaracteristiqueElementTerrainXls.probaPokemon)]
           .value
           .toString();
       listElement.add(ElementTerrainXls(
@@ -87,27 +86,26 @@ class XlsReader {
 
     List<PokemonXls> listPokemon = [];
 
-    int maxPokemon =
-        excel[ListePokemonXlsSheet.nomSheet]!.row(0).toList().length;
+    int maxPokemon = excel[ListePokemonXlsSheet.nomSheet]!.maxCols - 1;
 
-    for (var iPkmn = 1; iPkmn < maxPokemon; iPkmn++) {
+    for (var iPkmn = 1; iPkmn <= maxPokemon; iPkmn++) {
       //premier element: titre et exemple
       String nom = excel[ListePokemonXlsSheet.nomSheet]!
-          .row(ListePokemonXlsSheet.getSheetColonne(
-              CaracteristiquePokemonXls.nom))
-          .toList()[iPkmn]
+          .row(iPkmn)
+          .toList()[ListePokemonXlsSheet.getSheetColonne(
+              CaracteristiquePokemonXls.nom)]
           .value
           .toString();
       String cheminImage = excel[ListePokemonXlsSheet.nomSheet]!
-          .row(ListePokemonXlsSheet.getSheetColonne(
-              CaracteristiquePokemonXls.cheminImage))
-          .toList()[iPkmn]
+          .row(iPkmn)
+          .toList()[ListePokemonXlsSheet.getSheetColonne(
+              CaracteristiquePokemonXls.cheminImage)]
           .value
           .toString();
       String rarete = excel[ListePokemonXlsSheet.nomSheet]!
-          .row(ListePokemonXlsSheet.getSheetColonne(
-              CaracteristiquePokemonXls.rarete))
-          .toList()[iPkmn]
+          .row(iPkmn)
+          .toList()[ListePokemonXlsSheet.getSheetColonne(
+              CaracteristiquePokemonXls.rarete)]
           .value
           .toString();
       listPokemon.add(PokemonXls(

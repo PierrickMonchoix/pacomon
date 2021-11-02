@@ -6,9 +6,11 @@ import 'package:first_flutter_app/modele/modele_manager.dart';
 import 'package:first_flutter_app/vue/vue_manager.dart';
 import 'package:flutter/material.dart';
 
+import 'carte_vue.dart';
+
 class HeroVue extends StatefulWidget {
 
-  double _tailleCase = GlobalManager.widthScreen/(Carte.taille.toDouble());
+  double _tailleCase = GlobalManager.widthScreen/(CarteVue.taille.toDouble());
 
   late Widget _widget;
 
@@ -16,8 +18,8 @@ class HeroVue extends StatefulWidget {
  
 
     _widget = Positioned(
-      left: (Carte.taille/2).floor()*_tailleCase,
-      top: ( -0.5 + (Carte.taille/2).floor() )*_tailleCase,
+      left: (CarteVue.taille/2).floor()*_tailleCase,
+      top: ( -0.5 + (CarteVue.taille/2).floor() )*_tailleCase,
       child: Container(
         width: 1.0*_tailleCase ,
         height: 1.5*_tailleCase,

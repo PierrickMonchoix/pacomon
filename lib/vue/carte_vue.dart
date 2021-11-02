@@ -3,6 +3,9 @@ import 'package:first_flutter_app/modele/modele_manager.dart';
 import 'package:flutter/material.dart';
 
 class CarteVue extends StatefulWidget {
+
+
+  static late final int taille = 15;
   
 
   List<TableRow> _listTableRow = [];
@@ -11,13 +14,13 @@ class CarteVue extends StatefulWidget {
       : 
         super(key: key) {
     _listTableRow = List.generate(
-        Carte.taille,
+        taille,
         (y) => TableRow(
             children: List.generate(
-                Carte.taille,
+                taille,
                 (x) => AspectRatio(
                     aspectRatio: 1,
-                    child: Container(constraints: BoxConstraints.expand(),  child: Image.asset(ModeleManager.carte.getElementTerrainFromCoord(y: y - (Carte.taille ~/ 2) + ModeleManager.perso.y, x: x - (Carte.taille ~/ 2) + ModeleManager.perso.x).pathImage , fit: BoxFit.fill,) )))));
+                    child: Container(constraints: BoxConstraints.expand(),  child: Image.asset(ModeleManager.carte.getElementTerrainFromCoord(y: y - (taille ~/ 2) + ModeleManager.perso.y, x: x - (taille ~/ 2) + ModeleManager.perso.x).pathImage , fit: BoxFit.fill,) )))));
   }
 
   //ModeleManager.carte.getElementTerrainFromCoord(y: y, x: x).pathImage

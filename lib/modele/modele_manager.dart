@@ -24,7 +24,7 @@ class ModeleManager implements IOListener{
     
     _carte = await Dao.getCarteFromXlsPath(xlsPath: "assets/for_alex/database_run.xlsx"); 
     _listePokemon = await Dao.getListePokemonFromXlsPath(xlsPath: "assets/for_alex/database_run.xlsx");
-    _perso = Perso();
+    _perso = Perso(x: await Dao.getXSpawnHero(xlsPath: "assets/for_alex/database_run.xlsx") , y: await Dao.getYSpawnHero(xlsPath: "assets/for_alex/database_run.xlsx"));
   }
 
   static late Carte _carte;

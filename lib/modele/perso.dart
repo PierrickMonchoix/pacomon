@@ -5,12 +5,14 @@ import 'package:first_flutter_app/modele/modele_manager.dart';
 import 'dart:math';
 
 class Perso {
-  int _x = Carte.tailleX ~/ 2;
-  int _y = Carte.tailleY ~/ 2;
+  int _x;
+  int _y;
 
   int get x => _x;
 
   int get y => _y;
+
+  Perso({required int x , required int y}) : _x = x, _y = y;
 
   void _isPokemonInNextElementTerrain({required ElementTerrain nextBloc}) {
     if (nextBloc.probaPokemon > ModeleManager.epsilonProbas) {

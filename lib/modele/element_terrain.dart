@@ -9,7 +9,7 @@ class ElementTerrain {
 
   String _nom = "NOT_SET";
   bool _traversable = false;
-  double _probaPokemon = 0.0;
+  double _probaPacomon = 0.0;
 
   ElementTerrain.vide();
 
@@ -19,11 +19,11 @@ class ElementTerrain {
       {required String nom,
       required bool traversable,
       required String pathImage,
-      required double probaPokemon})
+      required double probaPacomon})
       : _nom = nom,
         _traversable = traversable,
         _pathImage = pathImage,
-        _probaPokemon = probaPokemon;
+        _probaPacomon = probaPacomon;
 
 /*   void setAll(
       {required String nom,
@@ -43,8 +43,8 @@ class ElementTerrain {
   String get nom => _nom;
   set nom(String value) => _nom = value;
 
-  double get probaPokemon => this._probaPokemon;
-  set probaPokemon(double value) => this._probaPokemon = value;
+  double get probaPacomon => this._probaPacomon;
+  set probaPacomon(double value) => this._probaPacomon = value;
 
 
 
@@ -52,12 +52,12 @@ class ElementTerrain {
     _pathImage = base.pathImage;
     _nom = base.nom;
     _traversable = base.traversable;
-    _probaPokemon = base.probaPokemon;
+    _probaPacomon = base.probaPacomon;
   }
 
   @override
   String toString() {
-    return 'ElementTerrain(_pathImage: $_pathImage, _nom: $_nom, _traversable: $_traversable, _probaPokemon: $_probaPokemon)';
+    return 'ElementTerrain(_pathImage: $_pathImage, _nom: $_nom, _traversable: $_traversable, _probaPacomon: $_probaPacomon)';
   }
 
   @override
@@ -68,7 +68,7 @@ class ElementTerrain {
       other._pathImage == _pathImage &&
       other._nom == _nom &&
       other._traversable == _traversable &&
-      (other._probaPokemon - _probaPokemon).abs() < ModeleManager.epsilonProbas;
+      (other._probaPacomon - _probaPacomon).abs() < ModeleManager.epsilonProbas;
   }
 
   @override
@@ -76,6 +76,6 @@ class ElementTerrain {
     return _pathImage.hashCode ^
       _nom.hashCode ^
       _traversable.hashCode ^
-      _probaPokemon.hashCode;
+      _probaPacomon.hashCode;
   }
 }

@@ -8,7 +8,7 @@ import 'package:pacomon/dao/xls_reader.dart';
 import 'package:pacomon/modele/carte.dart';
 import 'package:pacomon/modele/element_terrain.dart';
 import 'package:pacomon/modele/liste_pokemon.dart';
-import 'package:pacomon/modele/pokemon.dart';
+import 'package:pacomon/modele/pacomon.dart';
 
 class Dao {
   //"assets/for_tests/database_test.xlsx"
@@ -54,7 +54,7 @@ class Dao {
         nom: elementTerrainXls.id,
         traversable: elementTerrainXls.traversable == "OUI" ? true : false,
         pathImage: elementTerrainXls.pathImage,
-        probaPokemon: double.parse(elementTerrainXls.probaPokemon) / 100);
+        probaPacomon: double.parse(elementTerrainXls.probaPacomon) / 100);
     return elementTerrain;
     }
     catch(e){
@@ -67,25 +67,27 @@ class Dao {
     }
   }
 
-  static Pokemon _getPokemonFromPokemonXls({required PokemonXls pokemonXls}) {
+  static Pacomon _getPacomonFromPacomonXls({required PacomonXls pacomonXls}) {
     try{
-  Pokemon pokemon = Pokemon(
-        nom: pokemonXls.nom,
-        pathImage: pokemonXls.pathImage,
-        rarete: double.parse(pokemonXls.rarete) / 100);
-    return pokemon;
+  Pacomon pacomon = Pacomon(
+        pv: 120,
+        atk: 20,
+        def: 100,
+        nom: pacomonXls.nom,
+        pathImage: pacomonXls.pathImage,
+        rarete: double.parse(pacomonXls.rarete) / 100);
+    return pacomon;
     }
     catch(e){
       print("@@@@@@@@@@@@@@@@ RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n\n");
-      print("Un pokemon a ete mal rempli\n");
-      print("Pokemon qui cause le crash: " + pokemonXls.toString());
+      print("Un pacomon a ete mal rempli\n");
+      print("Pacomon qui cause le crash: " + pacomonXls.toString());
       print("\n");
       print("@@@@@@@@@@@@@@@@ FIN RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n");
       throw e;
     }
   }
 
-  //static Pokemon _getPokemon
 
   //PUBLIC :
 
@@ -134,16 +136,16 @@ class Dao {
     return carte;
   }
 
-  static Future<ListePokemon> getListePokemonFromXlsPath(
+  static Future<ListePacomon> getListePacomonFromXlsPath(
       {required String xlsPath}) async {
-    ListePokemonXlsSheet listePokemonXlsSheet =
-        await XlsReader.getListePokemonXlsSheet(xlsPath: xlsPath);
-    List<Pokemon> listPokemon = [];
+    ListePacomonXlsSheet listePacomonXlsSheet =
+        await XlsReader.getListePacomonXlsSheet(xlsPath: xlsPath);
+    List<Pacomon> listPacomon = [];
 
-    for (PokemonXls pokemonXls in listePokemonXlsSheet.list) {
-      Pokemon newPokemon = _getPokemonFromPokemonXls(pokemonXls: pokemonXls);
-      listPokemon.add(newPokemon);
+    for (PacomonXls pacomonXls in listePacomonXlsSheet.list) {
+      Pacomon newPacomon = _getPacomonFromPacomonXls(pacomonXls: pacomonXls);
+      listPacomon.add(newPacomon);
     }
-    return ListePokemon(listPokemon: listPokemon);
+    return ListePacomon(listPacomon: listPacomon);
   }
 }

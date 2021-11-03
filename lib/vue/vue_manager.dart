@@ -1,5 +1,6 @@
 import 'package:pacomon/dao/dao.dart';
 import 'package:pacomon/io/i_o_listener.dart';
+import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_combat.dart';
 import 'package:pacomon/modele/modele_manager.dart';
 import 'package:pacomon/vue/final_views/all_vue.dart';
 import 'package:pacomon/vue/carte_vue.dart';
@@ -29,7 +30,7 @@ class VueManager implements IOListener {
   static void refresh(){
 
     //on ajoutera les autres vues dessus
-    if(ModeleManager.inCombat){
+    if(ModeleManager.etatJeu is EtatJeuCombat){
       _allVue.setVueScreenAndRefresh(EcranVue(listWidget: [CombatVue()]));
     }
     else{

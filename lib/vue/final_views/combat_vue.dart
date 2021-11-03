@@ -13,7 +13,7 @@ class _CarteEtHeroVueState extends State<CombatVue> {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints.expand(),
-      child: Image.asset(ModeleManager.pokemonCombat.pathImage),
+      child: Image.asset(ModeleManager.combat.pacomon.pathImage),
     );
   }
 }

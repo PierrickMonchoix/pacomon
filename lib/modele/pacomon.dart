@@ -1,8 +1,13 @@
 import 'package:pacomon/modele/modele_manager.dart';
+import 'package:pacomon/modele/perso.dart';
+import 'package:pacomon/modele/unite.dart';
 
-class Pokemon {
+class Pacomon extends AUnite{
 
 
+  void attaquerPerso(Perso perso){
+    perso.recevoirDegatsNet(atk);
+  }
 
   String _nom = "NOT_SET";
   String _pathImage = "assets/for_run/image_not_set.png";
@@ -12,8 +17,8 @@ class Pokemon {
   String get pathImage => this._pathImage;
   double get rarete => this._rarete;
 
-  Pokemon.vide();
-  Pokemon({required String nom, required String pathImage , required double rarete}) : _nom = nom , _pathImage = pathImage , _rarete = rarete;
+  //Pokemon.vide();
+  Pacomon({required String nom, required String pathImage , required double rarete , required int pv , required int atk , required int def}) : _nom = nom , _pathImage = pathImage , _rarete = rarete , super(pv: pv , atk: atk , def : def);
 
 
 
@@ -23,7 +28,7 @@ class Pokemon {
 
 
 
-    void copy(Pokemon base){
+    void copy(Pacomon base){
     _pathImage = base.pathImage;
     _nom = base.nom;
     _rarete = base.rarete;
@@ -35,7 +40,7 @@ class Pokemon {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
   
-    return other is Pokemon &&
+    return other is Pacomon &&
       other._nom == _nom &&
       other._pathImage == _pathImage &&
       (other._rarete - _rarete).abs() < ModeleManager.epsilonProbas;

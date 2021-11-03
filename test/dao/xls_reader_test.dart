@@ -25,9 +25,9 @@ void main() {
 
     ListElementTerrainXlsSheet listElementTerrain = await XlsReader.getListElementTerrainXlsSheet(xlsPath: "assets/for_tests/database_test.xlsx");
 
-    ElementTerrainXls herbe = ElementTerrainXls(id: "HERBE" , pathImage: "path_herbe" , traversable: "OUI" , probaPokemon: "60");
-    ElementTerrainXls sol = ElementTerrainXls(id: "SOL" , pathImage: "path_sol" , traversable: "OUI" , probaPokemon: "0");
-    ElementTerrainXls rocher = ElementTerrainXls(id: "ROCHER" , pathImage: "path_rocher" , traversable: "NON" , probaPokemon: "0");
+    ElementTerrainXls herbe = ElementTerrainXls(id: "HERBE" , pathImage: "path_herbe" , traversable: "OUI" , probaPacomon: "60");
+    ElementTerrainXls sol = ElementTerrainXls(id: "SOL" , pathImage: "path_sol" , traversable: "OUI" , probaPacomon: "0");
+    ElementTerrainXls rocher = ElementTerrainXls(id: "ROCHER" , pathImage: "path_rocher" , traversable: "NON" , probaPacomon: "0");
 
     expect(listElementTerrain.list[0], herbe);
     expect(listElementTerrain.list[1], sol);
@@ -36,10 +36,10 @@ void main() {
   });
 
   testWidgets('getListPokemonXls', (tester) async {  
-    ListePokemonXlsSheet listPokemonXlsSheet = await XlsReader.getListePokemonXlsSheet(xlsPath: "assets/for_tests/database_test.xlsx");
+    ListePacomonXlsSheet listPokemonXlsSheet = await XlsReader.getListePacomonXlsSheet(xlsPath: "assets/for_tests/database_test.xlsx");
 
-    PokemonXls pikachu = PokemonXls(nom: "Pikachu" , pathImage: "path_pikachu" , rarete: "66.7");
-    PokemonXls mewtwo = PokemonXls(nom: "Mewtwo" , pathImage: "path_mewtwo" , rarete: "33.3");
+    PacomonXls pikachu = PacomonXls(nom: "Pikachu" , pathImage: "path_pikachu" , rarete: "66.7");
+    PacomonXls mewtwo = PacomonXls(nom: "Mewtwo" , pathImage: "path_mewtwo" , rarete: "33.3");
 
     expect(listPokemonXlsSheet.list[0], pikachu);
     expect(listPokemonXlsSheet.list[1], mewtwo);

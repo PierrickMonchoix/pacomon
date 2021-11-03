@@ -115,54 +115,54 @@ class XlsReader {
               CaracteristiqueElementTerrainXls.traversable)]
           .value
           .toString();
-      String elementProbaPokemon = excel[ListElementTerrainXlsSheet.nomSheet]!
+      String elementProbaPacomon = excel[ListElementTerrainXlsSheet.nomSheet]!
           .row(iElem)
           .toList()[ListElementTerrainXlsSheet.getSheetColonne(
-              CaracteristiqueElementTerrainXls.probaPokemon)]
+              CaracteristiqueElementTerrainXls.probaPacomon)]
           .value
           .toString();
       listElement.add(ElementTerrainXls(
           id: elementNom,
           pathImage: elementCheminImage,
           traversable: elementTraversable,
-          probaPokemon: elementProbaPokemon));
+          probaPacomon: elementProbaPacomon));
     }
     return ListElementTerrainXlsSheet(listElement);
   }
 
-  static Future<ListePokemonXlsSheet> getListePokemonXlsSheet(
+  static Future<ListePacomonXlsSheet> getListePacomonXlsSheet(
       {required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
 
-    List<PokemonXls> listPokemon = [];
+    List<PacomonXls> listPacomon = [];
 
-    int maxPokemon = excel[ListePokemonXlsSheet.nomSheet]!.maxRows - 1;
+    int maxPacomon = excel[ListePacomonXlsSheet.nomSheet]!.maxRows - 1;
 
-    for (var iPkmn = 1; iPkmn <= maxPokemon; iPkmn++) {
+    for (var iPkmn = 1; iPkmn <= maxPacomon; iPkmn++) {
       //premier element: titre et exemple
-      String nom = excel[ListePokemonXlsSheet.nomSheet]!
+      String nom = excel[ListePacomonXlsSheet.nomSheet]!
           .row(iPkmn)
-          .toList()[ListePokemonXlsSheet.getSheetColonne(
-              CaracteristiquePokemonXls.nom)]
+          .toList()[ListePacomonXlsSheet.getSheetColonne(
+              CaracteristiquePacomonXls.nom)]
           .value
           .toString();
-      String cheminImage = excel[ListePokemonXlsSheet.nomSheet]!
+      String cheminImage = excel[ListePacomonXlsSheet.nomSheet]!
           .row(iPkmn)
-          .toList()[ListePokemonXlsSheet.getSheetColonne(
-              CaracteristiquePokemonXls.cheminImage)]
+          .toList()[ListePacomonXlsSheet.getSheetColonne(
+              CaracteristiquePacomonXls.cheminImage)]
           .value
           .toString();
-      String rarete = excel[ListePokemonXlsSheet.nomSheet]!
+      String rarete = excel[ListePacomonXlsSheet.nomSheet]!
           .row(iPkmn)
-          .toList()[ListePokemonXlsSheet.getSheetColonne(
-              CaracteristiquePokemonXls.rarete)]
+          .toList()[ListePacomonXlsSheet.getSheetColonne(
+              CaracteristiquePacomonXls.rarete)]
           .value
           .toString();
-      listPokemon
-          .add(PokemonXls(nom: nom, pathImage: cheminImage, rarete: rarete));
+      listPacomon
+          .add(PacomonXls(nom: nom, pathImage: cheminImage, rarete: rarete));
     }
-    return ListePokemonXlsSheet(listPokemon);
+    return ListePacomonXlsSheet(listPacomon);
   }
 }

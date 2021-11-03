@@ -4,16 +4,16 @@ import 'package:pacomon/dao/xls_elements/liste_element_terrain_sheet/elements_pr
 import 'package:pacomon/modele/carte.dart';
 import 'package:pacomon/modele/element_terrain.dart';
 import 'package:pacomon/modele/liste_pokemon.dart';
-import 'package:pacomon/modele/pokemon.dart';
+import 'package:pacomon/modele/pacomon.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
 
   testWidgets('getCarteFromXlsPath', (tester) async {
     Carte carte = await Dao.getCarteFromXlsPath( xlsPath: "assets/for_tests/database_test.xlsx");
-    ElementTerrain herbe = ElementTerrain(nom: "HERBE" , pathImage: "path_herbe" , traversable: true , probaPokemon: 0.60);
-    ElementTerrain sol = ElementTerrain(nom: "SOL" , pathImage: "path_sol" , traversable: true , probaPokemon: 0.0);
-    ElementTerrain rocher = ElementTerrain(nom: "ROCHER" , pathImage: "path_rocher" , traversable: false , probaPokemon: 0.0);
+    ElementTerrain herbe = ElementTerrain(nom: "HERBE" , pathImage: "path_herbe" , traversable: true , probaPacomon: 0.60);
+    ElementTerrain sol = ElementTerrain(nom: "SOL" , pathImage: "path_sol" , traversable: true , probaPacomon: 0.0);
+    ElementTerrain rocher = ElementTerrain(nom: "ROCHER" , pathImage: "path_rocher" , traversable: false , probaPacomon: 0.0);
 
     expect(Carte.tailleX, 11);
     expect(Carte.tailleY, 14);
@@ -24,11 +24,11 @@ void main() {
   });
 
   testWidgets('getListePokemonFromXlsPath', (tester) async {
-      ListePokemon listePokemon= await Dao.getListePokemonFromXlsPath(xlsPath: "assets/for_tests/database_test.xlsx");
-      Pokemon pikachu = Pokemon(nom: "Pikachu", pathImage: "path_pikachu", rarete: 0.667);
-      Pokemon mewtwo = Pokemon(nom: "Mewtwo", pathImage: "path_mewtwo", rarete: 0.333);
+      ListePacomon listePokemon= await Dao.getListePacomonFromXlsPath(xlsPath: "assets/for_tests/database_test.xlsx");
+      Pacomon pikachu = Pacomon(nom: "Pikachu", pathImage: "path_pikachu", rarete: 0.667, atk: 0, def: 0, pv: 0);
+      Pacomon mewtwo = Pacomon(nom: "Mewtwo", pathImage: "path_mewtwo", rarete: 0.333, atk: 0, def: 0, pv: 0);
 
-      expect(listePokemon.getPokemonFromNom("Pikachu"), pikachu);
-      expect(listePokemon.getPokemonFromNom("Mewtwo"), mewtwo);
+      expect(listePokemon.getPacomonFromNom("Pikachu"), pikachu);
+      expect(listePokemon.getPacomonFromNom("Mewtwo"), mewtwo);
     }); 
 }

@@ -1,45 +1,45 @@
 import 'package:flutter/foundation.dart';
 import 'dart:math';
-import 'package:pacomon/modele/pokemon.dart';
+import 'package:pacomon/modele/pacomon.dart';
 
-class ListePokemon {
-  List<Pokemon> _listPokemon = [];
+class ListePacomon {
+  List<Pacomon> _listPacomon = [];
   List<double> _sumListOfRarete = [];
 
-  ListePokemon({required List<Pokemon> listPokemon}) : _listPokemon = listPokemon {
+  ListePacomon({required List<Pacomon> listPacomon}) : _listPacomon = listPacomon {
     _sumListOfRarete.add(0.0);
-    for (int i = 0; i < _listPokemon.length ; i++) {
-      _sumListOfRarete.add(_sumListOfRarete[i] + _listPokemon[i].rarete);
+    for (int i = 0; i < _listPacomon.length ; i++) {
+      _sumListOfRarete.add(_sumListOfRarete[i] + _listPacomon[i].rarete);
     }
   }
 
 
-  Pokemon getPokemonFromNom(String nomPkmn) {
-    return _listPokemon.firstWhere((element) => element.nom == nomPkmn);
+  Pacomon getPacomonFromNom(String nomPkmn) {
+    return _listPacomon.firstWhere((element) => element.nom == nomPkmn);
   }
 
-  Pokemon? getRandomPokemon(){
+  Pacomon getRandomPacomon(){
     Random random = Random();
     double randomDouble = random.nextDouble();
     for (int i = 0; i < _sumListOfRarete.length - 1; i++) {
       if( _sumListOfRarete[i] <= randomDouble && randomDouble <= _sumListOfRarete[i+1]){
-        return _listPokemon[i];
+        return _listPacomon[i];
       }
     }
-    return null;
+    throw Exception("getRandomPacomon a echoue");
   } 
 
   @override
-  String toString() => 'ListePokemon(_listPokemon: $_listPokemon)';
+  String toString() => 'ListePacomon(_listPacomon: $_listPacomon)';
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
   
-    return other is ListePokemon &&
-      listEquals(other._listPokemon, _listPokemon);
+    return other is ListePacomon &&
+      listEquals(other._listPacomon, _listPacomon);
   }
 
   @override
-  int get hashCode => _listPokemon.hashCode;
+  int get hashCode => _listPacomon.hashCode;
 }

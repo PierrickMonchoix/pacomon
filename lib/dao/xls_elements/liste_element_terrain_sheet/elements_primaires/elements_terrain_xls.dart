@@ -2,16 +2,16 @@ class ElementTerrainXls {
   final String _id;
   final String _pathImage;
   final String _traversable;
-  final String _probaPokemon;
+  final String _probaPacomon;
 
 
 
-  ElementTerrainXls({required String id , required String pathImage , required String traversable , required String probaPokemon}) : _id = id , _pathImage = pathImage , _traversable = traversable, _probaPokemon = probaPokemon;
+  ElementTerrainXls({required String id , required String pathImage , required String traversable , required String probaPacomon}) : _id = id , _pathImage = pathImage , _traversable = traversable, _probaPacomon = probaPacomon;
 
   String get id => _id;
   String get pathImage => _pathImage;
   String get traversable => _traversable;
-  String get probaPokemon => this._probaPokemon;
+  String get probaPacomon => this._probaPacomon;
 
   
 
@@ -20,7 +20,7 @@ class ElementTerrainXls {
 
   @override
   String toString() {
-    return 'ElementTerrainXls(_id: $_id, _pathImage: $_pathImage, _traversable: $_traversable, _probaPokemon: $_probaPokemon)';
+    return 'ElementTerrainXls(_id: $_id, _pathImage: $_pathImage, _traversable: $_traversable, _probaPacomon: $_probaPacomon)';
   }
 
   @override
@@ -31,7 +31,7 @@ class ElementTerrainXls {
       other._id == _id &&
       other._pathImage == _pathImage &&
       other._traversable == _traversable &&
-      other._probaPokemon == _probaPokemon;
+      other._probaPacomon == _probaPacomon;
   }
 
   @override
@@ -39,6 +39,6 @@ class ElementTerrainXls {
     return _id.hashCode ^
       _pathImage.hashCode ^
       _traversable.hashCode ^
-      _probaPokemon.hashCode;
+      _probaPacomon.hashCode;
   }
 }

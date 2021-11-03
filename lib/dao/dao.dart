@@ -37,8 +37,9 @@ class Dao {
     }
     catch(e){
       print("@@@@@@@@@@@@@@@@ RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n\n");
+      print("Un element de terrain de la carte n'a pas ete trouve dans la liste des elements de terrain.\n");
       print("Liste de tous les elements de terrain: " + listElementXls.toString());
-      print("");
+      print("\n");
       print("Element qui cause le crash: " + idElementTerrainXls.toString());
       print("\n");
       print("@@@@@@@@@@@@@@@@ FIN RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n");
@@ -48,20 +49,40 @@ class Dao {
 
   static ElementTerrain _getElementTerrainFromElementTerrainXls(
       {required ElementTerrainXls elementTerrainXls}) {
+    try{
     ElementTerrain elementTerrain = ElementTerrain(
         nom: elementTerrainXls.id,
         traversable: elementTerrainXls.traversable == "OUI" ? true : false,
         pathImage: elementTerrainXls.pathImage,
         probaPokemon: double.parse(elementTerrainXls.probaPokemon) / 100);
     return elementTerrain;
+    }
+    catch(e){
+      print("@@@@@@@@@@@@@@@@ RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n\n");
+      print("Un element de terrain a ete mal rempli\n");
+      print("Element qui cause le crash: " + elementTerrainXls.toString());
+      print("\n");
+      print("@@@@@@@@@@@@@@@@ FIN RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n");
+      throw e;
+    }
   }
 
   static Pokemon _getPokemonFromPokemonXls({required PokemonXls pokemonXls}) {
-    Pokemon pokemon = Pokemon(
+    try{
+  Pokemon pokemon = Pokemon(
         nom: pokemonXls.nom,
         pathImage: pokemonXls.pathImage,
         rarete: double.parse(pokemonXls.rarete) / 100);
     return pokemon;
+    }
+    catch(e){
+      print("@@@@@@@@@@@@@@@@ RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n\n");
+      print("Un pokemon a ete mal rempli\n");
+      print("Pokemon qui cause le crash: " + pokemonXls.toString());
+      print("\n");
+      print("@@@@@@@@@@@@@@@@ FIN RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n");
+      throw e;
+    }
   }
 
   //static Pokemon _getPokemon

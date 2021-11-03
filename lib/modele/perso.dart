@@ -16,17 +16,12 @@ class Perso {
 
   void _isPokemonInNextElementTerrain({required ElementTerrain nextBloc}) {
     if (nextBloc.probaPokemon > ModeleManager.epsilonProbas) {
-      print("### il y aura peut etre un pkmn");
       Random random = Random();
       double randomDouble = random.nextDouble();
       if (randomDouble < nextBloc.probaPokemon) {
         ModeleManager.inCombat = true;
         ModeleManager.pokemonCombat = ModeleManager.listePokemon.getRandomPokemon()!;
-        print("### UN POKEMON APPARAIT");
       }
-    }
-    else{
-      print("### il n'y aura pas de pkmn");
     }
   }
 

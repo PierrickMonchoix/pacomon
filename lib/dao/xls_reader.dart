@@ -93,7 +93,7 @@ class XlsReader {
 
     List<ElementTerrainXls> listElement = [];
 
-    int maxElement = excel[ListElementTerrainXlsSheet.nomSheet]!.maxCols - 1;
+    int maxElement = excel[ListElementTerrainXlsSheet.nomSheet]!.maxRows - 1;
 
     for (var iElem = 1; iElem <= maxElement; iElem++) {
       //premier element: titre et exemple
@@ -138,7 +138,7 @@ class XlsReader {
 
     List<PokemonXls> listPokemon = [];
 
-    int maxPokemon = excel[ListePokemonXlsSheet.nomSheet]!.maxCols - 1;
+    int maxPokemon = excel[ListePokemonXlsSheet.nomSheet]!.maxRows - 1;
 
     for (var iPkmn = 1; iPkmn <= maxPokemon; iPkmn++) {
       //premier element: titre et exemple

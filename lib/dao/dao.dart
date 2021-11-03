@@ -31,8 +31,19 @@ class Dao {
       required String xlsPath}) async {
     ListElementTerrainXlsSheet listElementXls =
         await _getListElementTerrainXlsSheetInstance(xlsPath: xlsPath);
+    try{
     return listElementXls.list
         .firstWhere((element) => element.id == idElementTerrainXls.id);
+    }
+    catch(e){
+      print("@@@@@@@@@@@@@@@@ RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n\n");
+      print("Liste de tous les elements de terrain: " + listElementXls.toString());
+      print("");
+      print("Element qui cause le crash: " + idElementTerrainXls.toString());
+      print("\n");
+      print("@@@@@@@@@@@@@@@@ FIN RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n");
+      throw e;
+    }
   }
 
   static ElementTerrain _getElementTerrainFromElementTerrainXls(

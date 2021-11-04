@@ -7,12 +7,18 @@ import 'package:pacomon/modele/modele_manager.dart';
 class EtatJeuCombat implements EtatJeu{
 
   EtatJeuCombat() : super(){
-    ModeleManager.combat = Combat(pacomon: ModeleManager.listePokemon.getRandomPacomon());
+    
   }
 
   @override
   void whenOrder(EnumOrdre ordre) {
     ModeleManager.combat.etatCombat.whenOrder(ordre);
+  }
+
+  @override
+  void start() {
+    ModeleManager.combat = Combat(pacomon: ModeleManager.listePokemon.getRandomPacomon());
+    ModeleManager.combat.start();
   }
 
 

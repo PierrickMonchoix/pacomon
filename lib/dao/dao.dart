@@ -70,9 +70,9 @@ class Dao {
   static Pacomon _getPacomonFromPacomonXls({required PacomonXls pacomonXls}) {
     try{
   Pacomon pacomon = Pacomon(
-        pv: 120,
-        atk: 20,
-        def: 100,
+        pv: int.parse( pacomonXls.pvMax ),
+        atk:int.parse(   pacomonXls.atk ),
+        def: int.parse(   pacomonXls.def ),
         nom: pacomonXls.nom,
         pathImage: pacomonXls.pathImage,
         rarete: double.parse(pacomonXls.rarete) / 100);

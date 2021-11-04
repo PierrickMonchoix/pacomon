@@ -4,4 +4,6 @@ abstract class EtatJeu{
 
   void whenOrder(EnumOrdre ordre);
 
+  void start();
+
 }

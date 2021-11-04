@@ -4,6 +4,7 @@ abstract class AUnite{
   int _atk;
   int _def;
   int _pv;
+  int _pvMax;
 
   void FOR_TEST_setAtk(int atk){
     _atk = atk;
@@ -21,8 +22,9 @@ abstract class AUnite{
   int get pv => this._pv;
   int get atk => this._atk;
   int get def => this._def;
+  int get pvMax => this._pvMax;
 
-  AUnite({required atk , required def , required pv}) : _pv = pv , _def = def, _atk = atk;
+  AUnite({required atk , required def , required pv}) : _pv = pv , _def = def, _atk = atk , _pvMax = pv;
 
   void recevoirDegatsNet(int degats){
     double doubleDegatsNet =  degats.toDouble()*pow(0.5, _def.toDouble()/100.0);

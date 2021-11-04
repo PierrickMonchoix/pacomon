@@ -1,6 +1,7 @@
 import 'package:pacomon/dao/dao.dart';
 import 'package:pacomon/io/i_o_listener.dart';
 import 'package:pacomon/modele/carte.dart';
+import 'package:pacomon/modele/combat/etat_combat.dart';
 import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/etat_jeu/etat_jeu.dart';
 import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_marche.dart';
@@ -8,14 +9,25 @@ import 'package:pacomon/modele/liste_pokemon.dart';
 import 'package:pacomon/modele/perso.dart';
 import 'package:pacomon/modele/pacomon.dart';
 
+import 'attaque/attaque.dart';
 import 'combat/combat.dart';
 
 class ModeleManager implements IOListener{
+
+
+  static void setAndStartEtatCombat(EtatCombat etatCombat){
+    combat.etatCombat = etatCombat;
+    combat.etatCombat.start();
+  }
 
   static EtatJeu etatJeu = EtatJeuMarche();
 
   static void sendOrderEtatJeu(EnumOrdre ordre){
     etatJeu.whenOrder(ordre);
+  }
+
+  static void sendOrderEtatCombat(EnumOrdre ordre){
+    combat.etatCombat.whenOrder(ordre);
   }
 
 
@@ -32,7 +44,9 @@ class ModeleManager implements IOListener{
     _carte = await Dao.getCarteFromXlsPath(xlsPath: "assets/for_alex/database_run.xlsx"); 
     _listePokemon = await Dao.getListePacomonFromXlsPath(xlsPath: "assets/for_alex/database_run.xlsx");
     _perso = Perso(x: await Dao.getXSpawnHero(xlsPath: "assets/for_alex/database_run.xlsx") , y: await Dao.getYSpawnHero(xlsPath: "assets/for_alex/database_run.xlsx"),
-    pv: 100, atk: 10 , def: 10);
+    pv: 1000000, atk: 10000 , def: 10000);
+    _perso.attaque1 = Attaque(nom: "charge" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { pacomon.recevoirDegatsNet(perso.atk); });
+    etatJeu.start();
   }
 
   static late Carte _carte;

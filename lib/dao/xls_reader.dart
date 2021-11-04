@@ -19,7 +19,7 @@ class XlsReader {
     return excel["carte"].maxCols.toString();
   }
 
-    static Future<String> getTailleYCarteModeleXls(
+  static Future<String> getTailleYCarteModeleXls(
       {required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
@@ -27,8 +27,7 @@ class XlsReader {
     return excel["carte"].maxRows.toString();
   }
 
-  static Future<String> getTailleCarteVueXls(
-      {required String xlsPath}) async {
+  static Future<String> getTailleCarteVueXls({required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
@@ -38,8 +37,7 @@ class XlsReader {
         .toString();
   }
 
-  static Future<String> getXSpawnHeroXls(
-      {required String xlsPath}) async {
+  static Future<String> getXSpawnHeroXls({required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
@@ -49,8 +47,7 @@ class XlsReader {
         .toString();
   }
 
-  static Future<String> getYSpawnHeroXls(
-      {required String xlsPath}) async {
+  static Future<String> getYSpawnHeroXls({required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
@@ -65,9 +62,10 @@ class XlsReader {
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
 
-    int tailleXCarte = int.parse( await getTailleXCarteModeleXls(xlsPath: xlsPath) );
-    int tailleYCarte = int.parse( await getTailleYCarteModeleXls(xlsPath: xlsPath) );
-
+    int tailleXCarte =
+        int.parse(await getTailleXCarteModeleXls(xlsPath: xlsPath));
+    int tailleYCarte =
+        int.parse(await getTailleYCarteModeleXls(xlsPath: xlsPath));
 
     List<List<IdElementTerrainXls>> matrice =
         List.generate(tailleYCarte, (i) => List.empty(growable: true));
@@ -160,8 +158,31 @@ class XlsReader {
               CaracteristiquePacomonXls.rarete)]
           .value
           .toString();
-      listPacomon
-          .add(PacomonXls(nom: nom, pathImage: cheminImage, rarete: rarete));
+      String atk = excel[ListePacomonXlsSheet.nomSheet]!
+          .row(iPkmn)
+          .toList()[ListePacomonXlsSheet.getSheetColonne(
+              CaracteristiquePacomonXls.atk)]
+          .value
+          .toString();
+      String def = excel[ListePacomonXlsSheet.nomSheet]!
+          .row(iPkmn)
+          .toList()[ListePacomonXlsSheet.getSheetColonne(
+              CaracteristiquePacomonXls.def)]
+          .value
+          .toString();
+      String pvMax = excel[ListePacomonXlsSheet.nomSheet]!
+          .row(iPkmn)
+          .toList()[ListePacomonXlsSheet.getSheetColonne(
+              CaracteristiquePacomonXls.pvMax)]
+          .value
+          .toString();
+      listPacomon.add(PacomonXls(
+          nom: nom,
+          pathImage: cheminImage,
+          rarete: rarete,
+          atk: atk,
+          def: def,
+          pvMax: pvMax));
     }
     return ListePacomonXlsSheet(listPacomon);
   }

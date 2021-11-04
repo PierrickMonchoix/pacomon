@@ -20,9 +20,15 @@ class EtatJeuMarche implements EtatJeu {
         ModeleManager.perso.marcheDroite();
         break;
       case EnumOrdre.DEMARRER_COMBAT:
-        ModeleManager.etatJeu = EtatJeuCombat();
+        ModeleManager.etatJeu = EtatJeuCombat();  
+        ModeleManager.etatJeu.start();   //TODO en 1 seul f() et rendre private
         break;
       default:
     }
+  }
+
+  @override
+  void start() {
+    // TODO: implement start
   }
 }

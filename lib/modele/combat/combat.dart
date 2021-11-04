@@ -14,7 +14,11 @@ class Combat {
 
   Combat({required Pacomon pacomon}) : _pacomon = pacomon;
 
-  EtatCombat etatCombat = EtatCombatPacomonApparait();
+  late EtatCombat etatCombat = EtatCombatPacomonApparait();
+
+  void start(){
+    etatCombat = EtatCombatPacomonApparait();
+  }
 
   void heroAttaquePacomon() {
     switch (attaqueSelected) {

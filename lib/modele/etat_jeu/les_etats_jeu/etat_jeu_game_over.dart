@@ -6,6 +6,13 @@ import 'package:pacomon/modele/modele_manager.dart';
 class EtatJeuGameOver implements EtatJeu {
   @override
   void whenOrder(EnumOrdre ordre) {
-    }
+  }
+
+  @override
+  void start() {
+    // TODO: implement start
+  }
+
+  
   
 }

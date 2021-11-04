@@ -6,19 +6,29 @@ import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/modele_manager.dart';
 
 class EtatCombatHeroAttaque implements EtatCombat {
-
-  EtatCombatHeroAttaque(){
-    ModeleManager.combat.heroAttaquePacomon();
+  EtatCombatHeroAttaque() {
+    print("€€€ enter EtatCombatHeroAttaque");
+    print("pv pcmn: " + ModeleManager.combat.pacomon.pv.toString());
   }
 
   @override
   void whenOrder(EnumOrdre ordre) {
     if (ModeleManager.perso.pv == 0) {
-      ModeleManager.combat.etatCombat = EtatCombatHeroPerd();
+      ModeleManager.setAndStartEtatCombat(EtatCombatHeroPerd());
     } else if (ModeleManager.combat.pacomon.pv == 0) {
-      ModeleManager.combat.etatCombat = EtatCombatHeroGagne();
+      ModeleManager.setAndStartEtatCombat(EtatCombatHeroGagne());
     } else {
-      ModeleManager.combat.etatCombat = EtatCombatPacomonAttaque();
+      ModeleManager.setAndStartEtatCombat(EtatCombatPacomonAttaque());
     }
+  }
+  @override
+  String toString() {
+    // TODO: implement toString
+    return "EtatCombatHeroAttaque";
+  }
+
+  @override
+  void start() {
+    ModeleManager.combat.heroAttaquePacomon();
   }
 }

@@ -38,8 +38,8 @@ void main() {
   testWidgets('getListPokemonXls', (tester) async {  
     ListePacomonXlsSheet listPokemonXlsSheet = await XlsReader.getListePacomonXlsSheet(xlsPath: "assets/for_tests/database_test.xlsx");
 
-    PacomonXls pikachu = PacomonXls(nom: "Pikachu" , pathImage: "path_pikachu" , rarete: "66.7");
-    PacomonXls mewtwo = PacomonXls(nom: "Mewtwo" , pathImage: "path_mewtwo" , rarete: "33.3");
+    PacomonXls pikachu = PacomonXls(nom: "Pikachu" , pathImage: "path_pikachu" , rarete: "66.7" , atk: "2" , def: "0" , pvMax: "20");
+    PacomonXls mewtwo = PacomonXls(nom: "Mewtwo" , pathImage: "path_mewtwo" , rarete: "33.3" , atk: "20" , def: "100" , pvMax: "200");
 
     expect(listPokemonXlsSheet.list[0], pikachu);
     expect(listPokemonXlsSheet.list[1], mewtwo);

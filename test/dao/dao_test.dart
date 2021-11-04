@@ -11,9 +11,9 @@ void main() {
 
   testWidgets('getCarteFromXlsPath', (tester) async {
     Carte carte = await Dao.getCarteFromXlsPath( xlsPath: "assets/for_tests/database_test.xlsx");
-    ElementTerrain herbe = ElementTerrain(nom: "HERBE" , pathImage: "path_herbe" , traversable: true , probaPacomon: 0.60);
-    ElementTerrain sol = ElementTerrain(nom: "SOL" , pathImage: "path_sol" , traversable: true , probaPacomon: 0.0);
-    ElementTerrain rocher = ElementTerrain(nom: "ROCHER" , pathImage: "path_rocher" , traversable: false , probaPacomon: 0.0);
+    ElementTerrain herbe = ElementTerrain(nom: "HERBE" , pathImage: "path_herbe" , traversable: true , probaPacomon: 0.60 ,categorie: "DEBUT");
+    ElementTerrain sol = ElementTerrain(nom: "SOL" , pathImage: "path_sol" , traversable: true , probaPacomon: 0.0 ,categorie: "DEBUT");
+    ElementTerrain rocher = ElementTerrain(nom: "ROCHER" , pathImage: "path_rocher" , traversable: false , probaPacomon: 0.0 ,categorie: "DEBUT");
 
     expect(Carte.tailleX, 11);
     expect(Carte.tailleY, 14);
@@ -25,10 +25,12 @@ void main() {
 
   testWidgets('getListePokemonFromXlsPath', (tester) async {
       ListePacomon listePokemon= await Dao.getListePacomonFromXlsPath(xlsPath: "assets/for_tests/database_test.xlsx");
-      Pacomon pikachu = Pacomon(nom: "Pikachu", pathImage: "path_pikachu", rarete: 0.667, atk: 0, def: 0, pv: 0);
-      Pacomon mewtwo = Pacomon(nom: "Mewtwo", pathImage: "path_mewtwo", rarete: 0.333, atk: 0, def: 0, pv: 0);
+      Pacomon pikachu = Pacomon(nom: "Pikachu", pathImage: "path_pikachu", rarete: 0.667, atk: 0, def: 0, pv: 0 ,categorie: "DEBUT");
+      Pacomon mewtwo = Pacomon(nom: "Mewtwo", pathImage: "path_mewtwo", rarete: 0.333, atk: 0, def: 0, pv: 0 ,categorie: "DEBUT");
+      Pacomon dracofeu = Pacomon(nom: "Dracofeu", pathImage: "path_dracofeu", rarete: 1.0, atk: 0, def: 0, pv: 0 ,categorie: "HARD");
 
       expect(listePokemon.getPacomonFromNom("Pikachu"), pikachu);
       expect(listePokemon.getPacomonFromNom("Mewtwo"), mewtwo);
+      expect(listePokemon.getPacomonFromNom("Dracofeu"), dracofeu);
     }); 
 }

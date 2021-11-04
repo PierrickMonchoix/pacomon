@@ -25,24 +25,28 @@ void main() {
 
     ListElementTerrainXlsSheet listElementTerrain = await XlsReader.getListElementTerrainXlsSheet(xlsPath: "assets/for_tests/database_test.xlsx");
 
-    ElementTerrainXls herbe = ElementTerrainXls(id: "HERBE" , pathImage: "path_herbe" , traversable: "OUI" , probaPacomon: "60");
-    ElementTerrainXls sol = ElementTerrainXls(id: "SOL" , pathImage: "path_sol" , traversable: "OUI" , probaPacomon: "0");
-    ElementTerrainXls rocher = ElementTerrainXls(id: "ROCHER" , pathImage: "path_rocher" , traversable: "NON" , probaPacomon: "0");
+    ElementTerrainXls herbe = ElementTerrainXls(id: "HERBE" , pathImage: "path_herbe" , traversable: "OUI" , probaPacomon: "60" ,categorie: "DEBUT");
+    ElementTerrainXls sol = ElementTerrainXls(id: "SOL" , pathImage: "path_sol" , traversable: "OUI" , probaPacomon: "0" , categorie: "DEBUT");
+    ElementTerrainXls rocher = ElementTerrainXls(id: "ROCHER" , pathImage: "path_rocher" , traversable: "NON" , probaPacomon: "0" , categorie: "DEBUT");
+    ElementTerrainXls hautes_herbes = ElementTerrainXls(id: "HAUTE_HERBE" , pathImage: "path_herbe" , traversable: "OUI" , probaPacomon: "50" , categorie: "HARD");
 
     expect(listElementTerrain.list[0], herbe);
     expect(listElementTerrain.list[1], sol);
     expect(listElementTerrain.list[2], rocher);
+    expect(listElementTerrain.list[3], hautes_herbes);
 
   });
 
   testWidgets('getListPokemonXls', (tester) async {  
     ListePacomonXlsSheet listPokemonXlsSheet = await XlsReader.getListePacomonXlsSheet(xlsPath: "assets/for_tests/database_test.xlsx");
 
-    PacomonXls pikachu = PacomonXls(nom: "Pikachu" , pathImage: "path_pikachu" , rarete: "66.7" , atk: "2" , def: "0" , pvMax: "20");
-    PacomonXls mewtwo = PacomonXls(nom: "Mewtwo" , pathImage: "path_mewtwo" , rarete: "33.3" , atk: "20" , def: "100" , pvMax: "200");
+    PacomonXls pikachu = PacomonXls(nom: "Pikachu" , pathImage: "path_pikachu" , rarete: "66.7" , atk: "2" , def: "0" , pvMax: "20", categorie: "DEBUT");
+    PacomonXls mewtwo = PacomonXls(nom: "Mewtwo" , pathImage: "path_mewtwo" , rarete: "33.3" , atk: "20" , def: "100" , pvMax: "200", categorie: "DEBUT");
+    PacomonXls dracofeu = PacomonXls(nom: "Dracofeu" , pathImage: "path_dracofeu" , rarete: "100.0" , atk: "200" , def: "200" , pvMax: "2000", categorie: "HARD");
 
     expect(listPokemonXlsSheet.list[0], pikachu);
     expect(listPokemonXlsSheet.list[1], mewtwo);
+    expect(listPokemonXlsSheet.list[2], dracofeu);
   });
 
 

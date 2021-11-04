@@ -31,14 +31,15 @@ class Dao {
       required String xlsPath}) async {
     ListElementTerrainXlsSheet listElementXls =
         await _getListElementTerrainXlsSheetInstance(xlsPath: xlsPath);
-    try{
-    return listElementXls.list
-        .firstWhere((element) => element.id == idElementTerrainXls.id);
-    }
-    catch(e){
+    try {
+      return listElementXls.list
+          .firstWhere((element) => element.id == idElementTerrainXls.id);
+    } catch (e) {
       print("@@@@@@@@@@@@@@@@ RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n\n");
-      print("Un element de terrain de la carte n'a pas ete trouve dans la liste des elements de terrain.\n");
-      print("Liste de tous les elements de terrain: " + listElementXls.toString());
+      print(
+          "Un element de terrain de la carte n'a pas ete trouve dans la liste des elements de terrain.\n");
+      print("Liste de tous les elements de terrain: " +
+          listElementXls.toString());
       print("\n");
       print("Element qui cause le crash: " + idElementTerrainXls.toString());
       print("\n");
@@ -49,15 +50,15 @@ class Dao {
 
   static ElementTerrain _getElementTerrainFromElementTerrainXls(
       {required ElementTerrainXls elementTerrainXls}) {
-    try{
-    ElementTerrain elementTerrain = ElementTerrain(
-        nom: elementTerrainXls.id,
-        traversable: elementTerrainXls.traversable == "OUI" ? true : false,
-        pathImage: elementTerrainXls.pathImage,
-        probaPacomon: double.parse(elementTerrainXls.probaPacomon) / 100);
-    return elementTerrain;
-    }
-    catch(e){
+    try {
+      ElementTerrain elementTerrain = ElementTerrain(
+          nom: elementTerrainXls.id,
+          traversable: elementTerrainXls.traversable == "OUI" ? true : false,
+          pathImage: elementTerrainXls.pathImage,
+          probaPacomon: double.parse(elementTerrainXls.probaPacomon) / 100,
+          categorie: elementTerrainXls.categorie);
+      return elementTerrain;
+    } catch (e) {
       print("@@@@@@@@@@@@@@@@ RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n\n");
       print("Un element de terrain a ete mal rempli\n");
       print("Element qui cause le crash: " + elementTerrainXls.toString());
@@ -68,17 +69,17 @@ class Dao {
   }
 
   static Pacomon _getPacomonFromPacomonXls({required PacomonXls pacomonXls}) {
-    try{
-  Pacomon pacomon = Pacomon(
-        pv: int.parse( pacomonXls.pvMax ),
-        atk:int.parse(   pacomonXls.atk ),
-        def: int.parse(   pacomonXls.def ),
-        nom: pacomonXls.nom,
-        pathImage: pacomonXls.pathImage,
-        rarete: double.parse(pacomonXls.rarete) / 100);
-    return pacomon;
-    }
-    catch(e){
+    try {
+      Pacomon pacomon = Pacomon(
+          pv: int.parse(pacomonXls.pvMax),
+          atk: int.parse(pacomonXls.atk),
+          def: int.parse(pacomonXls.def),
+          nom: pacomonXls.nom,
+          pathImage: pacomonXls.pathImage,
+          rarete: double.parse(pacomonXls.rarete) / 100,
+          categorie: pacomonXls.categorie);
+      return pacomon;
+    } catch (e) {
       print("@@@@@@@@@@@@@@@@ RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n\n");
       print("Un pacomon a ete mal rempli\n");
       print("Pacomon qui cause le crash: " + pacomonXls.toString());
@@ -87,7 +88,6 @@ class Dao {
       throw e;
     }
   }
-
 
   //PUBLIC :
 

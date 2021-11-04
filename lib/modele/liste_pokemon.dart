@@ -4,13 +4,9 @@ import 'package:pacomon/modele/pacomon.dart';
 
 class ListePacomon {
   List<Pacomon> _listPacomon = [];
-  List<double> _sumListOfRarete = [];
 
   ListePacomon({required List<Pacomon> listPacomon}) : _listPacomon = listPacomon {
-    _sumListOfRarete.add(0.0);
-    for (int i = 0; i < _listPacomon.length ; i++) {
-      _sumListOfRarete.add(_sumListOfRarete[i] + _listPacomon[i].rarete);
-    }
+    
   }
 
 
@@ -18,12 +14,24 @@ class ListePacomon {
     return _listPacomon.firstWhere((element) => element.nom == nomPkmn);
   }
 
-  Pacomon getRandomPacomon(){
+  Pacomon getRandomPacomon(String categorie){
+  print(">>>>>>>>>>>  _listPacomon : " + _listPacomon.toString());
+
+  List<Pacomon>  listPacomonDeLaBonneCategorie = _listPacomon.where((pacomon) => pacomon.categorie == categorie).toList();
+   print(">>>>>>>>>>>  " + categorie.toString());
+   print(">>>>>>>>>>>  _listPacomonDeLaBonneCategorie : " + listPacomonDeLaBonneCategorie.toString());
+   List<double> sumListOfRarete = [];
+   sumListOfRarete.add(0.0);
+    for (int i = 0; i < listPacomonDeLaBonneCategorie.length ; i++) {
+      sumListOfRarete.add(sumListOfRarete[i] + listPacomonDeLaBonneCategorie[i].rarete);
+    }
+
+   
     Random random = Random();
     double randomDouble = random.nextDouble();
-    for (int i = 0; i < _sumListOfRarete.length - 1; i++) {
-      if( _sumListOfRarete[i] <= randomDouble && randomDouble <= _sumListOfRarete[i+1]){
-        return Pacomon.fromOther( _listPacomon[i] );
+    for (int i = 0; i < sumListOfRarete.length - 1; i++) {
+      if( sumListOfRarete[i] <= randomDouble && randomDouble <= sumListOfRarete[i+1]){
+        return Pacomon.fromOther( listPacomonDeLaBonneCategorie[i] );
       }
     }
     throw Exception("getRandomPacomon a echoue");

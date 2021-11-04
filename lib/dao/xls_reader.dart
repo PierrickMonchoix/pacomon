@@ -119,11 +119,19 @@ class XlsReader {
               CaracteristiqueElementTerrainXls.probaPacomon)]
           .value
           .toString();
+      String elementCategorie = excel[ListElementTerrainXlsSheet.nomSheet]!
+          .row(iElem)
+          .toList()[ListElementTerrainXlsSheet.getSheetColonne(
+              CaracteristiqueElementTerrainXls.categorie)]
+          .value
+          .toString();
+
       listElement.add(ElementTerrainXls(
           id: elementNom,
           pathImage: elementCheminImage,
           traversable: elementTraversable,
-          probaPacomon: elementProbaPacomon));
+          probaPacomon: elementProbaPacomon,
+          categorie: elementCategorie));
     }
     return ListElementTerrainXlsSheet(listElement);
   }
@@ -176,13 +184,20 @@ class XlsReader {
               CaracteristiquePacomonXls.pvMax)]
           .value
           .toString();
+      String categorie = excel[ListePacomonXlsSheet.nomSheet]!
+          .row(iPkmn)
+          .toList()[ListePacomonXlsSheet.getSheetColonne(
+              CaracteristiquePacomonXls.categorie)]
+          .value
+          .toString();
       listPacomon.add(PacomonXls(
           nom: nom,
           pathImage: cheminImage,
           rarete: rarete,
           atk: atk,
           def: def,
-          pvMax: pvMax));
+          pvMax: pvMax,
+          categorie: categorie));
     }
     return ListePacomonXlsSheet(listPacomon);
   }

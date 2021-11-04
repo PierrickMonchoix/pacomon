@@ -72,42 +72,51 @@ class Perso extends AUnite {
         ModeleManager.sendOrderEtatJeu(EnumOrdre.DEMARRER_COMBAT);
       }
     }
+    
   }
 
   void marcheHaut() {
     ElementTerrain nextBloc =
         ModeleManager.carte.getElementTerrainFromCoord(y: _y - 1, x: _x);
-    _isPacomonInNextElementTerrain(nextBloc: nextBloc);
     if (nextBloc.traversable) {
       _y--;
+      print("categrorie case : " + nextBloc.toString());
+      _isPacomonInNextElementTerrain(nextBloc: nextBloc);
     }
+    
   }
 
   void marcheBas() {
     ElementTerrain nextBloc =
         ModeleManager.carte.getElementTerrainFromCoord(y: _y + 1, x: _x);
-    _isPacomonInNextElementTerrain(nextBloc: nextBloc);
     if (nextBloc.traversable) {
       _y++;
+      print("categrorie case : " + nextBloc.toString());
+       _isPacomonInNextElementTerrain(nextBloc: nextBloc);
     }
+   
   }
 
   void marcheGauche() {
     ElementTerrain nextBloc =
         ModeleManager.carte.getElementTerrainFromCoord(y: _y, x: _x - 1);
-    _isPacomonInNextElementTerrain(nextBloc: nextBloc);
     if (nextBloc.traversable) {
       _x--;
+      print("categrorie case : " + nextBloc.toString());
+      _isPacomonInNextElementTerrain(nextBloc: nextBloc);
     }
+    
   }
 
   void marcheDroite() {
     ElementTerrain nextBloc =
         ModeleManager.carte.getElementTerrainFromCoord(y: _y, x: _x + 1);
-    _isPacomonInNextElementTerrain(nextBloc: nextBloc);
     if (nextBloc.traversable) {
       _x++;
+      print("categrorie case : " + nextBloc.toString());
+      _isPacomonInNextElementTerrain(nextBloc: nextBloc);
     }
+    
   }
 
   int expNecessaire(){

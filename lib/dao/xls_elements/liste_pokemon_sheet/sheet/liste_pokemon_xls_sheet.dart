@@ -1,7 +1,7 @@
 
 import 'package:pacomon/dao/xls_elements/liste_pokemon_sheet/elements_primaires/pokemon_xls.dart';
 
-enum CaracteristiquePacomonXls { nom, cheminImage, rarete, atk, def, pvMax }
+enum CaracteristiquePacomonXls { nom, cheminImage, rarete, atk, def, pvMax , categorie }
 
 class ListePacomonXlsSheet {
   static const String nomSheet = "pokemon";
@@ -9,10 +9,11 @@ class ListePacomonXlsSheet {
   static const Map<CaracteristiquePacomonXls, int> caracteristiquesMap = {
     CaracteristiquePacomonXls.nom : 0,
     CaracteristiquePacomonXls.cheminImage : 1,
-    CaracteristiquePacomonXls.rarete : 2,
-    CaracteristiquePacomonXls.atk : 3,
-    CaracteristiquePacomonXls.def : 4,
-    CaracteristiquePacomonXls.pvMax :5
+    CaracteristiquePacomonXls.categorie : 2,
+    CaracteristiquePacomonXls.rarete : 3,
+    CaracteristiquePacomonXls.atk : 4,
+    CaracteristiquePacomonXls.def : 5,
+    CaracteristiquePacomonXls.pvMax :6
   };
 
   static int getNombreCaracteristiques() => CaracteristiquePacomonXls.values.length;

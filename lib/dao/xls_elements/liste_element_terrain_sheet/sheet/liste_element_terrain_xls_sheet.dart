@@ -1,6 +1,6 @@
 import 'package:pacomon/dao/xls_elements/liste_element_terrain_sheet/elements_primaires/elements_terrain_xls.dart';
 
-enum CaracteristiqueElementTerrainXls { idElement, cheminImage, traversable, probaPacomon }
+enum CaracteristiqueElementTerrainXls { idElement, cheminImage, traversable, probaPacomon , categorie }
 
 class ListElementTerrainXlsSheet {
   static const String nomSheet = "element_terrain";
@@ -8,8 +8,9 @@ class ListElementTerrainXlsSheet {
   static const Map<CaracteristiqueElementTerrainXls, int> caracteristiquesMap = {
     CaracteristiqueElementTerrainXls.idElement : 0,
     CaracteristiqueElementTerrainXls.cheminImage : 1,
-    CaracteristiqueElementTerrainXls.traversable : 2,
-    CaracteristiqueElementTerrainXls.probaPacomon : 3,
+    CaracteristiqueElementTerrainXls.categorie : 2,
+    CaracteristiqueElementTerrainXls.traversable : 3,
+    CaracteristiqueElementTerrainXls.probaPacomon : 4,
   };
 
   static int getNombreCaracteristiques() => CaracteristiqueElementTerrainXls.values.length;

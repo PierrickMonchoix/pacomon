@@ -5,21 +5,27 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('pokemon get random', (tester) async {
-    Pacomon salameche = Pacomon(nom: "Salameche", pathImage: "path_salameche", rarete: 0.8, atk: 0, def: 0, pv: 0);
-    Pacomon reptincel = Pacomon(nom: "Reptincel", pathImage: "path_reptincel", rarete: 0.2, atk: 0, def: 0, pv: 0);
-    List<Pacomon> listPokemon = [salameche , reptincel];
+    Pacomon salameche = Pacomon(nom: "Salameche", pathImage: "path_salameche", rarete: 1, atk: 0, def: 0, pv: 0 , categorie: "DEBUT");
+    Pacomon rien = Pacomon(nom: "rien", pathImage: "path_rien", rarete: 0, atk: 0, def: 0, pv: 0 , categorie: "DEBUT");
+    Pacomon dracofeu = Pacomon(nom: "Dracofeu", pathImage: "path_dracofeu", rarete: 1, atk: 0, def: 0, pv: 0 ,categorie: "HARD");
+    List<Pacomon> listPokemon = [ rien , salameche , dracofeu];
     ListePacomon listePokemon = ListePacomon(listPacomon: listPokemon);
-    Pacomon pokemonChoisi = listePokemon.getRandomPacomon();
+    Pacomon pokemonChoisi = listePokemon.getRandomPacomon("DEBUT");
+    print("~~~~~~~~~~~~~~~~~~~pokemon :  " + pokemonChoisi.toString());
 
-    expect(pokemonChoisi == salameche || pokemonChoisi == reptincel , true);
-  });
+    expect(pokemonChoisi, salameche);
+
+    pokemonChoisi = listePokemon.getRandomPacomon("HARD");
+    print("~~~~~~~~~~~~~~~~~~~pokemon 2 :  " + pokemonChoisi.toString());
+    expect(pokemonChoisi, dracofeu);
+  }, tags: "t");
 
   testWidgets('get random pkmn from database', (tester) async {
     ListePacomon listePokemon = await Dao.getListePacomonFromXlsPath(xlsPath: "assets/for_tests/database_test.xlsx");
-    Pacomon pokemonChoisi = listePokemon.getRandomPacomon();
+    Pacomon pokemonChoisi = listePokemon.getRandomPacomon("DEBUT");
 
-    Pacomon pikachu = Pacomon(nom: "Pikachu", pathImage: "path_pikachu", rarete: 0.667, atk: 0, def: 0, pv: 0);
-    Pacomon mewtwo = Pacomon(nom: "Mewtwo", pathImage: "path_mewtwo", rarete: 0.333, atk: 0, def: 0, pv: 0);
+    Pacomon pikachu = Pacomon(nom: "Pikachu", pathImage: "path_pikachu", rarete: 0.667, atk: 0, def: 0, pv: 0 , categorie: "DEBUT");
+    Pacomon mewtwo = Pacomon(nom: "Mewtwo", pathImage: "path_mewtwo", rarete: 0.333, atk: 0, def: 0, pv: 0 , categorie: "DEBUT");
 
     expect(pokemonChoisi == pikachu || pokemonChoisi == mewtwo , true);
   });

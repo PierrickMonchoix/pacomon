@@ -1,4 +1,5 @@
 import 'package:pacomon/modele/combat/combat.dart';
+import 'package:pacomon/modele/element_terrain.dart';
 import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/etat_jeu/etat_jeu.dart';
 import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_marche.dart';
@@ -17,7 +18,8 @@ class EtatJeuCombat implements EtatJeu{
 
   @override
   void start() {
-    ModeleManager.combat = Combat(pacomon: ModeleManager.listePokemon.getRandomPacomon());
+    ElementTerrain terrainOuEstHEro = ModeleManager.carte.getElementTerrainFromCoord(y: ModeleManager.perso.y, x: ModeleManager.perso.x);
+    ModeleManager.combat = Combat(pacomon: ModeleManager.listePokemon.getRandomPacomon( terrainOuEstHEro.categorie ));
     ModeleManager.combat.start();
   }
 

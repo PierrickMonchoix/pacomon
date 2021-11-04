@@ -10,6 +10,7 @@ class ElementTerrain {
   String _nom = "NOT_SET";
   bool _traversable = false;
   double _probaPacomon = 0.0;
+  String categorie = "NOT_SET";
 
   ElementTerrain.vide();
 
@@ -19,11 +20,14 @@ class ElementTerrain {
       {required String nom,
       required bool traversable,
       required String pathImage,
-      required double probaPacomon})
+      required double probaPacomon,
+      required String categorie
+      })
       : _nom = nom,
         _traversable = traversable,
         _pathImage = pathImage,
-        _probaPacomon = probaPacomon;
+        _probaPacomon = probaPacomon,
+        categorie = categorie;
 
 /*   void setAll(
       {required String nom,
@@ -57,7 +61,7 @@ class ElementTerrain {
 
   @override
   String toString() {
-    return 'ElementTerrain(_pathImage: $_pathImage, _nom: $_nom, _traversable: $_traversable, _probaPacomon: $_probaPacomon)';
+    return 'ElementTerrain(_pathImage: $_pathImage, _nom: $_nom, _traversable: $_traversable, _probaPacomon: $_probaPacomon, categorie: $categorie)';
   }
 
   @override

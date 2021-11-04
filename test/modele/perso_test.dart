@@ -11,7 +11,7 @@ void main() {
     expect(perso.def, 100);
     expect(perso.pvMax, 132);
 
-  } , tags: "t");
+  } );
 
 
     testWidgets('perso gain exp 2', (tester) async {
@@ -23,5 +23,5 @@ void main() {
     expect(perso.def, 100);
     expect(perso.pvMax, 145);
 
-  } , tags: "t");
+  } );
 }

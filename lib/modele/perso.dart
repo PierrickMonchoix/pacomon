@@ -41,11 +41,11 @@ class Perso extends AUnite {
     attaque1 = Attaque(
         nom: "rien 1", perso: this, effet: (Perso perso, Pacomon pacomon) {});
     attaque2 = Attaque(
-        nom: "rien 1", perso: this, effet: (Perso perso, Pacomon pacomon) {});
+        nom: "rien 2", perso: this, effet: (Perso perso, Pacomon pacomon) {});
     attaque3 = Attaque(
-        nom: "rien 1", perso: this, effet: (Perso perso, Pacomon pacomon) {});
+        nom: "rien 3", perso: this, effet: (Perso perso, Pacomon pacomon) {});
     attaque4 = Attaque(
-        nom: "rien 1", perso: this, effet: (Perso perso, Pacomon pacomon) {});
+        nom: "rien 4", perso: this, effet: (Perso perso, Pacomon pacomon) {});
   }
 
   void attaquerPacomonWithAttaque1(Pacomon pacomon) {
@@ -110,20 +110,21 @@ class Perso extends AUnite {
     }
   }
 
-  int _expNecessaire(){
+  int expNecessaire(){
     return 10 * pow(niveau,2).toInt();
   }
 
   void _gagnerNiveau(){
     niveau ++;
+    pv += pvMax ~/ 10;
     pvMax += pvMax ~/ 10;
     atk += atk ~/ 10;
   }
 
   void gagnerExp(int expGagnee){
     exp += expGagnee;
-    while(exp >= _expNecessaire()){
-      exp -= _expNecessaire();
+    while(exp >= expNecessaire()){
+      exp -= expNecessaire();
       _gagnerNiveau();
     }
   }

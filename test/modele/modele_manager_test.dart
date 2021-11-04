@@ -28,12 +28,12 @@ void main() {
     expect(ModeleManager.etatJeu is EtatJeuMarche, true);
     ModeleManager.sendOrderEtatJeu(EnumOrdre.DEMARRER_COMBAT);
     expect(ModeleManager.etatJeu is EtatJeuCombat, true);
-    ModeleManager.combat.pacomon.FOR_TEST_setAtk(ATK_PCMN);
-    ModeleManager.combat.pacomon.FOR_TEST_setDef(DEF_PCMN);
-    ModeleManager.combat.pacomon.FOR_TEST_setPv(PV_PCMN); 
-    ModeleManager.perso.FOR_TEST_setAtk(ATK_HERO);
-    ModeleManager.perso.FOR_TEST_setDef(DEF_HERO);
-    ModeleManager.perso.FOR_TEST_setPv(PV_HERO); 
+    ModeleManager.combat.pacomon.atk = ATK_PCMN;
+    ModeleManager.combat.pacomon.def = DEF_PCMN;
+    ModeleManager.combat.pacomon.pv = PV_PCMN; 
+    ModeleManager.perso.atk = ATK_HERO;
+    ModeleManager.perso.def = DEF_HERO;
+    ModeleManager.perso.pv = PV_HERO; 
 
     expect(ModeleManager.combat.etatCombat is EtatCombatPacomonApparait, true);
     ModeleManager.sendOrderEtatJeu(EnumOrdre.A);
@@ -57,6 +57,6 @@ void main() {
     ModeleManager.sendOrderEtatJeu(EnumOrdre.A);
     expect(ModeleManager.etatJeu is EtatJeuMarche, true);
 
-  } , tags: "t");
+  });
   
 }

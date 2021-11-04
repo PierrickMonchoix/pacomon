@@ -23,7 +23,7 @@ class ListePacomon {
     double randomDouble = random.nextDouble();
     for (int i = 0; i < _sumListOfRarete.length - 1; i++) {
       if( _sumListOfRarete[i] <= randomDouble && randomDouble <= _sumListOfRarete[i+1]){
-        return _listPacomon[i];
+        return Pacomon.fromOther( _listPacomon[i] );
       }
     }
     throw Exception("getRandomPacomon a echoue");

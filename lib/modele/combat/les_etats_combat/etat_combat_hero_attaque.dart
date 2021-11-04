@@ -8,6 +8,7 @@ import 'package:pacomon/modele/modele_manager.dart';
 class EtatCombatHeroAttaque implements EtatCombat {
   EtatCombatHeroAttaque() {
     print("€€€ enter EtatCombatHeroAttaque");
+    print("attaque 1 name : " + ModeleManager.perso.attaque1.nom);
     print("pv pcmn: " + ModeleManager.combat.pacomon.pv.toString());
   }
 

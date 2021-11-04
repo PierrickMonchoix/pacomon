@@ -12,6 +12,12 @@ import 'package:pacomon/modele/unite.dart';
 
 
 class Perso extends AUnite {
+
+  int niveau = 1;
+  int exp = 0;
+
+
+
   late Attaque attaque1;
   late Attaque attaque2;
   late Attaque attaque3;
@@ -101,6 +107,24 @@ class Perso extends AUnite {
     _isPacomonInNextElementTerrain(nextBloc: nextBloc);
     if (nextBloc.traversable) {
       _x++;
+    }
+  }
+
+  int _expNecessaire(){
+    return 10 * pow(niveau,2).toInt();
+  }
+
+  void _gagnerNiveau(){
+    niveau ++;
+    pvMax += pvMax ~/ 10;
+    atk += atk ~/ 10;
+  }
+
+  void gagnerExp(int expGagnee){
+    exp += expGagnee;
+    while(exp >= _expNecessaire()){
+      exp -= _expNecessaire();
+      _gagnerNiveau();
     }
   }
 }

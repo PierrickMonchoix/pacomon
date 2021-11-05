@@ -6,6 +6,7 @@ class PacomonXls {
   String _def;
   String _pvMax;
   String _categorie;
+  String _exp;
  
 
   String get nom => this._nom;
@@ -15,8 +16,9 @@ class PacomonXls {
   String get def => this._def;
   String get pvMax => this._pvMax;
   String get categorie => this._categorie;
+  String get exp => this._exp;
 
-  PacomonXls({required String nom , required String pathImage , required String rarete , required String atk, required String def, required String pvMax, required String categorie}) : _nom = nom , _pathImage = pathImage , _rarete = rarete , _atk = atk , _def = def, _pvMax = pvMax, _categorie = categorie;
+  PacomonXls({required String exp , required String nom , required String pathImage , required String rarete , required String atk, required String def, required String pvMax, required String categorie}) : _exp = exp , _nom = nom , _pathImage = pathImage , _rarete = rarete , _atk = atk , _def = def, _pvMax = pvMax, _categorie = categorie;
 
   @override
   bool operator ==(Object other) {

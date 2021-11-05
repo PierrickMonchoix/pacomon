@@ -13,15 +13,15 @@ void main() {
     perso.attaque1 = Attaque(nom: "charge" , perso: perso , effet: effetAttaque );
     
 
-    Pacomon pikachu = Pacomon(atk: 12,def: 0, pv: 120, nom: '', pathImage: '', rarete: 0.0 , categorie: "");
+    Pacomon pikachu = Pacomon(atk: 12,def: 0, pv: 120, nom: '', pathImage: '', rarete: 0.0 , categorie: "" , exp: 10);
     perso.attaque1.executeOn(pikachu);
     expect(pikachu.pv, 120 - 10);
 
-    Pacomon raichu = Pacomon(atk: 12,def: 100, pv: 120, nom: '', pathImage: '', rarete: 0.0 , categorie: "");
+    Pacomon raichu = Pacomon(atk: 12,def: 100, pv: 120, nom: '', pathImage: '', rarete: 0.0 , categorie: "" , exp : 10);
     perso.attaque1.executeOn(raichu);
     expect(raichu.pv, 120 - 10~/2); //une defence de 100 reduit de moitie les degats
     
-    Pacomon dracofeu = Pacomon(atk: 12,def: 200, pv: 120, nom: '', pathImage: '', rarete: 0.0 , categorie: "");
+    Pacomon dracofeu = Pacomon(atk: 12,def: 200, pv: 120, nom: '', pathImage: '', rarete: 0.0 , categorie: "" , exp : 100);
     perso.attaque1.executeOn(dracofeu);
     expect(dracofeu.pv, 120 - (10~/2)~/2); //une defence de 100 reduit de moitie les degats
 

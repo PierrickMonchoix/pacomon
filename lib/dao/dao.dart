@@ -77,7 +77,9 @@ class Dao {
           nom: pacomonXls.nom,
           pathImage: pacomonXls.pathImage,
           rarete: double.parse(pacomonXls.rarete) / 100,
-          categorie: pacomonXls.categorie);
+          categorie: pacomonXls.categorie,
+          exp: int.parse( pacomonXls.exp )
+          );
       return pacomon;
     } catch (e) {
       print("@@@@@@@@@@@@@@@@ RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n\n");

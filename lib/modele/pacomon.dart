@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:pacomon/modele/modele_manager.dart';
 import 'package:pacomon/modele/perso.dart';
 import 'package:pacomon/modele/unite.dart';
@@ -12,11 +14,13 @@ class Pacomon extends AUnite {
   String _pathImage = "assets/for_run/image_not_set.png";
   double _rarete = 0.0;
   String _categorie = "NOT_SET";
+  int _exp;
 
   String get nom => this._nom;
   String get pathImage => this._pathImage;
   double get rarete => this._rarete;
   String get categorie => this._categorie;
+  int get exp => this._exp;
 
   //Pokemon.vide();
   Pacomon(
@@ -26,9 +30,12 @@ class Pacomon extends AUnite {
       required int pv,
       required int atk,
       required int def,
-      required String categorie
+      required String categorie,
+      required int exp
       })
-      : _nom = nom,
+      : 
+      _exp = exp,
+      _nom = nom,
         _pathImage = pathImage,
         _rarete = rarete,
         _categorie = categorie,
@@ -39,11 +46,12 @@ class Pacomon extends AUnite {
         _pathImage = pacomon.pathImage,
         _rarete = pacomon.rarete,
         _categorie = pacomon.categorie,
+        _exp = pacomon._exp,
         super(atk: pacomon.atk, def: pacomon.def, pv: pacomon.pv);
 
   @override
   String toString() {
-    return 'Pacomon(_nom: $_nom, _pathImage: $_pathImage, _rarete: $_rarete, _categorie: $_categorie , _pvMax : $pvMax , _atk : $atk , _def : $def )';
+    return 'Pacomon(_nom: $_nom, _pathImage: $_pathImage, _rarete: $_rarete, _categorie: $_categorie , _pvMax : $pvMax , _atk : $atk , _def : $def  , _exp = $_exp)';
   }
 
   void copy(Pacomon base) {

@@ -22,7 +22,7 @@ class EtatCombatHeroGagne implements EtatCombat {
 
   @override
   void start() {
-    ModeleManager.perso.gagnerExp(20);
+    ModeleManager.perso.gagnerExp(ModeleManager.combat.pacomon.exp);
     // TODO: implement start
   }
 

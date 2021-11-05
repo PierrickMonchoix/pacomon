@@ -57,6 +57,48 @@ class XlsReader {
         .toString();
   }
 
+    static Future<String> getAtkBaseHeroXls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B4"))
+        .value
+        .toString();
+  }
+
+      static Future<String> getDefBaseHeroXls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B5"))
+        .value
+        .toString();
+  }
+
+        static Future<String> getPvBaseHeroXls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B6"))
+        .value
+        .toString();
+  }
+
+          static Future<String> getAugmentationStatsParLevelHeroXls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B7"))
+        .value
+        .toString();
+  }
+
+
+
   static Future<CarteXlsSheet> getCarteXls({required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);

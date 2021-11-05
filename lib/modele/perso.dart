@@ -15,8 +15,7 @@ class Perso extends AUnite {
 
   int niveau = 1;
   int exp = 0;
-
-
+  double augmentationStatParNiveau;
 
   late Attaque attaque1;
   late Attaque attaque2;
@@ -34,8 +33,12 @@ class Perso extends AUnite {
       required int y,
       required int pv,
       required int atk,
-      required int def})
-      : _x = x,
+      required int def,
+      required double augmentationStatParNiveau
+      })
+      : 
+      augmentationStatParNiveau = augmentationStatParNiveau,
+      _x = x,
         _y = y,
         super(pv: pv, atk: atk, def: def) {
     attaque1 = Attaque(
@@ -125,9 +128,9 @@ class Perso extends AUnite {
 
   void _gagnerNiveau(){
     niveau ++;
-    pv += pvMax ~/ 10;
-    pvMax += pvMax ~/ 10;
-    atk += atk ~/ 10;
+    pv += (pvMax / augmentationStatParNiveau).floor();
+    pvMax += (pvMax / augmentationStatParNiveau).floor();
+    atk += (atk / augmentationStatParNiveau).floor();
   }
 
   void gagnerExp(int expGagnee){

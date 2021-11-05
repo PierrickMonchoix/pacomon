@@ -39,12 +39,14 @@ class ModeleManager implements IOListener{
 
 
   static Future<void> initialize() async {
+    String xlsPath = "assets/for_alex/database_run.xlsx";
     
     
-    _carte = await Dao.getCarteFromXlsPath(xlsPath: "assets/for_alex/database_run.xlsx"); 
-    _listePokemon = await Dao.getListePacomonFromXlsPath(xlsPath: "assets/for_alex/database_run.xlsx");
-    _perso = Perso(x: await Dao.getXSpawnHero(xlsPath: "assets/for_alex/database_run.xlsx") , y: await Dao.getYSpawnHero(xlsPath: "assets/for_alex/database_run.xlsx"),
-    pv: 1000000, atk: 10000 , def: 10000);
+    _carte = await Dao.getCarteFromXlsPath(xlsPath: xlsPath); 
+    _listePokemon = await Dao.getListePacomonFromXlsPath(xlsPath: xlsPath);
+    _perso = Perso(x: await Dao.getXSpawnHero(xlsPath: xlsPath) , y: await Dao.getYSpawnHero(xlsPath: xlsPath),
+    augmentationStatParNiveau: await Dao.getAugmentationStatsParLevelHero(xlsPath: xlsPath),
+    pv: await Dao.getPvBaseHero(xlsPath: xlsPath), atk: await Dao.getAtkBaseHero(xlsPath: xlsPath) , def: await Dao.getDefBaseHero(xlsPath: xlsPath));
     _perso.attaque1 = Attaque(nom: "charge" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { pacomon.recevoirDegatsNet(perso.atk); });
     etatJeu.start();
   }

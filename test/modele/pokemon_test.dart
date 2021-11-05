@@ -24,8 +24,8 @@ void main() {
     ListePacomon listePokemon = await Dao.getListePacomonFromXlsPath(xlsPath: "assets/for_tests/database_test.xlsx");
     Pacomon pokemonChoisi = listePokemon.getRandomPacomon("DEBUT");
 
-    Pacomon pikachu = Pacomon(nom: "Pikachu", pathImage: "path_pikachu", rarete: 0.667, atk: 0, def: 0, pv: 0 , categorie: "DEBUT");
-    Pacomon mewtwo = Pacomon(nom: "Mewtwo", pathImage: "path_mewtwo", rarete: 0.333, atk: 0, def: 0, pv: 0 , categorie: "DEBUT");
+    Pacomon pikachu = Pacomon(nom: "Pikachu", pathImage: "path_pikachu", rarete: 0.667, atk: 2, def: 0, pv: 20 , categorie: "DEBUT");
+    Pacomon mewtwo = Pacomon(nom: "Mewtwo", pathImage: "path_mewtwo", rarete: 0.333, atk: 20, def: 100, pv: 200 , categorie: "DEBUT");
 
     expect(pokemonChoisi == pikachu || pokemonChoisi == mewtwo , true);
   });

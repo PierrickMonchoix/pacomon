@@ -43,7 +43,7 @@ class Pacomon extends AUnite {
 
   @override
   String toString() {
-    return 'Pacomon(_nom: $_nom, _pathImage: $_pathImage, _rarete: $_rarete, _categorie: $_categorie)';
+    return 'Pacomon(_nom: $_nom, _pathImage: $_pathImage, _rarete: $_rarete, _categorie: $_categorie , _pvMax : $pvMax , _atk : $atk , _def : $def )';
   }
 
   void copy(Pacomon base) {
@@ -60,7 +60,10 @@ class Pacomon extends AUnite {
       other._nom == _nom &&
       other._pathImage == _pathImage &&
       (other._rarete - _rarete).abs() < ModeleManager.epsilonProbas &&
-      other._categorie == _categorie;
+      other._categorie == _categorie &&
+      other.def == def &&
+      other.pvMax == pvMax &&
+      other.atk == atk  ;
   }
 
   @override

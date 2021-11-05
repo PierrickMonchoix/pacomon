@@ -113,6 +113,23 @@ class Dao {
     return int.parse(await XlsReader.getYSpawnHeroXls(xlsPath: xlsPath));
   }
 
+  static Future<int> getAtkBaseHero({required String xlsPath}) async {
+    return int.parse(await XlsReader.getAtkBaseHeroXls(xlsPath: xlsPath));
+  }
+  
+    static Future<int> getDefBaseHero({required String xlsPath}) async {
+    return int.parse(await XlsReader.getDefBaseHeroXls(xlsPath: xlsPath));
+  }
+
+      static Future<int> getPvBaseHero({required String xlsPath}) async {
+    return int.parse(await XlsReader.getPvBaseHeroXls(xlsPath: xlsPath));
+  }
+
+    static Future<double> getAugmentationStatsParLevelHero({required String xlsPath}) async {
+    return double.parse(await XlsReader.getAugmentationStatsParLevelHeroXls(xlsPath: xlsPath));
+  }
+
+
   static Future<Carte> getCarteFromXlsPath({required String xlsPath}) async {
     CarteXlsSheet carteXls = await XlsReader.getCarteXls(xlsPath: xlsPath);
     Carte.tailleX = await getTailleXCarteModele(xlsPath: xlsPath);

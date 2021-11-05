@@ -5,7 +5,7 @@ import 'package:pacomon/modele/perso.dart';
 
 void main() {
   testWidgets('attaque', (tester) async {
-    Perso perso = Perso(x: 0,y: 0 , atk: 10 ,def: 100, pv: 120);
+    Perso perso = Perso(x: 0,y: 0 , atk: 10 ,def: 100, pv: 120 ,augmentationStatParNiveau: 10.0);
     
     void Function(Perso perso , Pacomon pacomon) effetAttaque =  (Perso perso , Pacomon pacomon){
       pacomon.recevoirDegatsNet(perso.atk); // 10

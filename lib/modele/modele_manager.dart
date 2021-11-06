@@ -48,6 +48,10 @@ class ModeleManager implements IOListener{
     augmentationStatParNiveau: await Dao.getAugmentationStatsParLevelHero(xlsPath: xlsPath),
     pv: await Dao.getPvBaseHero(xlsPath: xlsPath), atk: await Dao.getAtkBaseHero(xlsPath: xlsPath) , def: await Dao.getDefBaseHero(xlsPath: xlsPath));
     _perso.attaque1 = Attaque(nom: "charge" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { pacomon.recevoirDegatsNet(perso.atk); });
+    _perso.attaque2 = Attaque(nom: "metoibien" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { perso.recevoirSoin(perso.pvMax~/2); });
+    _perso.attaque3 = Attaque(nom: "grozieu" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { pacomon.perdreDef(100); });
+    _perso.attaque4 = Attaque(nom: "gro caillou" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { perso.def += 100; });
+
     etatJeu.start();
   }
 

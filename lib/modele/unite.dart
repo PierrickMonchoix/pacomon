@@ -19,4 +19,18 @@ abstract class AUnite{
     }
   }
 
+  void recevoirSoin(int soin){
+    pv += soin;
+    if(pv>pvMax){
+      pv = pvMax;
+    }
+  }
+
+  void perdreDef(int malus){
+    def -= malus;
+    if(def < 0){
+      def = 0;
+    }
+  }
+
 }

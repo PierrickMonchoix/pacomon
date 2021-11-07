@@ -1,6 +1,7 @@
 import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/etat_jeu/etat_jeu.dart';
 import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_combat.dart';
+import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_stats.dart';
 import 'package:pacomon/modele/modele_manager.dart';
 
 class EtatJeuMarche implements EtatJeu {
@@ -18,6 +19,10 @@ class EtatJeuMarche implements EtatJeu {
         break;
       case EnumOrdre.DROITE:
         ModeleManager.perso.marcheDroite();
+        break;
+        case EnumOrdre.Y:
+        ModeleManager.etatJeu = EtatJeuStats();
+        ModeleManager.etatJeu.start();
         break;
       case EnumOrdre.DEMARRER_COMBAT:
         ModeleManager.etatJeu = EtatJeuCombat();  

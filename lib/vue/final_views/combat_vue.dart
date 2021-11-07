@@ -7,10 +7,10 @@ class CombatVue extends StatefulWidget {
   CombatVue({Key? key}) : super(key: key);
 
   @override
-  _CarteEtHeroVueState createState() => _CarteEtHeroVueState();
+  _CombatVueState createState() => _CombatVueState();
 }
 
-class _CarteEtHeroVueState extends State<CombatVue> {
+class _CombatVueState extends State<CombatVue> {
   @override
   Widget build(BuildContext context) {
     double coef = GlobalManager.widthScreen;

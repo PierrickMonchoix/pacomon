@@ -41,13 +41,13 @@ class Perso extends AUnite {
       _x = x,
         _y = y,
         super(pv: pv, atk: atk, def: def) {
-    attaque1 = Attaque(
+    attaque1 = Attaque(description: "rien",
         nom: "rien 1", perso: this, effet: (Perso perso, Pacomon pacomon) {});
-    attaque2 = Attaque(
+    attaque2 = Attaque(description: "rien",
         nom: "rien 2", perso: this, effet: (Perso perso, Pacomon pacomon) {});
-    attaque3 = Attaque(
+    attaque3 = Attaque(description: "rien",
         nom: "rien 3", perso: this, effet: (Perso perso, Pacomon pacomon) {});
-    attaque4 = Attaque(
+    attaque4 = Attaque(description: "rien",
         nom: "rien 4", perso: this, effet: (Perso perso, Pacomon pacomon) {});
   }
 

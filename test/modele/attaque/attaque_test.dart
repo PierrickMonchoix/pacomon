@@ -10,7 +10,7 @@ void main() {
     void Function(Perso perso , Pacomon pacomon) effetAttaque =  (Perso perso , Pacomon pacomon){
       pacomon.recevoirDegatsNet(perso.atk); // 10
     };
-    perso.attaque1 = Attaque(nom: "charge" , perso: perso , effet: effetAttaque );
+    perso.attaque1 = Attaque(nom: "charge" , perso: perso , effet: effetAttaque ,description: "" );
     
 
     Pacomon pikachu = Pacomon(atk: 12,def: 0, pv: 120, nom: '', pathImage: '', rarete: 0.0 , categorie: "" , exp: 10);

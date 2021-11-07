@@ -47,10 +47,10 @@ class ModeleManager implements IOListener{
     _perso = Perso(x: await Dao.getXSpawnHero(xlsPath: xlsPath) , y: await Dao.getYSpawnHero(xlsPath: xlsPath),
     augmentationStatParNiveau: await Dao.getAugmentationStatsParLevelHero(xlsPath: xlsPath),
     pv: await Dao.getPvBaseHero(xlsPath: xlsPath), atk: await Dao.getAtkBaseHero(xlsPath: xlsPath) , def: await Dao.getDefBaseHero(xlsPath: xlsPath));
-    _perso.attaque1 = Attaque(nom: "charge" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { pacomon.recevoirDegatsNet(perso.atk); });
-    _perso.attaque2 = Attaque(nom: "metoibien" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { perso.recevoirSoin(perso.pvMax~/2); });
-    _perso.attaque3 = Attaque(nom: "grozieu" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { pacomon.perdreDef(100); });
-    _perso.attaque4 = Attaque(nom: "gro caillou" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { perso.def += 100; });
+    _perso.attaque1 = Attaque(description: "Inflige votre atk au pacomon adverse", nom: "charge" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { pacomon.recevoirDegatsNet(perso.atk); });
+    _perso.attaque2 = Attaque(description: "Vous heal de 50% de vos PV max", nom: "metoibien" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { perso.recevoirSoin(perso.pvMax~/2); });
+    _perso.attaque3 = Attaque(description: "Réduit de 100 la défence adverse", nom: "grozieu" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { pacomon.perdreDef(100); });
+    _perso.attaque4 = Attaque(description: "Augmente de 100 votre défence ",nom: "gro caillou" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { perso.def += 100; });
 
     etatJeu.start();
   }

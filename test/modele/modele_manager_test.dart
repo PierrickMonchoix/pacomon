@@ -15,7 +15,7 @@ import 'package:pacomon/modele/perso.dart';
 void main() {
   testWidgets('pop du combat', (tester) async {
     await ModeleManager.initialize();
-    ModeleManager.perso.attaque1 = Attaque(nom: "charge" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { pacomon.recevoirDegatsNet(perso.atk); });
+    ModeleManager.perso.attaque1 = Attaque(description: "", nom: "charge" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { pacomon.recevoirDegatsNet(perso.atk); });
 
     int ATK_PCMN = 30;
     int DEF_PCMN = 0;

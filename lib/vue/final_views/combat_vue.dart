@@ -1,5 +1,7 @@
 import 'package:pacomon/global_manager.dart';
+import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_choisir_action.dart';
 import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_choisir_attaque.dart';
+import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_pacomon_apparait.dart';
 import 'package:pacomon/modele/modele_manager.dart';
 import 'package:flutter/material.dart';
 
@@ -79,6 +81,41 @@ class _CombatVueState extends State<CombatVue> {
             width: 0.45 * coef,
             right: 0.15 * coef,
             top: 0.65* coef,
+          ),
+          !(ModeleManager.combat.etatCombat is EtatCombatChoisirAction) ? Container(): Positioned(
+            child: Container(
+                constraints: BoxConstraints.expand(),
+                child: Center(child: Text("ATTAQUER")),
+                decoration:  BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    border: Border.all(
+                      color: Colors.red,
+                      width: 8,
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.white) ),
+            height: 0.27 * coef,
+            width: 0.75 * coef,
+            top: 0.73*coef,
+            left: 0.0,
+          ),
+          !(ModeleManager.combat.etatCombat is EtatCombatPacomonApparait) ? Container(): Positioned(
+            child: Container(
+                constraints: BoxConstraints.expand(),
+                decoration:  BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 8,
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.white),
+                child: Center(child: Text("Un " + ModeleManager.combat.pacomon.nom + " sauvage apparait !")),
+                 ),
+            height: 0.27 * coef,
+            width: 0.75 * coef,
+            top: 0.73*coef,
+            left: 0.0,
           ),
           !(ModeleManager.combat.etatCombat is EtatCombatChoisirAttaque) ? Container(): Positioned(
             child: Container(

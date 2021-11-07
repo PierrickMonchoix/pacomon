@@ -1,4 +1,5 @@
 import 'package:pacomon/modele/combat/etat_combat.dart';
+import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_choisir_action.dart';
 import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_hero_attaque.dart';
 import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/modele_manager.dart';
@@ -12,9 +13,11 @@ class EtatCombatChoisirAttaque implements EtatCombat {
   @override
   void whenOrder(EnumOrdre ordre) {
     switch (ordre) {
-      
       case EnumOrdre.A:
-        ModeleManager.setAndStartEtatCombat( EtatCombatHeroAttaque() );
+        ModeleManager.setAndStartEtatCombat(EtatCombatHeroAttaque());
+        break;
+      case EnumOrdre.B:
+        ModeleManager.setAndStartEtatCombat(EtatCombatChoisirAction());
         break;
       case EnumOrdre.HAUT:
         ModeleManager.combat.selectAttaqueHaut();
@@ -31,7 +34,6 @@ class EtatCombatChoisirAttaque implements EtatCombat {
       default:
     }
   }
-
 
   @override
   String toString() {

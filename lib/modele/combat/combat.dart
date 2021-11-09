@@ -21,34 +21,37 @@ class Combat {
   late int reserveVitessePacomon;
   late int reserveVitesseHero;
 
-  Combat({bool connecteAuModele_ = false , required Pacomon pacomon , required Perso hero}) : _pacomon = pacomon , hero = hero {
+  Combat(
+      {bool connecteAuModele_ = false,
+      required Pacomon pacomon,
+      required Perso hero})
+      : _pacomon = pacomon,
+        hero = hero {
     reserveVitesseHero = hero.vit;
     reserveVitessePacomon = pacomon.vit;
     connecteAuModele = connecteAuModele_;
-    if( ! connecteAuModele){
+    if (!connecteAuModele) {
       print("ATTENTION : COMBAT NON CONTECTE AU MODEL");
     }
   }
 
-  void finCombat(){
+  void finCombat() {
     print("####### fin du combat");
-    if(connecteAuModele){
+    if (connecteAuModele) {
       print("####### fin du combat connecteAuModele");
       ModeleManager.sendOrderEtatJeu(EnumOrdre.FIN_COMBAT);
-    }
-    else{
+    } else {
       TestManager.dernierOrdre = EnumOrdre.FIN_COMBAT;
     }
   }
-  
+
   void start() {
     etatCombat = EtatCombatPacomonApparait(combat: this);
   }
 
-  void whenOrder({required EnumOrdre ordre}){
+  void whenOrder({required EnumOrdre ordre}) {
     etatCombat.whenOrder(ordre);
   }
-
 
   bool isTourHero() {
     int faibleVitesse = min(hero.vit, pacomon.vit);
@@ -58,42 +61,43 @@ class Combat {
       reserveVitessePacomon += pacomon.vit;
     }
 
-    if(reserveVitesseHero >= reserveVitessePacomon ){
+    if (reserveVitesseHero >= reserveVitessePacomon) {
       reserveVitesseHero -= faibleVitesse;
       return true;
-    }
-    else{
+    } else {
       reserveVitessePacomon -= faibleVitesse;
       return false;
     }
   }
 
- 
-
-  void setAndStartEtatCombat(EtatCombat newEtatCombat){
+  void setAndStartEtatCombat(EtatCombat newEtatCombat) {
     etatCombat = newEtatCombat;
     etatCombat.start();
   }
 
-
-
   void heroAttaquePacomon() {
-    switch (attaqueSelected) {
-      case 1:
-        hero.attaquerPacomonWithAttaque1(_pacomon);
-        break;
-      case 2:
-        hero.attaquerPacomonWithAttaque2(_pacomon);
-        break;
-      case 3:
-        hero.attaquerPacomonWithAttaque3(_pacomon);
-        break;
-      case 4:
-        hero.attaquerPacomonWithAttaque4(_pacomon);
-        break;
-      default:
+    if (hero.plusDePp()) {
+      hero.lutte.executeOn(_pacomon);
+    } else {
+      switch (attaqueSelected) {
+        case 1:
+          hero.attaquerPacomonWithAttaque1(_pacomon);
+          break;
+        case 2:
+          hero.attaquerPacomonWithAttaque2(_pacomon);
+          break;
+        case 3:
+          hero.attaquerPacomonWithAttaque3(_pacomon);
+          break;
+        case 4:
+          hero.attaquerPacomonWithAttaque4(_pacomon);
+          break;
+        default:
+      }
     }
   }
+
+  void heroAttaquePacomonAvecLutte() {}
 
   void pacomonAttaqueHero() {
     pacomon.attaquerPerso(hero);

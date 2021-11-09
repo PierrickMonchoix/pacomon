@@ -274,7 +274,7 @@ void main() {
 
   }, tags: "t"); 
 
-   testWidgets('combat termine', (tester) async {
+   testWidgets('herop lutte sans pp', (tester) async {
     Perso hero = Perso(
         atk: 10000,
         augmentationStatParNiveau: 0,
@@ -316,6 +316,83 @@ void main() {
     combat.whenOrder(ordre: EnumOrdre.A);
 
     expect(TestManager.dernierOrdre, EnumOrdre.FIN_COMBAT);
+
+
+
+
+  }, tags: "t"); 
+
+    testWidgets('combat termine', (tester) async {
+    int PV_PCMN_20 = 20;
+
+    Perso hero = Perso(
+        atk: 10000,
+        augmentationStatParNiveau: 0,
+        def: 1000,
+        pv: 1000,
+        vit: 1000,
+        x: 0,
+        y: 0);
+    hero.attaque1 = Attaque(
+      hero: hero,
+      ppMax: 0,
+      nom: "rien",
+      description: "attaque rien",
+      effet: (Perso perso, Pacomon pacomon) {pacomon.recevoirDegatsNet(perso.atk);},
+    );
+    hero.attaque2 = Attaque(
+      hero: hero,
+      ppMax: 0,
+      nom: "rien",
+      description: "attaque rien",
+      effet: (Perso perso, Pacomon pacomon) {pacomon.recevoirDegatsNet(perso.atk);},
+    );
+    hero.attaque3 = Attaque(
+      hero: hero,
+      ppMax: 0,
+      nom: "rien",
+      description: "attaque rien",
+      effet: (Perso perso, Pacomon pacomon) {pacomon.recevoirDegatsNet(perso.atk);},
+    );
+    hero.attaque4 = Attaque(
+      hero: hero,
+      ppMax: 0,
+      nom: "rien",
+      description: "attaque rien",
+      effet: (Perso perso, Pacomon pacomon) {pacomon.recevoirDegatsNet(perso.atk);},
+    );
+    hero.lutte = Attaque(
+      hero: hero,
+      ppMax: 0,
+      nom: "lutte",
+      description: "hero lutte",
+      effet: (Perso perso, Pacomon pacomon) {pacomon.recevoirDegatsBrut(1);},
+    );
+
+    Pacomon pacomon = Pacomon(
+        atk: 0,
+        categorie: '',
+        def: 0,
+        exp: 0,
+        nom: '',
+        pathImage: '',
+        pv: PV_PCMN_20,
+        rarete: 0,
+        vit: 1);
+    Combat combat = Combat(hero: hero, pacomon: pacomon);
+    combat.start();
+    expect(combat.etatCombat, TypeMatcher<EtatCombatPacomonApparait>());
+    combat.whenOrder(ordre: EnumOrdre.A);
+    // a qui le tour    combat.whenOrder(ordre: EnumOrdre.A);
+    expect(combat.etatCombat, TypeMatcher<EtatCombatChoisirAction>());
+    combat.whenOrder(ordre: EnumOrdre.A);
+    expect(combat.etatCombat, TypeMatcher<EtatCombatChoisirAttaque>());
+    combat.whenOrder(ordre: EnumOrdre.A);
+    expect(combat.etatCombat, TypeMatcher<EtatCombatHeroVaAttaquer>());
+    expect(combat.pacomon.pv, PV_PCMN_20 );
+    combat.whenOrder(ordre: EnumOrdre.A);
+    expect(combat.pacomon.pv, PV_PCMN_20 - 1);
+    
 
 
 

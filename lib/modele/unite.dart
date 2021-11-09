@@ -18,7 +18,11 @@ abstract class AUnite{
     double doubleDegatsNet =  degats.toDouble()*pow(0.5, def.toDouble()/100.0);
     int intDegatsNetMayBeZero = doubleDegatsNet.floor();
     int intDegatsNetNotZero = intDegatsNetMayBeZero!=0 ? intDegatsNetMayBeZero : 1;
-    pv -= intDegatsNetNotZero;
+    recevoirDegatsBrut(intDegatsNetNotZero);
+  }
+
+  void recevoirDegatsBrut(int degats){
+    pv -= degats;
     if(pv < 0){
       pv = 0;
     }

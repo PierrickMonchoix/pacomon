@@ -45,6 +45,8 @@ class ModeleManager implements IOListener{
     hero.attaque2 = Attaque(ppMax: 12, description: "Vous heal de 50% de vos PV max", nom: "metoibien" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { perso.recevoirSoin(perso.pvMax~/2); });
     hero.attaque3 = Attaque(ppMax: 12, description: "Réduit de 100 la défence adverse", nom: "grozieu" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { pacomon.perdreDef(100); });
     hero.attaque4 = Attaque(ppMax: 12, description: "Augmente de 100 votre défence ",nom: "gro caillou" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { perso.def += 100; });
+    hero.lutte = Attaque(ppMax: 0 , description: "inflige 1 de degat" , nom: "lutte" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { pacomon.recevoirDegatsBrut(1); });
+
 
     etatJeu.start();
   }

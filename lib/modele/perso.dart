@@ -21,6 +21,7 @@ class Perso extends AUnite {
   late Attaque attaque2;
   late Attaque attaque3;
   late Attaque attaque4;
+  late Attaque lutte;
 
   int _x;
   int _y;
@@ -128,5 +129,9 @@ class Perso extends AUnite {
       exp -= expNecessaire();
       _gagnerNiveau();
     }
+  }
+
+  bool plusDePp(){
+    return(attaque1.pp == 0 && attaque2.pp == 0 && attaque3.pp == 0 && attaque4.pp == 0);
   }
 }

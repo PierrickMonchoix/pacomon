@@ -1,22 +1,35 @@
 import 'package:pacomon/modele/pacomon.dart';
 import 'package:pacomon/modele/perso.dart';
 
-class Attaque{
-
+class Attaque {
   String nom;
   Perso perso;
   String description;
   int PpMAx;
   int pp;
+  bool infinitePp;
 
-  void Function(Perso hero , Pacomon pacomon) effet;
+  void Function(Perso hero, Pacomon pacomon) effet;
 
-  Attaque({ required int ppMax , required String description , required Perso hero , required String nom , required void Function(Perso perso , Pacomon pacomon) effet}) : perso = hero , nom = nom  , effet = effet , description = description , pp = ppMax , PpMAx = ppMax;
-  
+  Attaque(
+      {bool infinitePp_ = false,
+      required int ppMax,
+      required String description,
+      required Perso hero,
+      required String nom,
+      required void Function(Perso perso, Pacomon pacomon) effet})
+      : perso = hero,
+        nom = nom,
+        effet = effet,
+        description = description,
+        pp = ppMax,
+        PpMAx = ppMax,
+        infinitePp = infinitePp_;
 
-  void executeOn(Pacomon pacomon){
-    effet(perso,pacomon);
-    pp --;
+  void executeOn(Pacomon pacomon) {
+    effet(perso, pacomon);
+    if (!infinitePp) {
+      pp--;
+    }
   }
-
 }

@@ -25,6 +25,11 @@ class Perso extends AUnite {
   late Attaque attaque4;
   late Attaque lutte;
 
+  int basePvMax;
+  int baseAtk;
+  int baseDef;
+  int baseVit;
+
   int _x;
   int _y;
 
@@ -43,9 +48,22 @@ class Perso extends AUnite {
       })
       : 
       augmentationStatParNiveau = augmentationStatParNiveau,
+      basePvMax = pv,
+      baseAtk = atk,
+      baseDef = def,
+      baseVit = vit,
+
       _x = x,
         _y = y,
         super(pv: pv, atk: atk, def: def, vit: vit) ;
+
+  
+  void resetStats(){
+    pvMax = basePvMax;
+    atk = baseAtk;
+    def = baseDef;
+    vit = baseVit;
+  }
 
   void attaquerPacomonWithAttaque1(Pacomon pacomon) {
     attaque1.executeOn(pacomon);
@@ -158,7 +176,7 @@ class Perso extends AUnite {
     List<ElementTerrain> listElementTerrain = [blocHaut , blocBas , blocGauche , blocDroit];
     for (ElementTerrain elem in listElementTerrain) {
       if(elem.interaction == EnumIntercationElementTerrain.CENTRE_PACOMON){
-        ModeleManager.interaction = Interaction(phraseAcceuil: "Vous allez être soigné" , effet: (){guerison();});
+        ModeleManager.interaction = Interaction(phraseAcceuil: "Vous avez été soigné !" , effet: (){guerison();});
         ModeleManager.etatJeu.whenOrder(EnumOrdre.INTERAGIR);
       }
     }

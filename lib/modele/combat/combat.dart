@@ -37,6 +37,7 @@ class Combat {
 
   void finCombat() {
     print("####### fin du combat");
+    hero.resetStats();
     if (connecteAuModele) {
       print("####### fin du combat connecteAuModele");
       ModeleManager.sendOrderEtatJeu(EnumOrdre.FIN_COMBAT);

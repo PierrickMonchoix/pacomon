@@ -27,7 +27,14 @@ class _TexteInteractionVueState extends State<TexteInteractionVue> {
   Widget build(BuildContext context) {
     double coef = GlobalManager.widthScreen;
     return Positioned(
-      child: Text(ModeleManager.interaction.phraseAcceuil),
+      child: Container(constraints: BoxConstraints.expand(), decoration:  BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 8,
+                    ),
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.white), child: Center(child : Text(ModeleManager.interaction.phraseAcceuil))),
       height: 0.2*coef, 
       width: coef,
       bottom: 0.0,

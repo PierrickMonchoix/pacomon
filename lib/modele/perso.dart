@@ -123,6 +123,7 @@ class Perso extends AUnite {
     pv += (pvMax / augmentationStatParNiveau).floor();
     pvMax += (pvMax / augmentationStatParNiveau).floor();
     atk += (atk / augmentationStatParNiveau).floor();
+    vit += (vit / augmentationStatParNiveau).floor(); 
   }
 
   void gagnerExp(int expGagnee){

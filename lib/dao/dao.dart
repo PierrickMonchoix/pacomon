@@ -143,6 +143,26 @@ class Dao {
     return double.parse(await XlsReader.getAugmentationStatsParLevelHeroXls(xlsPath: xlsPath));
   }
 
+      static Future<int> getVitBaseHero({required String xlsPath}) async {
+    return int.parse(await XlsReader.getVitBaseHeroXls(xlsPath: xlsPath));
+  }
+
+      static Future<int> getPpAttaque1({required String xlsPath}) async {
+    return int.parse(await XlsReader.getPpAttaque1Xls(xlsPath: xlsPath));
+  }
+
+        static Future<int> getPpAttaque2({required String xlsPath}) async {
+    return int.parse(await XlsReader.getPpAttaque2Xls(xlsPath: xlsPath));
+  }
+
+        static Future<int> getPpAttaque3({required String xlsPath}) async {
+    return int.parse(await XlsReader.getPpAttaque3Xls(xlsPath: xlsPath));
+  }
+
+        static Future<int> getPpAttaque4({required String xlsPath}) async {
+    return int.parse(await XlsReader.getPpAttaque4Xls(xlsPath: xlsPath));
+  }
+
 
   static Future<Carte> getCarteFromXlsPath({required String xlsPath}) async {
     CarteXlsSheet carteXls = await XlsReader.getCarteXls(xlsPath: xlsPath);

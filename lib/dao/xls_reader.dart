@@ -87,7 +87,7 @@ class XlsReader {
         .toString();
   }
 
-          static Future<String> getAugmentationStatsParLevelHeroXls({required String xlsPath}) async {
+          static Future<String> getVitBaseHeroXls({required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
@@ -96,6 +96,57 @@ class XlsReader {
         .value
         .toString();
   }
+
+  static Future<String> getAugmentationStatsParLevelHeroXls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B8"))
+        .value
+        .toString();
+  }
+
+  static Future<String> getPpAttaque1Xls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B9"))
+        .value
+        .toString();
+  }
+
+    static Future<String> getPpAttaque2Xls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B10"))
+        .value
+        .toString();
+  }
+
+    static Future<String> getPpAttaque3Xls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B11"))
+        .value
+        .toString();
+  }
+
+    static Future<String> getPpAttaque4Xls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B12"))
+        .value
+        .toString();
+  }
+
 
 
 

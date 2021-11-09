@@ -44,34 +44,39 @@ class _StatsVueState extends State<StatsVue> {
             top: 0.25 * coef,
             left: 0.0 * coef,
           ),
-          Positioned(
-            child: Text("Note: Gagner 100 de défence réduit de 50% les dégats reçus" ),
+           Positioned(
+            child: Text("Vit : " + ModeleManager.hero.vit.toString()),
             top: 0.30 * coef,
             left: 0.0 * coef,
           ),
           Positioned(
+            child: Text("Note: Gagner 100 de défence réduit de 50% les dégats reçus" ),
+            top: 0.35 * coef,
+            left: 0.0 * coef,
+          ),
+          Positioned(
             child: Text("          ATTAQUES : "),
-            top: 0.40 * coef,
+            top: 0.45 * coef,
             left: 0.0 * coef,
           ),
           Positioned(
             child: Text(ModeleManager.hero.attaque1.nom + " ( " + ModeleManager.hero.attaque1.pp.toString() + "/" + ModeleManager.hero.attaque1.ppMax.toString() + " ) " + " : " + ModeleManager.hero.attaque1.description ),
-            top: 0.50 * coef,
-            left: 0.0 * coef,
-          ),
-          Positioned(
-            child: Text(ModeleManager.hero.attaque2.nom + " ( " + ModeleManager.hero.attaque2.pp.toString() + "/" + ModeleManager.hero.attaque2.ppMax.toString() + " ) " + " : " + ModeleManager.hero.attaque2.description ),
             top: 0.55 * coef,
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text(ModeleManager.hero.attaque3.nom + " ( " + ModeleManager.hero.attaque3.pp.toString() + "/" + ModeleManager.hero.attaque3.ppMax.toString() + " ) " + " : " + ModeleManager.hero.attaque3.description ),
+            child: Text(ModeleManager.hero.attaque2.nom + " ( " + ModeleManager.hero.attaque2.pp.toString() + "/" + ModeleManager.hero.attaque2.ppMax.toString() + " ) " + " : " + ModeleManager.hero.attaque2.description ),
             top: 0.60 * coef,
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text(ModeleManager.hero.attaque4.nom + " ( " + ModeleManager.hero.attaque4.pp.toString() + "/" + ModeleManager.hero.attaque4.ppMax.toString() + " ) " + " : " + ModeleManager.hero.attaque4.description ),
+            child: Text(ModeleManager.hero.attaque3.nom + " ( " + ModeleManager.hero.attaque3.pp.toString() + "/" + ModeleManager.hero.attaque3.ppMax.toString() + " ) " + " : " + ModeleManager.hero.attaque3.description ),
             top: 0.65 * coef,
+            left: 0.0 * coef,
+          ),
+          Positioned(
+            child: Text(ModeleManager.hero.attaque4.nom + " ( " + ModeleManager.hero.attaque4.pp.toString() + "/" + ModeleManager.hero.attaque4.ppMax.toString() + " ) " + " : " + ModeleManager.hero.attaque4.description ),
+            top: 0.70 * coef,
             left: 0.0 * coef,
           ),
         ],

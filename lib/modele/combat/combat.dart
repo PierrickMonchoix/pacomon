@@ -75,6 +75,20 @@ class Combat {
     etatCombat.start();
   }
 
+  bool attaqueSelectedHavePp(){
+    switch (attaqueSelected) {
+      case 1:
+        return hero.attaque1.pp > 0 ;
+        case 2:
+        return hero.attaque2.pp > 0 ;
+        case 3:
+        return hero.attaque3.pp > 0 ;
+        case 4:
+        return hero.attaque4.pp > 0 ;
+      default: return false;
+    }
+  }
+
   void heroAttaquePacomon() {
     if (hero.plusDePp()) {
       hero.lutte.executeOn(_pacomon);

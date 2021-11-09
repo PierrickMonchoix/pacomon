@@ -41,10 +41,10 @@ class ModeleManager implements IOListener{
     hero = Perso(x: await Dao.getXSpawnHero(xlsPath: xlsPath) , y: await Dao.getYSpawnHero(xlsPath: xlsPath),
     augmentationStatParNiveau: await Dao.getAugmentationStatsParLevelHero(xlsPath: xlsPath),
     pv: await Dao.getPvBaseHero(xlsPath: xlsPath), atk: await Dao.getAtkBaseHero(xlsPath: xlsPath) , def: await Dao.getDefBaseHero(xlsPath: xlsPath) , vit: 12);
-    hero.attaque1 = Attaque(ppMax: 12, description: "Inflige votre atk au pacomon adverse", nom: "charge" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { pacomon.recevoirDegatsNet(perso.atk); });
-    hero.attaque2 = Attaque(ppMax: 12, description: "Vous heal de 50% de vos PV max", nom: "metoibien" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { perso.recevoirSoin(perso.pvMax~/2); });
-    hero.attaque3 = Attaque(ppMax: 12, description: "Réduit de 100 la défence adverse", nom: "grozieu" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { pacomon.perdreDef(100); });
-    hero.attaque4 = Attaque(ppMax: 12, description: "Augmente de 100 votre défence ",nom: "gro caillou" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { perso.def += 100; });
+    hero.attaque1 = Attaque(ppMax: 2, description: "Inflige votre atk au pacomon adverse", nom: "charge" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { pacomon.recevoirDegatsNet(perso.atk); });
+    hero.attaque2 = Attaque(ppMax: 2, description: "Vous heal de 50% de vos PV max", nom: "metoibien" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { perso.recevoirSoin(perso.pvMax~/2); });
+    hero.attaque3 = Attaque(ppMax: 1, description: "Réduit de 100 la défence adverse", nom: "grozieu" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { pacomon.perdreDef(100); });
+    hero.attaque4 = Attaque(ppMax: 2, description: "Augmente de 100 votre défence ",nom: "gro caillou" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { perso.def += 100; });
     hero.lutte = Attaque(ppMax: 0 , description: "inflige 1 de degat" , nom: "lutte" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { pacomon.recevoirDegatsBrut(1); });
 
 

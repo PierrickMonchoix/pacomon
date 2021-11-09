@@ -7,13 +7,16 @@ import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/modele_manager.dart';
 
 class EtatCombatChoisirAttaque extends EtatCombat {
-  EtatCombatChoisirAttaque({required Combat combat}) : super(combat : combat) ;
+  EtatCombatChoisirAttaque({required Combat combat}) : super(combat: combat);
 
   @override
   void whenOrder(EnumOrdre ordre) {
     switch (ordre) {
       case EnumOrdre.A:
-        combat.setAndStartEtatCombat(EtatCombatHeroVaAttaquer(combat: combat));
+        if (combat.hero.plusDePp() || combat.attaqueSelectedHavePp()) {
+          combat
+              .setAndStartEtatCombat(EtatCombatHeroVaAttaquer(combat: combat));
+        }
         break;
       case EnumOrdre.B:
         combat.setAndStartEtatCombat(EtatCombatChoisirAction(combat: combat));

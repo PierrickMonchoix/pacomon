@@ -64,7 +64,7 @@ void main() {
     expect(combat.etatCombat, TypeMatcher<EtatCombatPacomonAttaque>());
     combat.whenOrder(ordre: EnumOrdre.A);
     expect(combat.etatCombat, TypeMatcher<EtatCombatChoisirAction>());
-  }, tags: "t");
+  });
 
   testWidgets('hero est pile poil simplement plus rapide', (tester) async {
     int VIT_HERO_10 = 10;
@@ -113,7 +113,7 @@ void main() {
     expect(combat.etatCombat, TypeMatcher<EtatCombatPacomonAttaque>());
     combat.whenOrder(ordre: EnumOrdre.A);
     expect(combat.etatCombat, TypeMatcher<EtatCombatChoisirAction>());
-  }, tags: "t");
+  });
 
   testWidgets('hero est simplement moins rapide que pcmn', (tester) async {
     int VIT_HERO_10 = 10;
@@ -169,7 +169,7 @@ void main() {
     expect(combat.etatCombat, TypeMatcher<EtatCombatPacomonAttaque>());
     combat.whenOrder(ordre: EnumOrdre.A);
     expect(combat.etatCombat, TypeMatcher<EtatCombatChoisirAction>());
-  }, tags: "t");
+  });
   testWidgets('hero est deux fois plus rapide que pcmn', (tester) async {
     int VIT_HERO_20 = 20;
     int VIT_PCMN_10 = 10;
@@ -223,7 +223,7 @@ void main() {
     expect(combat.etatCombat, TypeMatcher<EtatCombatPacomonVaAttaquer>());
     combat.whenOrder(ordre: EnumOrdre.A);
     expect(combat.etatCombat, TypeMatcher<EtatCombatPacomonAttaque>());
-  }, tags: "t");
+  });
 
    testWidgets('pcmn est deux fois plus rapide que hero', (tester) async {
     int VIT_HERO_10 = 10;
@@ -272,7 +272,7 @@ void main() {
     expect(combat.etatCombat, TypeMatcher<EtatCombatChoisirAction>());
 
 
-  }, tags: "t"); 
+  }); 
 
    testWidgets('herop lutte sans pp', (tester) async {
     Perso hero = Perso(
@@ -320,7 +320,7 @@ void main() {
 
 
 
-  }, tags: "t"); 
+  }); 
 
     testWidgets('combat termine', (tester) async {
     int PV_PCMN_20 = 20;
@@ -397,6 +397,6 @@ void main() {
 
 
 
-  }, tags: "t"); 
+  }); 
 
 }

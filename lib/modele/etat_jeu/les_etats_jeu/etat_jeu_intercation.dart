@@ -21,6 +21,6 @@ class EtatJeuIntercation implements EtatJeu {
 
   @override
   void start() {
-    // TODO: implement start
+    ModeleManager.interaction.effet;
   }
 }

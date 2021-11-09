@@ -5,6 +5,7 @@ import 'package:pacomon/modele/combat/etat_combat.dart';
 import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/etat_jeu/etat_jeu.dart';
 import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_marche.dart';
+import 'package:pacomon/modele/interaction.dart';
 import 'package:pacomon/modele/liste_pokemon.dart';
 import 'package:pacomon/modele/perso.dart';
 import 'package:pacomon/modele/pacomon.dart';
@@ -15,6 +16,7 @@ import 'combat/combat.dart';
 class ModeleManager implements IOListener{
 
   static EtatJeu etatJeu = EtatJeuMarche();
+  static Interaction interaction = Interaction(phraseAcceuil: "not set" , effet: (){print("interaction not set");});
 
   static void sendOrderEtatJeu(EnumOrdre ordre){
     etatJeu.whenOrder(ordre);

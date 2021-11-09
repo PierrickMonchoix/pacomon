@@ -5,7 +5,7 @@ class Attaque {
   String nom;
   Perso perso;
   String description;
-  int PpMAx;
+  int ppMax;
   int pp;
   bool infinitePp;
 
@@ -23,7 +23,7 @@ class Attaque {
         effet = effet,
         description = description,
         pp = ppMax,
-        PpMAx = ppMax,
+        ppMax = ppMax,
         infinitePp = infinitePp_;
 
   void executeOn(Pacomon pacomon) {

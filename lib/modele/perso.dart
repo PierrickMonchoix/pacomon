@@ -1,7 +1,9 @@
 import 'package:pacomon/modele/attaque/attaque.dart';
 import 'package:pacomon/modele/carte.dart';
 import 'package:pacomon/modele/element_terrain/element_terrain.dart';
+import 'package:pacomon/modele/element_terrain/enum_interaction.dart';
 import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
+import 'package:pacomon/modele/interaction.dart';
 import 'package:pacomon/modele/liste_pokemon.dart';
 import 'package:pacomon/modele/modele_manager.dart';
 import 'dart:math';
@@ -133,5 +135,31 @@ class Perso extends AUnite {
 
   bool plusDePp(){
     return(attaque1.pp == 0 && attaque2.pp == 0 && attaque3.pp == 0 && attaque4.pp == 0);
+  }
+
+  void guerison(){
+    pv = pvMax;
+    attaque1.pp = attaque1.ppMax;
+    attaque2.pp = attaque2.ppMax;
+    attaque3.pp = attaque3.ppMax;
+    attaque4.pp = attaque4.ppMax;
+  }
+
+  void chercherInteragirAvecTerrain(){
+    ElementTerrain blocHaut =
+        ModeleManager.carte.getElementTerrainFromCoord(y: _y - 1 , x: _x );
+        ElementTerrain blocBas =
+        ModeleManager.carte.getElementTerrainFromCoord(y: _y + 1 , x: _x );
+        ElementTerrain blocGauche =
+        ModeleManager.carte.getElementTerrainFromCoord(y: _y  , x: _x - 1 );
+        ElementTerrain blocDroit =
+        ModeleManager.carte.getElementTerrainFromCoord(y: _y , x: _x + 1 );
+    List<ElementTerrain> listElementTerrain = [blocHaut , blocBas , blocGauche , blocDroit];
+    for (ElementTerrain elem in listElementTerrain) {
+      if(elem.interaction == EnumIntercationElementTerrain.CENTRE_PACOMON){
+        ModeleManager.interaction = Interaction(phraseAcceuil: "Vous allez être soigné" , effet: (){guerison();});
+        ModeleManager.etatJeu.whenOrder(EnumOrdre.INTERAGIR);
+      }
+    }
   }
 }

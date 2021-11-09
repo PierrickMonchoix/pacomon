@@ -10,17 +10,17 @@ class EtatJeuIntercation implements EtatJeu {
   void whenOrder(EnumOrdre ordre) {
     switch (ordre) {
       case EnumOrdre.A:
-        ModeleManager.setAndStatEtatJeu(EtatJeuMarche());
+        ModeleManager.interaction.effet();
+        ModeleManager.setAndStartEtatJeu(EtatJeuMarche());
         break;
       case EnumOrdre.B:
-        ModeleManager.setAndStatEtatJeu(EtatJeuMarche());
+        ModeleManager.interaction.effet();
+        ModeleManager.setAndStartEtatJeu(EtatJeuMarche());
         break;
       default:
     }
   }
 
   @override
-  void start() {
-    ModeleManager.interaction.effet;
-  }
+  void start() {}
 }

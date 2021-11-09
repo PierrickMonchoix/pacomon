@@ -11,5 +11,6 @@ enum EnumOrdre{
   Y,
 
   DEMARRER_COMBAT,
-  FIN_COMBAT
+  FIN_COMBAT,
+  INTERAGIR
 }

@@ -11,28 +11,27 @@ import 'package:pacomon/vue/vue_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:after_layout/after_layout.dart';
 
-class CarteEtHeroVue extends StatefulWidget {
-  
-  late CarteVue _carteVue = CarteVue();
-  late HeroVue _heroVue = HeroVue();
 
-  CarteEtHeroVue({Key? key}) : super(key: key);
+class TexteInteractionVue extends StatefulWidget {
+  
+
+
+  TexteInteractionVue({Key? key}) : super(key: key);
 
   @override
-  _CarteEtHeroVueState createState() => _CarteEtHeroVueState();
+  _TexteInteractionVueState createState() => _TexteInteractionVueState();
 }
 
-class _CarteEtHeroVueState extends State<CarteEtHeroVue> {
+class _TexteInteractionVueState extends State<TexteInteractionVue> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: BoxConstraints.expand(),
-      child: Stack(
-        children: [
-          widget._carteVue,
-          widget._heroVue
-          ],
-      ),
+    double coef = GlobalManager.widthScreen;
+    return Positioned(
+      child: Text(ModeleManager.interaction.phraseAcceuil),
+      height: 0.2*coef, 
+      width: coef,
+      bottom: 0.0,
     );
   }
+
 }

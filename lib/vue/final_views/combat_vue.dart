@@ -158,7 +158,7 @@ class _CombatVueState extends State<CombatVue> {
           !(ModeleManager.combat.etatCombat is EtatCombatChoisirAttaque) ? Container(): Positioned(
             child: Container(
                 constraints: BoxConstraints.expand(),
-                child: Center(child: Text(ModeleManager.hero.attaque1.nom + " " + ModeleManager.hero.attaque1.pp.toString() + "/" + ModeleManager.hero.attaque1.PpMAx.toString()  +" PP")),
+                child: Center(child: Text(ModeleManager.hero.attaque1.nom + " " + ModeleManager.hero.attaque1.pp.toString() + "/" + ModeleManager.hero.attaque1.ppMax.toString()  +" PP")),
                 decoration:  BoxDecoration(
                     shape: BoxShape.rectangle,
                     border: Border.all(
@@ -175,7 +175,7 @@ class _CombatVueState extends State<CombatVue> {
           !(ModeleManager.combat.etatCombat is EtatCombatChoisirAttaque) ? Container():  Positioned(
             child: Container(
                 constraints: BoxConstraints.expand(),
-                child: Center(child: Text(ModeleManager.hero.attaque2.nom + " " + ModeleManager.hero.attaque2.pp.toString() + "/" + ModeleManager.hero.attaque2.PpMAx.toString()  +" PP")),
+                child: Center(child: Text(ModeleManager.hero.attaque2.nom + " " + ModeleManager.hero.attaque2.pp.toString() + "/" + ModeleManager.hero.attaque2.ppMax.toString()  +" PP")),
                 decoration:  BoxDecoration(
                     shape: BoxShape.rectangle,
                     border: Border.all(
@@ -192,7 +192,7 @@ class _CombatVueState extends State<CombatVue> {
           !(ModeleManager.combat.etatCombat is EtatCombatChoisirAttaque) ? Container(): Positioned(
             child: Container(
                 constraints: BoxConstraints.expand(),
-                child: Center(child: Text(ModeleManager.hero.attaque3.nom + " " + ModeleManager.hero.attaque3.pp.toString() + "/" + ModeleManager.hero.attaque3.PpMAx.toString()  +" PP")),
+                child: Center(child: Text(ModeleManager.hero.attaque3.nom + " " + ModeleManager.hero.attaque3.pp.toString() + "/" + ModeleManager.hero.attaque3.ppMax.toString()  +" PP")),
                 decoration:  BoxDecoration(
                     shape: BoxShape.rectangle,
                     border: Border.all(
@@ -209,7 +209,7 @@ class _CombatVueState extends State<CombatVue> {
           !(ModeleManager.combat.etatCombat is EtatCombatChoisirAttaque) ? Container(): Positioned(
             child: Container(
                 constraints: BoxConstraints.expand(),
-                child: Center(child: Text(ModeleManager.hero.attaque4.nom + " " + ModeleManager.hero.attaque4.pp.toString() + "/" + ModeleManager.hero.attaque4.PpMAx.toString()  +" PP")),
+                child: Center(child: Text(ModeleManager.hero.attaque4.nom + " " + ModeleManager.hero.attaque4.pp.toString() + "/" + ModeleManager.hero.attaque4.ppMax.toString()  +" PP")),
                 decoration:  BoxDecoration(
                     shape: BoxShape.rectangle,
                     border: Border.all(

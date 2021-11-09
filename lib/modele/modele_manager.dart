@@ -26,7 +26,7 @@ class ModeleManager implements IOListener{
     combat.etatCombat.whenOrder(ordre);
   }
 
-  static void setAndStatEtatJeu(EtatJeu newEtatJeu){
+  static void setAndStartEtatJeu(EtatJeu newEtatJeu){
     etatJeu = newEtatJeu;
     etatJeu.start();
   }

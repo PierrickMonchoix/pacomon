@@ -1,6 +1,7 @@
 import 'package:pacomon/dao/dao.dart';
 import 'package:pacomon/io/i_o_listener.dart';
 import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_combat.dart';
+import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_intercation.dart';
 import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_marche.dart';
 import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_stats.dart';
 import 'package:pacomon/modele/modele_manager.dart';
@@ -10,6 +11,7 @@ import 'package:pacomon/vue/final_views/carte_et_hero_vue.dart';
 import 'package:pacomon/vue/final_views/combat_vue.dart';
 import 'package:pacomon/vue/final_views/ecran_vue.dart';
 import 'package:pacomon/vue/final_views/stats_vue.dart';
+import 'package:pacomon/vue/final_views/texte_interaction_vue.dart';
 import 'package:pacomon/vue/hero_vue.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -41,6 +43,9 @@ class VueManager implements IOListener {
     }
     else if (ModeleManager.etatJeu is EtatJeuStats){
       _allVue.setVueScreenAndRefresh(EcranVue(listWidget: [StatsVue()]));
+    }
+    else if(ModeleManager.etatJeu is EtatJeuIntercation){
+      _allVue.setVueScreenAndRefresh(EcranVue(listWidget: [CarteEtHeroVue() , TexteInteractionVue()]));
     }
     
 

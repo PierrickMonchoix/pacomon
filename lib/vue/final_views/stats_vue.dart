@@ -55,22 +55,22 @@ class _StatsVueState extends State<StatsVue> {
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text(ModeleManager.hero.attaque1.nom + " : " + ModeleManager.hero.attaque1.description ),
+            child: Text(ModeleManager.hero.attaque1.nom + " ( " + ModeleManager.hero.attaque1.pp.toString() + "/" + ModeleManager.hero.attaque1.ppMax.toString() + " ) " + " : " + ModeleManager.hero.attaque1.description ),
             top: 0.50 * coef,
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text(ModeleManager.hero.attaque2.nom + " : " + ModeleManager.hero.attaque2.description ),
+            child: Text(ModeleManager.hero.attaque2.nom + " ( " + ModeleManager.hero.attaque2.pp.toString() + "/" + ModeleManager.hero.attaque2.ppMax.toString() + " ) " + " : " + ModeleManager.hero.attaque2.description ),
             top: 0.55 * coef,
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text(ModeleManager.hero.attaque3.nom + " : " + ModeleManager.hero.attaque3.description ),
+            child: Text(ModeleManager.hero.attaque3.nom + " ( " + ModeleManager.hero.attaque3.pp.toString() + "/" + ModeleManager.hero.attaque3.ppMax.toString() + " ) " + " : " + ModeleManager.hero.attaque3.description ),
             top: 0.60 * coef,
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text(ModeleManager.hero.attaque4.nom + " : " + ModeleManager.hero.attaque4.description ),
+            child: Text(ModeleManager.hero.attaque4.nom + " ( " + ModeleManager.hero.attaque4.pp.toString() + "/" + ModeleManager.hero.attaque4.ppMax.toString() + " ) " + " : " + ModeleManager.hero.attaque4.description ),
             top: 0.65 * coef,
             left: 0.0 * coef,
           ),

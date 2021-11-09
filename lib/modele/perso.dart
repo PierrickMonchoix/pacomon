@@ -1,6 +1,6 @@
 import 'package:pacomon/modele/attaque/attaque.dart';
 import 'package:pacomon/modele/carte.dart';
-import 'package:pacomon/modele/element_terrain.dart';
+import 'package:pacomon/modele/element_terrain/element_terrain.dart';
 import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/liste_pokemon.dart';
 import 'package:pacomon/modele/modele_manager.dart';

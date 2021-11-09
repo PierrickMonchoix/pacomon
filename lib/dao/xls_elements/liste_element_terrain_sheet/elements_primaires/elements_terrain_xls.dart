@@ -4,10 +4,11 @@ class ElementTerrainXls {
   final String _traversable;
   final String _probaPacomon;
   final String _categorie;
+  final String interaction;
 
 
 
-  ElementTerrainXls({required String id , required String pathImage , required String traversable , required String probaPacomon , required String categorie}) : _id = id , _pathImage = pathImage , _traversable = traversable, _probaPacomon = probaPacomon , _categorie = categorie;
+  ElementTerrainXls({required String interaction, required String id , required String pathImage , required String traversable , required String probaPacomon , required String categorie}) : _id = id , _pathImage = pathImage , _traversable = traversable, _probaPacomon = probaPacomon , _categorie = categorie , interaction = interaction;
 
   String get id => _id;
   String get pathImage => _pathImage;
@@ -26,7 +27,10 @@ class ElementTerrainXls {
       other._pathImage == _pathImage &&
       other._traversable == _traversable &&
       other._probaPacomon == _probaPacomon &&
-      other._categorie == _categorie;
+      other._categorie == _categorie &&
+      other.interaction == interaction
+      
+      ;
   }
 
   @override

@@ -167,13 +167,22 @@ class XlsReader {
               CaracteristiqueElementTerrainXls.categorie)]
           .value
           .toString();
+           String interaction = excel[ListElementTerrainXlsSheet.nomSheet]!
+          .row(iElem)
+          .toList()[ListElementTerrainXlsSheet.getSheetColonne(
+              CaracteristiqueElementTerrainXls.intercation)]
+          .value
+          .toString();
 
       listElement.add(ElementTerrainXls(
           id: elementNom,
           pathImage: elementCheminImage,
           traversable: elementTraversable,
           probaPacomon: elementProbaPacomon,
-          categorie: elementCategorie));
+          categorie: elementCategorie,
+          interaction: interaction
+          
+          ));
     }
     return ListElementTerrainXlsSheet(listElement);
   }

@@ -1,5 +1,5 @@
 import 'package:pacomon/modele/combat/combat.dart';
-import 'package:pacomon/modele/element_terrain.dart';
+import 'package:pacomon/modele/element_terrain/element_terrain.dart';
 import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/etat_jeu/etat_jeu.dart';
 import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_marche.dart';

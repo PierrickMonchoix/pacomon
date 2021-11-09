@@ -1,6 +1,10 @@
+import 'package:pacomon/modele/element_terrain/enum_interaction.dart';
 import 'package:pacomon/modele/modele_manager.dart';
 
 class ElementTerrain {
+
+  
+
   // > FOR VIEW
 
   String _pathImage = "assets/for_run/image_not_set.png";
@@ -11,6 +15,9 @@ class ElementTerrain {
   bool _traversable = false;
   double _probaPacomon = 0.0;
   String categorie = "NOT_SET";
+  EnumIntercationElementTerrain interaction =  EnumIntercationElementTerrain.RIEN;
+  
+
 
   ElementTerrain.vide();
 
@@ -21,13 +28,16 @@ class ElementTerrain {
       required bool traversable,
       required String pathImage,
       required double probaPacomon,
-      required String categorie
+      required String categorie,
+      required EnumIntercationElementTerrain intercationElementTerrain
       })
       : _nom = nom,
         _traversable = traversable,
         _pathImage = pathImage,
         _probaPacomon = probaPacomon,
-        categorie = categorie;
+        categorie = categorie,
+        interaction = intercationElementTerrain
+        ;
 
 /*   void setAll(
       {required String nom,
@@ -72,6 +82,7 @@ class ElementTerrain {
       other._pathImage == _pathImage &&
       other._nom == _nom &&
       other._traversable == _traversable &&
+      other.interaction == interaction &&
       (other._probaPacomon - _probaPacomon).abs() < ModeleManager.epsilonProbas;
   }
 

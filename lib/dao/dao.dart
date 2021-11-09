@@ -6,7 +6,8 @@ import 'package:pacomon/dao/xls_elements/liste_pokemon_sheet/elements_primaires/
 import 'package:pacomon/dao/xls_elements/liste_pokemon_sheet/sheet/liste_pokemon_xls_sheet.dart';
 import 'package:pacomon/dao/xls_reader.dart';
 import 'package:pacomon/modele/carte.dart';
-import 'package:pacomon/modele/element_terrain.dart';
+import 'package:pacomon/modele/element_terrain/element_terrain.dart';
+import 'package:pacomon/modele/element_terrain/enum_interaction.dart';
 import 'package:pacomon/modele/liste_pokemon.dart';
 import 'package:pacomon/modele/pacomon.dart';
 
@@ -48,6 +49,14 @@ class Dao {
     }
   }
 
+  static EnumIntercationElementTerrain _getEnumIntercationElementTerrainFromString(String strIntercation){
+    switch (strIntercation) {
+        case "CENTRE_PACOMON" : return EnumIntercationElementTerrain.CENTRE_PACOMON;
+      default:
+        return EnumIntercationElementTerrain.RIEN; 
+    }
+  } 
+
   static ElementTerrain _getElementTerrainFromElementTerrainXls(
       {required ElementTerrainXls elementTerrainXls}) {
     try {
@@ -56,7 +65,9 @@ class Dao {
           traversable: elementTerrainXls.traversable == "OUI" ? true : false,
           pathImage: elementTerrainXls.pathImage,
           probaPacomon: double.parse(elementTerrainXls.probaPacomon) / 100,
-          categorie: elementTerrainXls.categorie);
+          categorie: elementTerrainXls.categorie,
+          intercationElementTerrain: _getEnumIntercationElementTerrainFromString(elementTerrainXls.interaction)
+          );
       return elementTerrain;
     } catch (e) {
       print("@@@@@@@@@@@@@@@@ RAPPORT D'ERREUR @@@@@@@@@@@@@@@@\n\n");

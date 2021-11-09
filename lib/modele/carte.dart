@@ -1,4 +1,5 @@
-import 'package:pacomon/modele/element_terrain.dart';
+import 'package:pacomon/modele/element_terrain/element_terrain.dart';
+import 'package:pacomon/modele/element_terrain/enum_interaction.dart';
 
 class Carte {
   static late int tailleX;
@@ -27,7 +28,7 @@ class Carte {
 
   ElementTerrain getElementTerrainFromCoord({required int y, required int x}) {
     if(x >= Carte.tailleX || x < 0 || y >= Carte.tailleY || y < 0){
-      return ElementTerrain(nom: "vide" , traversable: false , pathImage: "assets/for_alex/noir.png" , probaPacomon: 0.0 ,categorie: "NOT_SET");
+      return ElementTerrain(nom: "vide" , traversable: false , pathImage: "assets/for_alex/noir.png" , probaPacomon: 0.0 ,categorie: "NOT_SET" , intercationElementTerrain: EnumIntercationElementTerrain.RIEN);
     }
     return _matriceElementTerrain[y][x];
   }

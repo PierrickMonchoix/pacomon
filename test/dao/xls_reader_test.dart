@@ -25,15 +25,17 @@ void main() {
 
     ListElementTerrainXlsSheet listElementTerrain = await XlsReader.getListElementTerrainXlsSheet(xlsPath: "assets/for_tests/database_test.xlsx");
 
-    ElementTerrainXls herbe = ElementTerrainXls(id: "HERBE" , pathImage: "path_herbe" , traversable: "OUI" , probaPacomon: "60" ,categorie: "DEBUT");
-    ElementTerrainXls sol = ElementTerrainXls(id: "SOL" , pathImage: "path_sol" , traversable: "OUI" , probaPacomon: "0" , categorie: "DEBUT");
-    ElementTerrainXls rocher = ElementTerrainXls(id: "ROCHER" , pathImage: "path_rocher" , traversable: "NON" , probaPacomon: "0" , categorie: "DEBUT");
-    ElementTerrainXls hautes_herbes = ElementTerrainXls(id: "HAUTE_HERBE" , pathImage: "path_herbe" , traversable: "OUI" , probaPacomon: "50" , categorie: "HARD");
+    ElementTerrainXls herbe = ElementTerrainXls(id: "HERBE" , pathImage: "path_herbe" , traversable: "OUI" , probaPacomon: "60" ,categorie: "DEBUT" , interaction: "RIEN");
+    ElementTerrainXls sol = ElementTerrainXls(id: "SOL" , pathImage: "path_sol" , traversable: "OUI" , probaPacomon: "0" , categorie: "DEBUT" , interaction: "RIEN");
+    ElementTerrainXls rocher = ElementTerrainXls(id: "ROCHER" , pathImage: "path_rocher" , traversable: "NON" , probaPacomon: "0" , categorie: "DEBUT" , interaction: "RIEN");
+    ElementTerrainXls hautes_herbes = ElementTerrainXls(id: "HAUTE_HERBE" , pathImage: "path_herbe" , traversable: "OUI" , probaPacomon: "50" , categorie: "HARD" , interaction: "RIEN");
+    ElementTerrainXls centre_pacomon = ElementTerrainXls(id: "CENTRE" , pathImage: "path_centre" , traversable: "NON" , probaPacomon: "0" , categorie: "DEBUT" , interaction: "CENTRE_PACOMON");
 
     expect(listElementTerrain.list[0], herbe);
     expect(listElementTerrain.list[1], sol);
     expect(listElementTerrain.list[2], rocher);
     expect(listElementTerrain.list[3], hautes_herbes);
+    expect(listElementTerrain.list[4], centre_pacomon);
 
   });
 

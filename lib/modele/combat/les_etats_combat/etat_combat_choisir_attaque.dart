@@ -1,35 +1,34 @@
+import 'package:pacomon/modele/combat/combat.dart';
 import 'package:pacomon/modele/combat/etat_combat.dart';
 import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_choisir_action.dart';
 import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_hero_attaque.dart';
+import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_hero_va_attaquer.dart';
 import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/modele_manager.dart';
 
-class EtatCombatChoisirAttaque implements EtatCombat {
-  EtatCombatChoisirAttaque() {
-    print("€€€ enter EtatCombatChoisirAttaque");
-    print("pv pcmn: " + ModeleManager.combat.pacomon.pv.toString());
-  }
+class EtatCombatChoisirAttaque extends EtatCombat {
+  EtatCombatChoisirAttaque({required Combat combat}) : super(combat : combat) ;
 
   @override
   void whenOrder(EnumOrdre ordre) {
     switch (ordre) {
       case EnumOrdre.A:
-        ModeleManager.setAndStartEtatCombat(EtatCombatHeroAttaque());
+        combat.setAndStartEtatCombat(EtatCombatHeroVaAttaquer(combat: combat));
         break;
       case EnumOrdre.B:
-        ModeleManager.setAndStartEtatCombat(EtatCombatChoisirAction());
+        combat.setAndStartEtatCombat(EtatCombatChoisirAction(combat: combat));
         break;
       case EnumOrdre.HAUT:
-        ModeleManager.combat.selectAttaqueHaut();
+        combat.selectAttaqueHaut();
         break;
       case EnumOrdre.BAS:
-        ModeleManager.combat.selectAttaqueBas();
+        combat.selectAttaqueBas();
         break;
       case EnumOrdre.DROITE:
-        ModeleManager.combat.selectAttaqueDroite();
+        combat.selectAttaqueDroite();
         break;
       case EnumOrdre.GAUCHE:
-        ModeleManager.combat.selectAttaqueGauche();
+        combat.selectAttaqueGauche();
         break;
       default:
     }

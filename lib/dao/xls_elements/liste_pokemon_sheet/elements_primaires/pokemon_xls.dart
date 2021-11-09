@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class PacomonXls {
   String _nom;
   String _pathImage;
@@ -7,6 +9,7 @@ class PacomonXls {
   String _pvMax;
   String _categorie;
   String _exp;
+  String vit;
  
 
   String get nom => this._nom;
@@ -18,7 +21,23 @@ class PacomonXls {
   String get categorie => this._categorie;
   String get exp => this._exp;
 
-  PacomonXls({required String exp , required String nom , required String pathImage , required String rarete , required String atk, required String def, required String pvMax, required String categorie}) : _exp = exp , _nom = nom , _pathImage = pathImage , _rarete = rarete , _atk = atk , _def = def, _pvMax = pvMax, _categorie = categorie;
+  PacomonXls({required String vit , required String exp , required String nom , required String pathImage , required String rarete , required String atk, required String def, required String pvMax, required String categorie}) : _exp = exp , _nom = nom , _pathImage = pathImage , _rarete = rarete , _atk = atk , _def = def, _pvMax = pvMax, _categorie = categorie , vit = vit;
+
+
+
+  Map<String, dynamic> toMap() {
+    return {
+      '_nom': _nom,
+      '_pathImage': _pathImage,
+      '_rarete': _rarete,
+      '_atk': _atk,
+      '_def': _def,
+      '_pvMax': _pvMax,
+      '_categorie': _categorie,
+      '_exp': _exp,
+      'vit': vit,
+    };
+  }
 
   @override
   bool operator ==(Object other) {
@@ -31,7 +50,9 @@ class PacomonXls {
       other._atk == _atk &&
       other._def == _def &&
       other._pvMax == _pvMax &&
-      other._categorie == _categorie;
+      other._categorie == _categorie &&
+      other._exp == _exp &&
+      other.vit == vit;
   }
 
   @override
@@ -42,13 +63,13 @@ class PacomonXls {
       _atk.hashCode ^
       _def.hashCode ^
       _pvMax.hashCode ^
-      _categorie.hashCode;
+      _categorie.hashCode ^
+      _exp.hashCode ^
+      vit.hashCode;
   }
-
-
 
   @override
   String toString() {
-    return 'PacomonXls(_nom: $_nom, _pathImage: $_pathImage, _rarete: $_rarete, _atk: $_atk, _def: $_def, _pvMax: $_pvMax, _categorie: $_categorie)';
+    return 'PacomonXls(_nom: $_nom, _pathImage: $_pathImage, _rarete: $_rarete, _atk: $_atk, _def: $_def, _pvMax: $_pvMax, _categorie: $_categorie, _exp: $_exp, vit: $vit)';
   }
 }

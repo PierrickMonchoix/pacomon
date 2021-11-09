@@ -239,6 +239,14 @@ class XlsReader {
               CaracteristiquePacomonXls.exp)]
           .value
           .toString();
+
+          String vit = excel[ListePacomonXlsSheet.nomSheet]!
+          .row(iPkmn)
+          .toList()[ListePacomonXlsSheet.getSheetColonne(
+              CaracteristiquePacomonXls.vit)]
+          .value
+          .toString();
+          
       listPacomon.add(PacomonXls(
           nom: nom,
           pathImage: cheminImage,
@@ -247,7 +255,8 @@ class XlsReader {
           def: def,
           pvMax: pvMax,
           categorie: categorie,
-          exp: exp
+          exp: exp,
+          vit : vit
           ));
     }
     return ListePacomonXlsSheet(listPacomon);

@@ -1,17 +1,15 @@
+import 'package:pacomon/modele/combat/combat.dart';
 import 'package:pacomon/modele/combat/etat_combat.dart';
 import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_marche.dart';
 import 'package:pacomon/modele/modele_manager.dart';
 
-class EtatCombatHeroGagne implements EtatCombat {
-  EtatCombatHeroGagne() {
-    print("€€€ enter EtatCombatHeroGagne");
-    print("pv pcmn: " + ModeleManager.combat.pacomon.pv.toString());
-  }
+class EtatCombatHeroGagne extends EtatCombat {
+  EtatCombatHeroGagne({required Combat combat}) : super(combat : combat) ;
 
   @override
   void whenOrder(EnumOrdre ordre) {
-    ModeleManager.etatJeu = EtatJeuMarche();
+    
   }
 
   @override
@@ -22,8 +20,9 @@ class EtatCombatHeroGagne implements EtatCombat {
 
   @override
   void start() {
-    ModeleManager.perso.gagnerExp(ModeleManager.combat.pacomon.exp);
-    // TODO: implement start
+    print("### start EtatCombatHeroGagne");
+    combat.hero.gagnerExp(combat.pacomon.exp);
+    combat.finCombat();
   }
 
 }

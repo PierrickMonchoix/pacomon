@@ -1,4 +1,6 @@
 enum EnumOrdre{
+  RIEN,
+
   HAUT,
   BAS,
   DROITE,
@@ -8,5 +10,6 @@ enum EnumOrdre{
   X,
   Y,
 
-  DEMARRER_COMBAT
+  DEMARRER_COMBAT,
+  FIN_COMBAT
 }

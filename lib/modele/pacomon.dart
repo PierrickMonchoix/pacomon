@@ -31,7 +31,8 @@ class Pacomon extends AUnite {
       required int atk,
       required int def,
       required String categorie,
-      required int exp
+      required int exp,
+      required int vit
       })
       : 
       _exp = exp,
@@ -39,7 +40,7 @@ class Pacomon extends AUnite {
         _pathImage = pathImage,
         _rarete = rarete,
         _categorie = categorie,
-        super(pv: pv, atk: atk, def: def);
+        super(pv: pv, atk: atk, def: def, vit : vit);
 
   Pacomon.fromOther(Pacomon pacomon)
       : _nom = pacomon.nom,
@@ -47,18 +48,10 @@ class Pacomon extends AUnite {
         _rarete = pacomon.rarete,
         _categorie = pacomon.categorie,
         _exp = pacomon._exp,
-        super(atk: pacomon.atk, def: pacomon.def, pv: pacomon.pv);
+        super(atk: pacomon.atk, def: pacomon.def, pv: pacomon.pv , vit: pacomon.vit);
 
-  @override
-  String toString() {
-    return 'Pacomon(_nom: $_nom, _pathImage: $_pathImage, _rarete: $_rarete, _categorie: $_categorie , _pvMax : $pvMax , _atk : $atk , _def : $def  , _exp = $_exp)';
-  }
 
-  void copy(Pacomon base) {
-    _pathImage = base.pathImage;
-    _nom = base.nom;
-    _rarete = base.rarete;
-  }
+
 
   @override
   bool operator ==(Object other) {
@@ -71,7 +64,8 @@ class Pacomon extends AUnite {
       other._categorie == _categorie &&
       other.def == def &&
       other.pvMax == pvMax &&
-      other.atk == atk  ;
+      other.atk == atk  &&
+      other.vit == vit;
   }
 
   @override
@@ -80,5 +74,10 @@ class Pacomon extends AUnite {
       _pathImage.hashCode ^
       _rarete.hashCode ^
       _categorie.hashCode;
+  }
+
+  @override
+  String toString() {
+    return 'Pacomon(_nom: $_nom, _pathImage: $_pathImage, _rarete: $_rarete, _categorie: $_categorie, _exp: $_exp , vit: $vit)';
   }
 }

@@ -1,45 +1,102 @@
+import 'dart:math';
+
 import 'package:pacomon/modele/combat/etat_combat.dart';
 import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_pacomon_apparait.dart';
+import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/modele_manager.dart';
 import 'package:pacomon/modele/pacomon.dart';
+import 'package:pacomon/modele/perso.dart';
+import 'package:pacomon/test_manager.dart';
 
 class Combat {
   int attaqueSelected = 1;
 
   Pacomon _pacomon;
+  Perso hero;
+  late EtatCombat etatCombat;
+  bool connecteAuModele = false;
 
   Pacomon get pacomon => this._pacomon;
 
+  late int reserveVitessePacomon;
+  late int reserveVitesseHero;
 
-
-  Combat({required Pacomon pacomon}) : _pacomon = pacomon;
-
-  late EtatCombat etatCombat = EtatCombatPacomonApparait();
-
-  void start(){
-    etatCombat = EtatCombatPacomonApparait();
+  Combat({bool connecteAuModele_ = false , required Pacomon pacomon , required Perso hero}) : _pacomon = pacomon , hero = hero {
+    reserveVitesseHero = hero.vit;
+    reserveVitessePacomon = pacomon.vit;
+    connecteAuModele = connecteAuModele_;
+    if( ! connecteAuModele){
+      print("ATTENTION : COMBAT NON CONTECTE AU MODEL");
+    }
   }
+
+  void finCombat(){
+    print("####### fin du combat");
+    if(connecteAuModele){
+      print("####### fin du combat connecteAuModele");
+      ModeleManager.sendOrderEtatJeu(EnumOrdre.FIN_COMBAT);
+    }
+    else{
+      TestManager.dernierOrdre = EnumOrdre.FIN_COMBAT;
+    }
+  }
+  
+  void start() {
+    etatCombat = EtatCombatPacomonApparait(combat: this);
+  }
+
+  void whenOrder({required EnumOrdre ordre}){
+    etatCombat.whenOrder(ordre);
+  }
+
+
+  bool isTourHero() {
+    int faibleVitesse = min(hero.vit, pacomon.vit);
+    if (reserveVitesseHero < faibleVitesse &&
+        reserveVitessePacomon < faibleVitesse) {
+      reserveVitesseHero += hero.vit;
+      reserveVitessePacomon += pacomon.vit;
+    }
+
+    if(reserveVitesseHero >= reserveVitessePacomon ){
+      reserveVitesseHero -= faibleVitesse;
+      return true;
+    }
+    else{
+      reserveVitessePacomon -= faibleVitesse;
+      return false;
+    }
+  }
+
+ 
+
+  void setAndStartEtatCombat(EtatCombat newEtatCombat){
+    etatCombat = newEtatCombat;
+    etatCombat.start();
+  }
+
+
 
   void heroAttaquePacomon() {
     switch (attaqueSelected) {
       case 1:
-        ModeleManager.perso.attaquerPacomonWithAttaque1(_pacomon);
+        hero.attaquerPacomonWithAttaque1(_pacomon);
         break;
       case 2:
-        ModeleManager.perso.attaquerPacomonWithAttaque2(_pacomon);
+        hero.attaquerPacomonWithAttaque2(_pacomon);
         break;
       case 3:
-        ModeleManager.perso.attaquerPacomonWithAttaque3(_pacomon);
+        hero.attaquerPacomonWithAttaque3(_pacomon);
         break;
       case 4:
-        ModeleManager.perso.attaquerPacomonWithAttaque4(_pacomon);
+        hero.attaquerPacomonWithAttaque4(_pacomon);
         break;
       default:
     }
   }
 
-  void pacomonAttaqueHero(){
-    pacomon.attaquerPerso(ModeleManager.perso);
+  void pacomonAttaqueHero() {
+    pacomon.attaquerPerso(hero);
   }
 
   void selectAttaqueBas() {

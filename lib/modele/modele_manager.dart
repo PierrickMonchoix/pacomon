@@ -14,12 +14,6 @@ import 'combat/combat.dart';
 
 class ModeleManager implements IOListener{
 
-
-  static void setAndStartEtatCombat(EtatCombat etatCombat){
-    combat.etatCombat = etatCombat;
-    combat.etatCombat.start();
-  }
-
   static EtatJeu etatJeu = EtatJeuMarche();
 
   static void sendOrderEtatJeu(EnumOrdre ordre){
@@ -30,8 +24,8 @@ class ModeleManager implements IOListener{
     combat.etatCombat.whenOrder(ordre);
   }
 
+  
 
-  //fin ce'st moche TODO
 
   static const double epsilonProbas = 0.000001;
 
@@ -44,26 +38,27 @@ class ModeleManager implements IOListener{
     
     _carte = await Dao.getCarteFromXlsPath(xlsPath: xlsPath); 
     _listePokemon = await Dao.getListePacomonFromXlsPath(xlsPath: xlsPath);
-    _perso = Perso(x: await Dao.getXSpawnHero(xlsPath: xlsPath) , y: await Dao.getYSpawnHero(xlsPath: xlsPath),
+    hero = Perso(x: await Dao.getXSpawnHero(xlsPath: xlsPath) , y: await Dao.getYSpawnHero(xlsPath: xlsPath),
     augmentationStatParNiveau: await Dao.getAugmentationStatsParLevelHero(xlsPath: xlsPath),
-    pv: await Dao.getPvBaseHero(xlsPath: xlsPath), atk: await Dao.getAtkBaseHero(xlsPath: xlsPath) , def: await Dao.getDefBaseHero(xlsPath: xlsPath));
-    _perso.attaque1 = Attaque(description: "Inflige votre atk au pacomon adverse", nom: "charge" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { pacomon.recevoirDegatsNet(perso.atk); });
-    _perso.attaque2 = Attaque(description: "Vous heal de 50% de vos PV max", nom: "metoibien" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { perso.recevoirSoin(perso.pvMax~/2); });
-    _perso.attaque3 = Attaque(description: "Réduit de 100 la défence adverse", nom: "grozieu" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { pacomon.perdreDef(100); });
-    _perso.attaque4 = Attaque(description: "Augmente de 100 votre défence ",nom: "gro caillou" , perso: ModeleManager.perso, effet: (Perso perso, Pacomon pacomon) { perso.def += 100; });
+    pv: await Dao.getPvBaseHero(xlsPath: xlsPath), atk: await Dao.getAtkBaseHero(xlsPath: xlsPath) , def: await Dao.getDefBaseHero(xlsPath: xlsPath) , vit: 12);
+    hero.attaque1 = Attaque(ppMax: 12, description: "Inflige votre atk au pacomon adverse", nom: "charge" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { pacomon.recevoirDegatsNet(perso.atk); });
+    hero.attaque2 = Attaque(ppMax: 12, description: "Vous heal de 50% de vos PV max", nom: "metoibien" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { perso.recevoirSoin(perso.pvMax~/2); });
+    hero.attaque3 = Attaque(ppMax: 12, description: "Réduit de 100 la défence adverse", nom: "grozieu" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { pacomon.perdreDef(100); });
+    hero.attaque4 = Attaque(ppMax: 12, description: "Augmente de 100 votre défence ",nom: "gro caillou" , hero: ModeleManager.hero, effet: (Perso perso, Pacomon pacomon) { perso.def += 100; });
 
     etatJeu.start();
   }
 
+  
+
   static late Carte _carte;
-  static late Perso _perso;
+  static late Perso hero;
   static late ListePacomon _listePokemon;
 
   static late Combat combat;
 
   static Carte get carte => _carte;
 
-  static Perso get perso => _perso;
 
   static ListePacomon get listePokemon => _listePokemon;
 

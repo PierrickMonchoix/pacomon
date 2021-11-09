@@ -1,27 +1,17 @@
+import 'package:pacomon/modele/combat/combat.dart';
 import 'package:pacomon/modele/combat/etat_combat.dart';
+import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_a_qui_le_tour.dart';
+import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_check_victoire.dart';
 import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_hero_gagne.dart';
 import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_hero_perd.dart';
 import 'package:pacomon/modele/combat/les_etats_combat/etat_combat_pacomon_attaque.dart';
 import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/modele_manager.dart';
 
-class EtatCombatHeroAttaque implements EtatCombat {
-  EtatCombatHeroAttaque() {
-    print("€€€ enter EtatCombatHeroAttaque");
-    print("attaque 1 name : " + ModeleManager.perso.attaque1.nom);
-    print("pv pcmn: " + ModeleManager.combat.pacomon.pv.toString());
-  }
-
+class EtatCombatHeroAttaque extends EtatCombat {
+  EtatCombatHeroAttaque({required Combat combat}) : super(combat: combat) ;
   @override
-  void whenOrder(EnumOrdre ordre) {
-    if (ModeleManager.perso.pv == 0) {
-      ModeleManager.setAndStartEtatCombat(EtatCombatHeroPerd());
-    } else if (ModeleManager.combat.pacomon.pv == 0) {
-      ModeleManager.setAndStartEtatCombat(EtatCombatHeroGagne());
-    } else {
-      ModeleManager.setAndStartEtatCombat(EtatCombatPacomonAttaque());
-    }
-  }
+  void whenOrder(EnumOrdre ordre) {}
   @override
   String toString() {
     // TODO: implement toString
@@ -30,6 +20,7 @@ class EtatCombatHeroAttaque implements EtatCombat {
 
   @override
   void start() {
-    ModeleManager.combat.heroAttaquePacomon();
+    combat.heroAttaquePacomon();
+    combat.setAndStartEtatCombat(EtatCombatCheckVictoire(combat: combat));
   }
 }

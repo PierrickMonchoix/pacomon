@@ -9,16 +9,16 @@ class EtatJeuMarche implements EtatJeu {
   void whenOrder(EnumOrdre ordre) {
     switch (ordre) {
       case EnumOrdre.HAUT:
-        ModeleManager.perso.marcheHaut();
+        ModeleManager.hero.marcheHaut();
         break;
       case EnumOrdre.BAS:
-        ModeleManager.perso.marcheBas();
+        ModeleManager.hero.marcheBas();
         break;
       case EnumOrdre.GAUCHE:
-        ModeleManager.perso.marcheGauche();
+        ModeleManager.hero.marcheGauche();
         break;
       case EnumOrdre.DROITE:
-        ModeleManager.perso.marcheDroite();
+        ModeleManager.hero.marcheDroite();
         break;
         case EnumOrdre.Y:
         ModeleManager.etatJeu = EtatJeuStats();

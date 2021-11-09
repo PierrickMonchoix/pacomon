@@ -40,9 +40,9 @@ void main() {
   testWidgets('getListPokemonXls', (tester) async {  
     ListePacomonXlsSheet listPokemonXlsSheet = await XlsReader.getListePacomonXlsSheet(xlsPath: "assets/for_tests/database_test.xlsx");
 
-    PacomonXls pikachu = PacomonXls(nom: "Pikachu" , pathImage: "path_pikachu" , rarete: "66.7" , atk: "2" , def: "0" , pvMax: "20", categorie: "DEBUT" , exp: "10");
-    PacomonXls mewtwo = PacomonXls(nom: "Mewtwo" , pathImage: "path_mewtwo" , rarete: "33.3" , atk: "20" , def: "100" , pvMax: "200", categorie: "DEBUT" , exp: "10");
-    PacomonXls dracofeu = PacomonXls(nom: "Dracofeu" , pathImage: "path_dracofeu" , rarete: "100.0" , atk: "200" , def: "200" , pvMax: "2000", categorie: "HARD" , exp : "100");
+    PacomonXls pikachu = PacomonXls(nom: "Pikachu" , pathImage: "path_pikachu" , rarete: "66.7" , atk: "2" , def: "0" , pvMax: "20", categorie: "DEBUT" , exp: "10", vit: "10");
+    PacomonXls mewtwo = PacomonXls(nom: "Mewtwo" , pathImage: "path_mewtwo" , rarete: "33.3" , atk: "20" , def: "100" , pvMax: "200", categorie: "DEBUT" , exp: "10", vit: "1000");
+    PacomonXls dracofeu = PacomonXls(nom: "Dracofeu" , pathImage: "path_dracofeu" , rarete: "100.0" , atk: "200" , def: "200" , pvMax: "2000", categorie: "HARD" , exp : "100", vit: "10");
 
     expect(listPokemonXlsSheet.list[0], pikachu);
     expect(listPokemonXlsSheet.list[1], mewtwo);

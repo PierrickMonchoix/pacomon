@@ -5,9 +5,14 @@ abstract class AUnite{
   int def;
   int pv;
   int pvMax;
+  int vit;
 
 
-  AUnite({required atk , required def , required pv}) : pv = pv , def = def, atk = atk , pvMax = pv;
+  AUnite({required vit , required atk , required def , required pv}) : pv = pv , def = def, atk = atk , pvMax = pv , vit = vit{
+    if(vit == 0){
+      throw Exception("Vitesse égale à zero interdit");
+    }
+  }
 
   void recevoirDegatsNet(int degats){
     double doubleDegatsNet =  degats.toDouble()*pow(0.5, def.toDouble()/100.0);

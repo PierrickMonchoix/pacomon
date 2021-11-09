@@ -34,7 +34,6 @@ class HeroVue extends StatefulWidget {
 class _HeroVueState extends State<HeroVue> {
   @override
   Widget build(BuildContext context) {
-    print("build HeroVue");
     return widget._widget;
   }
 }

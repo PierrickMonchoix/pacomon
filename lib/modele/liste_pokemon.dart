@@ -15,11 +15,9 @@ class ListePacomon {
   }
 
   Pacomon getRandomPacomon(String categorie){
-  print(">>>>>>>>>>>  _listPacomon : " + _listPacomon.toString());
 
   List<Pacomon>  listPacomonDeLaBonneCategorie = _listPacomon.where((pacomon) => pacomon.categorie == categorie).toList();
-   print(">>>>>>>>>>>  " + categorie.toString());
-   print(">>>>>>>>>>>  _listPacomonDeLaBonneCategorie : " + listPacomonDeLaBonneCategorie.toString());
+   
    List<double> sumListOfRarete = [];
    sumListOfRarete.add(0.0);
     for (int i = 0; i < listPacomonDeLaBonneCategorie.length ; i++) {

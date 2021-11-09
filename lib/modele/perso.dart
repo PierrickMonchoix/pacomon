@@ -28,28 +28,21 @@ class Perso extends AUnite {
   int get x => _x;
   int get y => _y;
 
+
   Perso(
       {required int x,
       required int y,
       required int pv,
       required int atk,
       required int def,
-      required double augmentationStatParNiveau
+      required double augmentationStatParNiveau,
+      required int vit,
       })
       : 
       augmentationStatParNiveau = augmentationStatParNiveau,
       _x = x,
         _y = y,
-        super(pv: pv, atk: atk, def: def) {
-    attaque1 = Attaque(description: "rien",
-        nom: "rien 1", perso: this, effet: (Perso perso, Pacomon pacomon) {});
-    attaque2 = Attaque(description: "rien",
-        nom: "rien 2", perso: this, effet: (Perso perso, Pacomon pacomon) {});
-    attaque3 = Attaque(description: "rien",
-        nom: "rien 3", perso: this, effet: (Perso perso, Pacomon pacomon) {});
-    attaque4 = Attaque(description: "rien",
-        nom: "rien 4", perso: this, effet: (Perso perso, Pacomon pacomon) {});
-  }
+        super(pv: pv, atk: atk, def: def, vit: vit) ;
 
   void attaquerPacomonWithAttaque1(Pacomon pacomon) {
     attaque1.executeOn(pacomon);
@@ -83,7 +76,6 @@ class Perso extends AUnite {
         ModeleManager.carte.getElementTerrainFromCoord(y: _y - 1, x: _x);
     if (nextBloc.traversable) {
       _y--;
-      print("categrorie case : " + nextBloc.toString());
       _isPacomonInNextElementTerrain(nextBloc: nextBloc);
     }
     
@@ -94,7 +86,6 @@ class Perso extends AUnite {
         ModeleManager.carte.getElementTerrainFromCoord(y: _y + 1, x: _x);
     if (nextBloc.traversable) {
       _y++;
-      print("categrorie case : " + nextBloc.toString());
        _isPacomonInNextElementTerrain(nextBloc: nextBloc);
     }
    
@@ -105,7 +96,6 @@ class Perso extends AUnite {
         ModeleManager.carte.getElementTerrainFromCoord(y: _y, x: _x - 1);
     if (nextBloc.traversable) {
       _x--;
-      print("categrorie case : " + nextBloc.toString());
       _isPacomonInNextElementTerrain(nextBloc: nextBloc);
     }
     
@@ -116,7 +106,6 @@ class Perso extends AUnite {
         ModeleManager.carte.getElementTerrainFromCoord(y: _y, x: _x + 1);
     if (nextBloc.traversable) {
       _x++;
-      print("categrorie case : " + nextBloc.toString());
       _isPacomonInNextElementTerrain(nextBloc: nextBloc);
     }
     

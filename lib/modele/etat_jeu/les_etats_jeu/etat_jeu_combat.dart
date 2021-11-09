@@ -13,13 +13,20 @@ class EtatJeuCombat implements EtatJeu{
 
   @override
   void whenOrder(EnumOrdre ordre) {
-    ModeleManager.combat.etatCombat.whenOrder(ordre);
+    switch (ordre) {
+      case EnumOrdre.FIN_COMBAT:
+        ModeleManager.etatJeu = EtatJeuMarche();
+        break;
+      default:
+      ModeleManager.combat.etatCombat.whenOrder(ordre);
+    }
+    
   }
 
   @override
   void start() {
-    ElementTerrain terrainOuEstHEro = ModeleManager.carte.getElementTerrainFromCoord(y: ModeleManager.perso.y, x: ModeleManager.perso.x);
-    ModeleManager.combat = Combat(pacomon: ModeleManager.listePokemon.getRandomPacomon( terrainOuEstHEro.categorie ));
+    ElementTerrain terrainOuEstHEro = ModeleManager.carte.getElementTerrainFromCoord(y: ModeleManager.hero.y, x: ModeleManager.hero.x);
+    ModeleManager.combat = Combat(  connecteAuModele_: true, hero: ModeleManager.hero, pacomon: ModeleManager.listePokemon.getRandomPacomon( terrainOuEstHEro.categorie ));
     ModeleManager.combat.start();
   }
 

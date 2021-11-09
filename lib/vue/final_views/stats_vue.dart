@@ -25,22 +25,22 @@ class _StatsVueState extends State<StatsVue> {
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text("Niv : " + ModeleManager.perso.niveau.toString()),
+            child: Text("Niv : " + ModeleManager.hero.niveau.toString()),
             top: 0.1 * coef,
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text("PV : " + ModeleManager.perso.pv.toString() + " / " + ModeleManager.perso.pvMax.toString()),
+            child: Text("PV : " + ModeleManager.hero.pv.toString() + " / " + ModeleManager.hero.pvMax.toString()),
             top: 0.15 * coef,
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text("Atk : " + ModeleManager.perso.atk.toString()),
+            child: Text("Atk : " + ModeleManager.hero.atk.toString()),
             top: 0.2 * coef,
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text("Def : " + ModeleManager.perso.def.toString()),
+            child: Text("Def : " + ModeleManager.hero.def.toString()),
             top: 0.25 * coef,
             left: 0.0 * coef,
           ),
@@ -55,22 +55,22 @@ class _StatsVueState extends State<StatsVue> {
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text(ModeleManager.perso.attaque1.nom + " : " + ModeleManager.perso.attaque1.description ),
+            child: Text(ModeleManager.hero.attaque1.nom + " : " + ModeleManager.hero.attaque1.description ),
             top: 0.50 * coef,
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text(ModeleManager.perso.attaque2.nom + " : " + ModeleManager.perso.attaque2.description ),
+            child: Text(ModeleManager.hero.attaque2.nom + " : " + ModeleManager.hero.attaque2.description ),
             top: 0.55 * coef,
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text(ModeleManager.perso.attaque3.nom + " : " + ModeleManager.perso.attaque3.description ),
+            child: Text(ModeleManager.hero.attaque3.nom + " : " + ModeleManager.hero.attaque3.description ),
             top: 0.60 * coef,
             left: 0.0 * coef,
           ),
           Positioned(
-            child: Text(ModeleManager.perso.attaque4.nom + " : " + ModeleManager.perso.attaque4.description ),
+            child: Text(ModeleManager.hero.attaque4.nom + " : " + ModeleManager.hero.attaque4.description ),
             top: 0.65 * coef,
             left: 0.0 * coef,
           ),

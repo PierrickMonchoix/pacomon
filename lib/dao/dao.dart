@@ -78,7 +78,8 @@ class Dao {
           pathImage: pacomonXls.pathImage,
           rarete: double.parse(pacomonXls.rarete) / 100,
           categorie: pacomonXls.categorie,
-          exp: int.parse( pacomonXls.exp )
+          exp: int.parse( pacomonXls.exp ),
+          vit: int.parse( pacomonXls.vit )
           );
       return pacomon;
     } catch (e) {

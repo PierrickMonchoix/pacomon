@@ -2,6 +2,7 @@ import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/etat_jeu/etat_jeu.dart';
 import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_combat.dart';
 import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_intercation.dart';
+import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_maitrise.dart';
 import 'package:pacomon/modele/etat_jeu/les_etats_jeu/etat_jeu_stats.dart';
 import 'package:pacomon/modele/modele_manager.dart';
 
@@ -26,6 +27,11 @@ class EtatJeuMarche implements EtatJeu {
         break;
       case EnumOrdre.Y:
         ModeleManager.etatJeu = EtatJeuStats();
+        ModeleManager.etatJeu.start();
+        break;
+        case EnumOrdre.X:
+        print("##### etat jeu : maitrise");
+        ModeleManager.etatJeu = EtatJeuMaitrise();
         ModeleManager.etatJeu.start();
         break;
       case EnumOrdre.DEMARRER_COMBAT:

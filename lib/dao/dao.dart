@@ -127,6 +127,10 @@ class Dao {
     return int.parse(await XlsReader.getYSpawnHeroXls(xlsPath: xlsPath));
   }
 
+  static Future<int> getPointMaitriseGagneParNiveau({required String xlsPath}) async {
+    return int.parse(await XlsReader.getPointMaitriseGagneParNiveauXls(xlsPath: xlsPath));
+  }
+
   static Future<int> getAtkBaseHero({required String xlsPath}) async {
     return int.parse(await XlsReader.getAtkBaseHeroXls(xlsPath: xlsPath));
   }
@@ -137,10 +141,6 @@ class Dao {
 
       static Future<int> getPvBaseHero({required String xlsPath}) async {
     return int.parse(await XlsReader.getPvBaseHeroXls(xlsPath: xlsPath));
-  }
-
-    static Future<double> getAugmentationStatsParLevelHero({required String xlsPath}) async {
-    return double.parse(await XlsReader.getAugmentationStatsParLevelHeroXls(xlsPath: xlsPath));
   }
 
       static Future<int> getVitBaseHero({required String xlsPath}) async {
@@ -163,6 +163,27 @@ class Dao {
     return int.parse(await XlsReader.getPpAttaque4Xls(xlsPath: xlsPath));
   }
 
+          static Future<int> getAtkGagneParPointMaitrise({required String xlsPath}) async {
+    return int.parse(await XlsReader.getAtkGagneParPointMaitriseXls(xlsPath: xlsPath));
+  }
+
+          static Future<int> getDefGagneParPointMaitrise({required String xlsPath}) async {
+    return int.parse(await XlsReader.getDefGagneParPointMaitriseXls(xlsPath: xlsPath));
+  }
+
+          static Future<int> getVitGagneParPointMaitrise({required String xlsPath}) async {
+    return int.parse(await XlsReader.getVitGagneParPointMaitriseXls(xlsPath: xlsPath));
+  }
+
+          static Future<int> getPvGagneParPointMaitrise({required String xlsPath}) async {
+    return int.parse(await XlsReader.getPvGagneParPointMaitriseXls(xlsPath: xlsPath));
+  }
+
+          static Future<int> getPpGagneParPointMaitrise({required String xlsPath}) async {
+    return int.parse(await XlsReader.getPpGagneParPointMaitriseXls(xlsPath: xlsPath));
+  }
+
+   
 
   static Future<Carte> getCarteFromXlsPath({required String xlsPath}) async {
     CarteXlsSheet carteXls = await XlsReader.getCarteXls(xlsPath: xlsPath);

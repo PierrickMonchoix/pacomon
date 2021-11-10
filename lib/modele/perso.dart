@@ -5,6 +5,7 @@ import 'package:pacomon/modele/element_terrain/enum_interaction.dart';
 import 'package:pacomon/modele/etat_jeu/enum_ordre.dart';
 import 'package:pacomon/modele/interaction.dart';
 import 'package:pacomon/modele/liste_pokemon.dart';
+import 'package:pacomon/modele/maitrise/maitrise.dart';
 import 'package:pacomon/modele/modele_manager.dart';
 import 'dart:math';
 
@@ -17,7 +18,6 @@ class Perso extends AUnite {
 
   int niveau = 1;
   int exp = 0;
-  double augmentationStatParNiveau;
 
   late Attaque attaque1;
   late Attaque attaque2;
@@ -36,6 +36,7 @@ class Perso extends AUnite {
   int get x => _x;
   int get y => _y;
 
+  late Maitrise maitrise;
 
   Perso(
       {required int x,
@@ -43,11 +44,9 @@ class Perso extends AUnite {
       required int pv,
       required int atk,
       required int def,
-      required double augmentationStatParNiveau,
       required int vit,
       })
       : 
-      augmentationStatParNiveau = augmentationStatParNiveau,
       basePvMax = pv,
       baseAtk = atk,
       baseDef = def,
@@ -138,10 +137,11 @@ class Perso extends AUnite {
 
   void _gagnerNiveau(){
     niveau ++;
-    pv += (pvMax / augmentationStatParNiveau).floor();
+    /* pv += (pvMax / augmentationStatParNiveau).floor();
     pvMax += (pvMax / augmentationStatParNiveau).floor();
     atk += (atk / augmentationStatParNiveau).floor();
-    vit += (vit / augmentationStatParNiveau).floor(); 
+    vit += (vit / augmentationStatParNiveau).floor();  */
+    maitrise.pointsAatributer += maitrise.pointGagneParNiveau;
   }
 
   void gagnerExp(int expGagnee){

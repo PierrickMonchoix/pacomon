@@ -97,7 +97,7 @@ class XlsReader {
         .toString();
   }
 
-  static Future<String> getAugmentationStatsParLevelHeroXls({required String xlsPath}) async {
+  static Future<String> getPpAttaque1Xls({required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
@@ -107,7 +107,7 @@ class XlsReader {
         .toString();
   }
 
-  static Future<String> getPpAttaque1Xls({required String xlsPath}) async {
+    static Future<String> getPpAttaque2Xls({required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
@@ -117,7 +117,7 @@ class XlsReader {
         .toString();
   }
 
-    static Future<String> getPpAttaque2Xls({required String xlsPath}) async {
+    static Future<String> getPpAttaque3Xls({required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
@@ -127,7 +127,7 @@ class XlsReader {
         .toString();
   }
 
-    static Future<String> getPpAttaque3Xls({required String xlsPath}) async {
+    static Future<String> getPpAttaque4Xls({required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
@@ -137,12 +137,62 @@ class XlsReader {
         .toString();
   }
 
-    static Future<String> getPpAttaque4Xls({required String xlsPath}) async {
+      static Future<String> getPointMaitriseGagneParNiveauXls({required String xlsPath}) async {
     ByteData data = await rootBundle.load(xlsPath);
     var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
     var excel = Excel.decodeBytes(bytes);
     return excel["donnees"]
         .cell(CellIndex.indexByString("B12"))
+        .value
+        .toString();
+  }
+
+        static Future<String> getAtkGagneParPointMaitriseXls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B13"))
+        .value
+        .toString();
+  }
+
+          static Future<String> getDefGagneParPointMaitriseXls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B14"))
+        .value
+        .toString();
+  }
+
+          static Future<String> getVitGagneParPointMaitriseXls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B15"))
+        .value
+        .toString();
+  }
+
+          static Future<String> getPvGagneParPointMaitriseXls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B16"))
+        .value
+        .toString();
+  }
+
+          static Future<String> getPpGagneParPointMaitriseXls({required String xlsPath}) async {
+    ByteData data = await rootBundle.load(xlsPath);
+    var bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+    var excel = Excel.decodeBytes(bytes);
+    return excel["donnees"]
+        .cell(CellIndex.indexByString("B17"))
         .value
         .toString();
   }

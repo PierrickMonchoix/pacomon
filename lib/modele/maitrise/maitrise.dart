@@ -52,69 +52,69 @@ class Maitrise {
     {
     listStats.add(StatAmaitriser(
         nom: "atk",
-        description: "Augmente l'atk de 1 point",
+        description: "Augmente l'atk de " + augmentationAtkParPoint.toString(),
         effetParPoint: () {
-          hero.baseAtk += 1;
+          hero.baseAtk += augmentationAtkParPoint;
           hero.resetStats();
         }));
 
     listStats.add(StatAmaitriser(
         nom: "def",
-        description: "Augmente la def de 2 point",
+        description: "Augmente la def de " + augmentationDefParPoint.toString(),
         effetParPoint: () {
-          hero.baseDef += 2;
+          hero.baseDef += augmentationDefParPoint;
           hero.resetStats();
         }));
 
     listStats.add(StatAmaitriser(
         nom: "vit",
-        description: "Augmente la vitesse de 1 point",
+        description: "Augmente la vitesse de " + augmentationVitParPoint.toString(),
         effetParPoint: () {
-          hero.baseVit += 1;
+          hero.baseVit += augmentationVitParPoint;
           hero.resetStats();
         }));
 
     listStats.add(StatAmaitriser(
         nom: "pvMax",
-        description: "Augmente les pvMax de 5 point",
+        description: "Augmente les pvMax de " + augmentationPvParPoint.toString(),
         effetParPoint: () {
-          hero.basePvMax += 1;
+          hero.basePvMax += augmentationPvParPoint;
           hero.resetStats();
         }));
 
     listStats.add(StatAmaitriser(
         nom: "ppMax 1",
-        description: "augmente les ppMax de < " + hero.attaque1.nom + " > de 1",
+        description: "augmente les ppMax de < " + hero.attaque1.nom + " > de " + augmentationPpParPoint.toString(),
         effetParPoint: () {
-          hero.attaque1.ppMax += 1;
-          hero.attaque1.pp += 1;
+          hero.attaque1.ppMax += augmentationPpParPoint;
+          hero.attaque1.pp += augmentationPpParPoint;
           hero.resetStats();
         }));
 
     listStats.add(StatAmaitriser(
         nom: "ppMax 2",
-        description: "augmente les ppMax de < " + hero.attaque2.nom + " > de 1",
+        description: "augmente les ppMax de < " + hero.attaque2.nom + " > de " + augmentationPpParPoint.toString(),
         effetParPoint: () {
-          hero.attaque2.ppMax += 1;
-          hero.attaque2.pp += 1;
+          hero.attaque2.ppMax += augmentationPpParPoint;
+          hero.attaque2.pp += augmentationPpParPoint;
           hero.resetStats();
         }));
 
     listStats.add(StatAmaitriser(
         nom: "ppMax 3",
-        description: "augmente les ppMax de < " + hero.attaque3.nom + " > de 1",
+        description: "augmente les ppMax de < " + hero.attaque3.nom + " > de " + augmentationPpParPoint.toString(),
         effetParPoint: () {
-          hero.attaque3.ppMax += 1;
-          hero.attaque3.pp += 1;
+          hero.attaque3.ppMax += augmentationPpParPoint;
+          hero.attaque3.pp += augmentationPpParPoint;
           hero.resetStats();
         }));
 
     listStats.add(StatAmaitriser(
         nom: "ppMax 4",
-        description: "augmente les ppMax de < " + hero.attaque4.nom + " > de 1",
+        description: "augmente les ppMax de < " + hero.attaque4.nom + " > de " + augmentationPpParPoint.toString(),
         effetParPoint: () {
-          hero.attaque4.ppMax += 1;
-          hero.attaque4.pp += 1;
+          hero.attaque4.ppMax += augmentationPpParPoint;
+          hero.attaque4.pp += augmentationPpParPoint;
           hero.resetStats();
         }));
   }

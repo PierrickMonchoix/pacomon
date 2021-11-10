@@ -16,7 +16,7 @@ class _StatsVueState extends State<StatsVue> {
     double coef = GlobalManager.widthScreen;
     return Container(
       constraints: BoxConstraints.expand(),
-      color: Colors.blueAccent,
+      color: Colors.lightBlueAccent,
       child: Stack(
         children: [
           Positioned(

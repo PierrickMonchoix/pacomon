@@ -56,7 +56,7 @@ class _MaitriseVueState extends State<MaitriseVue> {
     double coef = GlobalManager.widthScreen;
     return Container(
         constraints: BoxConstraints.expand(),
-        color: Colors.blueAccent,
+        color: Colors.lightBlueAccent,
         child: Column(
           children: _listRow(),
         ));

@@ -9,7 +9,7 @@ class EtatCombatHeroGagne extends EtatCombat {
 
   @override
   void whenOrder(EnumOrdre ordre) {
-    
+    combat.finCombat();
   }
 
   @override
@@ -22,7 +22,7 @@ class EtatCombatHeroGagne extends EtatCombat {
   void start() {
     print("### start EtatCombatHeroGagne");
     combat.hero.gagnerExp(combat.pacomon.exp);
-    combat.finCombat();
+    
   }
 
 }

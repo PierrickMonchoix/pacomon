@@ -132,7 +132,7 @@ class Perso extends AUnite {
   }
 
   int expNecessaire(){
-    return 10 * pow(niveau,2).toInt();
+    return 10 * niveau;
   }
 
   void _gagnerNiveau(){

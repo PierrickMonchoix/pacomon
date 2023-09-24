@@ -1,5 +1,44 @@
 # Notes de patch 21.11.2 
 
+## Emulator installation 
+
+Please follow Markdown code
+
+Create new folder, e.g. C:\android-sdk, we now name it <sdk-folder>  
+Create new folders cmdline-tools, platforms and platform-tools inside android-sdk  
+Create new folder tools inside cmdline-tools
+Download the Android command line tools in this page https://developer.android.com/studio (Download options -> Command line tools only)
+Open the zip downloaded and extract the folders bin, lib and the files NOTICE, source.properties inside <sdk-folder>\cmdline-tools\tools
+Download and install the Java 8 JDK https://download.oracle.com/java/18/archive/jdk-18.0.2_windows-x64_bin.exe
+Goto <sdk-folder>\cmdline-tools\tools\bin
+Run :
+	sdkmanager --update
+	sdkmanager emulator
+	sdkmanager system-images;android-25;google_apis;x86
+	sdkmanager extras;android;m2repository
+	sdkmanager --licenses
+	sdkmanager "build-tools;28.0.3" // latest build-tool
+	sdkmanager platforms;android-28
+	sdkmanager platform-tools
+Create a repositories.cfg file in C:\Users<Username>.android   and write it in :
+	JAVA_OPTS=-XX:+IgnoreUnrecognizedVMOptions --add-modules java.se.ee
+	ANDROID_SDK_ROOT = C:\Users\<Username>\.android\avd
+	Path = <sdk-folder>\cmdline-tools\tools\bin;<sdk-folder>\emulator
+Goto <sdk-folder>\cmdline-tools\tools\bin
+Run : 
+	avdmanager create avd -n nexus5x --device "Nexus 5X" -k system-images;android-25;google_apis;x86
+Run :
+	flutter config --android-sdk "/path/to/android/sdk"     (si problème, run flutter config --android-sdk "")
+	flutter doctor --android-licenses
+
+
+## Emulator Run
+
+Please follow Markdown code
+
+Goto : C:\ProgrammesPerso\android-sdk\emulator
+flutter emulators --launch nexus5x
+
 ## Creation d'une apk
 
 On peut désormais créeer une apk en executant 'construire_apk.bat'.

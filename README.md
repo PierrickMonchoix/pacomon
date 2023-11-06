@@ -106,3 +106,8 @@ model ---> presentation ---> vue
 
 On la reconstruit entierement (a partir de la presentation)
 De toute facon, une vue ne doit rien stoquer dans notre medele
+
+# Rappels perso
+
+Chez Alex, les programmes sont installés dans
+D:\Programmes\ApplicationMobile
